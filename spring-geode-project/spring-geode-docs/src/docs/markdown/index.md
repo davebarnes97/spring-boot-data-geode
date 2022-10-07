@@ -35,8 +35,6 @@ version 1.27,
 - [26. Appendix](#appendix)
 
 
-
-
 Spring Boot for Apache Geode provides the convenience of Spring Boot’s
 *convention over configuration* approach by using *auto-configuration*
 with Spring Framework’s powerful abstractions and highly consistent
@@ -53,7 +51,7 @@ Geode applications locally or in a managed environment, such as with
 
 This project is a continuation and a logical extension to Spring Data
 for Apache Geode’s [Annotation-based configuration
-model](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config),
+model](#bootstrap-annotation-config),
 and the goals set forth in that model: *To enable application developers
 to **get up and running** as **quickly**, **reliably**, and as
 **easily** as possible*. In fact, Spring Boot for Apache Geode builds on
