@@ -1,0 +1,4 @@
+docs-src-dir="/Users/daveba/Repo/spring-boot-data-geode/spring-geode-project/spring-geode-docs/src/main/java"
+starter-logging-resources-dir="/Users/daveba/Repo/spring-boot-data-geode/spring-geode-project/spring-geode-starters/spring-geode-starter-logging/src/main/resources"
+docs-resources-dir="/Users/daveba/Repo/spring-boot-data-geode/spring-geode-project/spring-geode-docs/src/main/resources"
+version=1.27
