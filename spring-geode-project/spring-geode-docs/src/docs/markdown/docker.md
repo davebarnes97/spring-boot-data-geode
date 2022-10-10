@@ -1,0 +1,958 @@
+<div id="header">
+
+</div>
+
+<div id="content">
+
+<div class="sect1">
+
+## Docker
+
+<div class="sectionbody">
+
+<div class="paragraph">
+
+The state of modern software application development is moving towards
+[containerization](https://www.docker.com/resources/what-container).
+Containers offer a controlled environment to predictably build (compile,
+configure and package), run, and manage your applications in a reliable
+and repeatable manner, regardless of context. In many situations, the
+intrinsic benefit of using containers is obvious.
+
+</div>
+
+<div class="paragraph">
+
+Understandably, [Docker’s](https://www.docker.com/) popularity took off
+like wildfire, given its highly powerful and simplified model for
+creating, using and managing containers to run packaged applications.
+
+</div>
+
+<div class="paragraph">
+
+Docker’s ecosystem is also quite impressive, with the advent of
+[Testcontainers](https://www.testcontainers.org) and Spring Boot’s now
+{spring-boot-docs-html}/spring-boot-features.html#building-docker-images\[dedicated
+support\] to create packaged Spring Boot applications in [Docker
+images](https://docs.docker.com/get-started/overview/#docker-objects)
+that are then later run in a Docker container.
+
+</div>
+
+<div class="admonitionblock tip">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="icon"><div class="title">
+Tip
+</div></td>
+<td class="content">See also
+{spring-boot-docs-html}/deployment.html#containers-deployment[“Deploying
+to Containers”] to learn more.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="paragraph">
+
+{pivotal-gemfire-name} can also run in a controlled, containerized
+environment. The goal of this chapter is to get you started running
+{pivotal-gemfire-name} in a container and interfacing to a containerized
+{pivotal-gemfire-name} cluster from your Spring Boot,
+{pivotal-gemfire-name} client applications.
+
+</div>
+
+<div class="paragraph">
+
+This chapter does not cover how to run your Spring Boot,
+{pivotal-gemfire-name} client applications in a container, since that is
+already covered by Spring Boot (again, see the Spring Boot documentation
+for
+{spring-boot-docs-html}/spring-boot-features.html#building-docker-images\[Docker
+images\] and
+{spring-boot-docs-html}/deployment.html#containers-deployment\[container
+deployment\], along with Docker’s
+[documentation](https://docs.docker.com/get-started/overview/)).
+Instead, our focus is on how to run an {pivotal-gemfire-name} cluster in
+a container and connect to it from a Spring Boot, {pivotal-gemfire-name}
+client application, regardless of whether the application runs in a
+container or not.
+
+</div>
+
+<div class="sect2">
+
+### Acquiring the {pivotal-gemfire-name} Docker Image
+
+<div class="paragraph">
+
+To run an {pivotal-gemfire-name} cluster inside a Docker container, you
+must first acquire the Docker image. You can get the
+{pivotal-gemfire-name} Docker image from [Docker
+Hub](https://hub.docker.com/r/apachegeode/geode/).
+
+</div>
+
+<div class="paragraph">
+
+While {pivotal-gemfire-name}'s {apache-geode-docs}\[official
+documentation\] is less than clear on how to use {pivotal-gemfire-name}
+in Docker, we find a bit of relief in the
+{apache-geode-wiki}/How+to+use+Geode+on+Docker\[Wiki\]. However, for a
+complete and comprehensive write up, see the instructions in the
+[README](https://github.com/markito/geode-docker#building-the-container-image)
+from this [GitHub Repo](https://github.com/markito/geode-docker).
+
+</div>
+
+<div class="admonitionblock note">
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td class="icon"><div class="title">
+Note
+</div></td>
+<td class="content">You must have <a
+href="https://docs.docker.com/get-docker">Docker</a> installed on your
+computer to complete the following steps.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="paragraph">
+
+Effectively, the high-level steps are as follows:
+
+</div>
+
+<div class="paragraph">
+
+1\) Acquire the {pivotal-gemfire-name} Docker image from Docker Hub by
+using the `docker pull` command (shown with typical output) from the
+command-line:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 1. Download/Install the {pivotal-gemfire-name} Docker Image
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+$ docker pull apachegeode/geode
+Using default tag: latest
+latest: Pulling from apachegeode/geode
+Digest: sha256:6a6218f22a2895bb706175727c7d76f654f9162acac22b2d950d09a2649f9cf4
+Status: Image is up to date for apachegeode/geode:latest
+docker.io/apachegeode/geode:latest
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Instead of pulling from the `nightly` tag as suggested, the Spring team
+highly recommends that you pull from the `latest` tag, which pulls a
+stable, production-ready {pivotal-gemfire-name} Docker image based on
+the latest {pivotal-gemfire-name} GA version.
+
+</div>
+
+<div class="paragraph">
+
+2\) Verify that the {pivotal-gemfire-name} Docker image was downloaded
+and installed successfully:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+$ docker image ls
+REPOSITORY                       TAG                          IMAGE ID            CREATED             SIZE
+apachegeode/geode                latest                       a2e210950712        2 months ago        224MB
+cloudfoundry/run                 base-cnb                     3a7d172559c2        8 weeks ago         71.2MB
+open-liberty                     19.0.0.9-webProfile8         dece75feff1a        3 months ago        364MB
+tomee                            11-jre-8.0.0-M3-webprofile   0d03e4d395e6        3 months ago        678MB
+...
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Now you are ready to run {pivotal-gemfire-name} in a Docker container.
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Running {pivotal-gemfire-name} in a Docker Container
+
+<div class="paragraph">
+
+Now that you have acquired the {pivotal-gemfire-name} Docker image, you
+can run {pivotal-gemfire-name} in a Docker container. Use the following
+`docker run` command to start {pivotal-gemfire-name} in a Docker
+container:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 2. Start the {pivotal-gemfire-name} Docker Container
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+$ docker run -it -p 10334:10334 -p 40404:40404 -p 1099:1099 -p 7070:7070 -p 7575:7575 apachegeode/geode
+    _________________________     __
+   / _____/ ______/ ______/ /____/ /
+  / /  __/ /___  /_____  / _____  /
+ / /__/ / ____/  _____/ / /    / /
+/______/_/      /______/_/    /_/    1.12.0
+
+Monitor and Manage Apache Geode
+gfsh>
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Since the {pivotal-gemfire-name} Docker container was started in
+interactive mode, you must open a separate command-line shell to verify
+that the {pivotal-gemfire-name} Docker container is in fact running:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 3. Verify the {pivotal-gemfire-name} Docker Container is Running
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+$ docker container ls
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                                                                                                                                  NAMES
+3b30b9ffc5dc        apachegeode/geode   "gfsh"              44 seconds ago      Up 43 seconds       0.0.0.0:1099->1099/tcp, 0.0.0.0:7070->7070/tcp, 0.0.0.0:7575->7575/tcp, 0.0.0.0:10334->10334/tcp, 0.0.0.0:40404->40404/tcp, 8080/tcp   awesome_khorana
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+You know that the {pivotal-gemfire-name} Docker container is running
+since we ended up at a Gfsh command prompt in the interactive shell.
+
+</div>
+
+<div class="paragraph">
+
+We also mapped ports between the Docker container and the host system,
+exposing well-known ports used by {pivotal-gemfire-name} server-side
+cluster processes, such as Locators and CacheServers:
+
+</div>
+
+<table class="tableblock frame-all grid-all" style="width: 30%;">
+<caption>Table 1. {pivotal-gemfire-name} Ports</caption>
+<colgroup>
+<col style="width: 66%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th class="tableblock halign-left valign-top">Process</th>
+<th class="tableblock halign-left valign-top">Port</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="tableblock halign-left valign-top"><p>HTTP</p></td>
+<td class="tableblock halign-left valign-top"><p>7070</p></td>
+</tr>
+<tr class="even">
+<td class="tableblock halign-left valign-top"><p>Locator</p></td>
+<td class="tableblock halign-left valign-top"><p>10334</p></td>
+</tr>
+<tr class="odd">
+<td class="tableblock halign-left valign-top"><p>Manager</p></td>
+<td class="tableblock halign-left valign-top"><p>1099</p></td>
+</tr>
+<tr class="even">
+<td class="tableblock halign-left valign-top"><p>Server</p></td>
+<td class="tableblock halign-left valign-top"><p>40404</p></td>
+</tr>
+</tbody>
+</table>
+
+Table 1. {pivotal-gemfire-name} Ports
+
+<div class="paragraph">
+
+It is unfortunate that the {pivotal-gemfire-name} Docker image gives you
+only a Gfsh command prompt, leaving you with the task of provisioning a
+cluster. It would have been more useful to provide preconfigured Docker
+images with different {pivotal-gemfire-name} cluster configurations,
+such as one Locator and one server or two Locators and four servers, and
+so on. However, we can start the cluster ourselves.
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Start an {pivotal-gemfire-name} Cluster in Docker
+
+<div class="paragraph">
+
+From inside the {pivotal-gemfire-name} Docker container, we can start a
+Locator and a server:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 4. Start {pivotal-gemfire-name} Locator & Server
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+gfsh>start locator --name=LocatorOne --log-level=config --hostname-for-clients=localhost
+Starting a Geode Locator in /LocatorOne...
+.........
+Locator in /LocatorOne on 3b30b9ffc5dc[10334] as LocatorOne is currently online.
+Process ID: 167
+Uptime: 9 seconds
+Geode Version: 1.12.0
+Java Version: 1.8.0_212
+Log File: /LocatorOne/LocatorOne.log
+JVM Arguments: -Dgemfire.enable-cluster-configuration=true -Dgemfire.load-cluster-configuration-from-dir=false -Dgemfire.log-level=config -Dgemfire.launcher.registerSignalHandlers=true -Djava.awt.headless=true -Dsun.rmi.dgc.server.gcInterval=9223372036854775806
+Class-Path: /geode/lib/geode-core-1.12.0.jar:/geode/lib/geode-dependencies.jar
+
+Successfully connected to: JMX Manager [host=3b30b9ffc5dc, port=1099]
+
+Cluster configuration service is up and running.
+
+
+gfsh>start server --name=ServerOne --log-level=config --hostname-for-clients=localhost
+Starting a Geode Server in /ServerOne...
+.......
+Server in /ServerOne on 3b30b9ffc5dc[40404] as ServerOne is currently online.
+Process ID: 267
+Uptime: 7 seconds
+Geode Version: 1.12.0
+Java Version: 1.8.0_212
+Log File: /ServerOne/ServerOne.log
+JVM Arguments: -Dgemfire.default.locators=172.17.0.2[10334] -Dgemfire.start-dev-rest-api=false -Dgemfire.use-cluster-configuration=true -Dgemfire.log-level=config -Dgemfire.launcher.registerSignalHandlers=true -Djava.awt.headless=true -Dsun.rmi.dgc.server.gcInterval=9223372036854775806
+Class-Path: /geode/lib/geode-core-1.12.0.jar:/geode/lib/geode-dependencies.jar
+
+
+gfsh>list members
+Member Count : 2
+
+   Name    | Id
+---------- | --------------------------------------------------------------
+LocatorOne | 172.17.0.2(LocatorOne:167:locator)<ec><v0>:41000 [Coordinator]
+ServerOne  | 172.17.0.2(ServerOne:267)<v1>:41001
+
+
+gfsh>describe member --name=LocatorOne
+Name        : LocatorOne
+Id          : 172.17.0.2(LocatorOne:167:locator)<ec><v0>:41000
+Host        : 3b30b9ffc5dc
+Regions     :
+PID         : 167
+Groups      :
+Used Heap   : 50M
+Max Heap    : 443M
+Working Dir : /LocatorOne
+Log file    : /LocatorOne/LocatorOne.log
+Locators    : 172.17.0.2[10334]
+
+
+gfsh>describe member --name=ServerOne
+Name        : ServerOne
+Id          : 172.17.0.2(ServerOne:267)<v1>:41001
+Host        : 3b30b9ffc5dc
+Regions     :
+PID         : 267
+Groups      :
+Used Heap   : 77M
+Max Heap    : 443M
+Working Dir : /ServerOne
+Log file    : /ServerOne/ServerOne.log
+Locators    : 172.17.0.2[10334]
+
+Cache Server Information
+Server Bind              :
+Server Port              : 40404
+Running                  : true
+
+Client Connections : 0
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+We now have an {pivotal-gemfire-name} cluster running with one Locator
+and one server inside a Docker container. We deliberately started the
+cluster with a minimal configuration. For example, we have no Regions in
+which to store data:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+gfsh>list regions
+No Regions Found
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+However, that is OK. Once more, we want to show the full power of SBDG
+and let the Spring Boot application drive the configuration of the
+{pivotal-gemfire-name} cluster that runs in the Docker container, as
+required by the application.
+
+</div>
+
+<div class="paragraph">
+
+Let’s have a quick look at our Spring Boot application.
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Spring Boot, {pivotal-gemfire-name} Client Application Explained
+
+<div class="paragraph">
+
+The Spring Boot, {pivotal-gemfire-name} `ClientCache` application we use
+to connect to our {pivotal-gemfire-name} cluster that runs in the Docker
+container appears as follows:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 5. Spring Boot, {pivotal-gemfire-name} Docker client application
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+@SpringBootApplication
+@EnableClusterAware
+@EnableEntityDefinedRegions(basePackageClasses = Customer.class)
+@UseMemberName("SpringBootApacheGeodeDockerClientCacheApplication")
+public class SpringBootApacheGeodeDockerClientCacheApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootApacheGeodeDockerClientCacheApplication.class, args);
+    }
+
+    @Bean
+    @SuppressWarnings("unused")
+    ApplicationRunner runner(GemFireCache cache, CustomerRepository customerRepository) {
+
+        return args -> {
+
+            assertClientCacheAndConfigureMappingPdxSerializer(cache);
+            assertThat(customerRepository.count()).isEqualTo(0);
+
+            Customer jonDoe = Customer.newCustomer(1L, "Jon Doe");
+
+            log("Saving Customer [%s]...%n", jonDoe);
+
+            jonDoe = customerRepository.save(jonDoe);
+
+            assertThat(jonDoe).isNotNull();
+            assertThat(jonDoe.getId()).isEqualTo(1L);
+            assertThat(jonDoe.getName()).isEqualTo("Jon Doe");
+            assertThat(customerRepository.count()).isEqualTo(1);
+
+            log("Querying for Customer [SELECT * FROM /Customers WHERE name LIKE '%s']...%n", "%Doe");
+
+            Customer queriedJonDoe = customerRepository.findByNameLike("%Doe");
+
+            assertThat(queriedJonDoe).isEqualTo(jonDoe);
+
+            log("Customer was [%s]%n", queriedJonDoe);
+        };
+    }
+
+    private void assertClientCacheAndConfigureMappingPdxSerializer(GemFireCache cache) {
+
+        assertThat(cache).isNotNull();
+        assertThat(cache.getName())
+            .isEqualTo(SpringBootApacheGeodeDockerClientCacheApplication.class.getSimpleName());
+        assertThat(cache.getPdxSerializer()).isInstanceOf(MappingPdxSerializer.class);
+
+        MappingPdxSerializer serializer = (MappingPdxSerializer) cache.getPdxSerializer();
+
+        serializer.setIncludeTypeFilters(type -> Optional.ofNullable(type)
+            .map(Class::getPackage)
+            .map(Package::getName)
+            .filter(packageName -> packageName.startsWith(this.getClass().getPackage().getName()))
+            .isPresent());
+    }
+
+    private void log(String message, Object... args) {
+        System.err.printf(message, args);
+        System.err.flush();
+    }
+}
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Our `Customer` application domain model object type is defined as:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 6. `Customer` class
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+@Region("Customers")
+class Customer {
+
+    @Id
+    private Long id;
+
+    private String name;
+
+}
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Also, we define a Spring Data CRUD Repository to persist and access
+`Customers` stored in the `/Customers` Region:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 7. `CustomerRepository` interface
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+interface CustomerRepository extends CrudRepository<Customer, Long> {
+
+    Customer findByNameLike(String name);
+
+}
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Our main class is annotated with `@SpringBootApplication`, making it be
+a proper Spring Boot application.
+
+</div>
+
+<div class="paragraph">
+
+We additionally annotate the main class with SBDG’s
+`@EnableClusterAware` annotation to automatically detect the
+{pivotal-gemfire-name} cluster that runs in the Docker container and to
+push cluster configuration metadata from the application to the cluster
+as required by the application.
+
+</div>
+
+<div class="paragraph">
+
+Specifically, the application requires that a Region called “Customers”,
+as defined by the `@Region` mapping annotation on the `Customer`
+application domain model class, exists on the servers in the cluster, to
+store `Customer` data.
+
+</div>
+
+<div class="paragraph">
+
+We use the SDG `@EnableEntityDefinedRegions` annotation to define the
+matching client `PROXY` “Customers” Region.
+
+</div>
+
+<div class="paragraph">
+
+Optionally, we have also annotated our main class with SBDG’s
+`@UseMemberName` annotation to give the `ClientCache` a name, which we
+assert in the
+`assertClientCacheAndConfigureMappingPdxSerializer(:ClientCache)`
+method.
+
+</div>
+
+<div class="paragraph">
+
+The primary work performed by this application is done in the Spring
+Boot `ApplicationRunner` bean definition. We create a `Customer`
+instance (`Jon Doe`), save it to the “Customers” Region that is managed
+by the server in the cluster, and then query for `Jon Doe` using OQL,
+asserting that the result is equal to what we expect.
+
+</div>
+
+<div class="paragraph">
+
+We log the output from the application’s operations to see the
+application in action.
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Running the Spring Boot, {pivotal-gemfire-name} client application
+
+<div class="paragraph">
+
+When you run the Spring Boot, {pivotal-gemfire-name} client application,
+you should see output similar to the following:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 8. Application log output
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/bin/java ...
+    org.springframework.geode.docs.example.app.docker.SpringBootApacheGeodeDockerClientCacheApplication
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.0.RELEASE)
+
+Saving Customer [Customer(name=Jon Doe)]...
+Querying for Customer [SELECT * FROM /Customers WHERE name LIKE '%Doe']...
+Customer was [Customer(name=Jon Doe)]
+
+Process finished with exit code 0
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+When we review the configuration of the cluster, we see that the
+`/Customers` Region was created when the application ran:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 9. /Customers Region Configuration
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+gfsh>list regions
+List of regions
+---------------
+Customers
+
+
+gfsh>describe region --name=/Customers
+Name            : Customers
+Data Policy     : partition
+Hosting Members : ServerOne
+
+Non-Default Attributes Shared By Hosting Members
+
+ Type  |    Name     | Value
+------ | ----------- | ---------
+Region | size        | 1
+       | data-policy | PARTITION
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Our `/Customers` Region contains a value (`Jon Doe`), and we can verify
+this by running the following OQL Query with Gfsh:
+
+</div>
+
+<div class="exampleblock">
+
+<div class="title">
+
+Example 10. Query the `/Customers` Region
+
+</div>
+
+<div class="content">
+
+<div class="listingblock">
+
+<div class="content">
+
+``` highlight
+gfsh>query --query="SELECT customer.name FROM /Customers customer"
+Result : true
+Limit  : 100
+Rows   : 1
+
+Result
+-------
+Jon Doe
+```
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Our application ran successfully.
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Conclusion
+
+<div class="paragraph">
+
+In this chapter, we saw how to connect a Spring Boot,
+{pivotal-gemfire-name} `ClientCache` application to an
+{pivotal-gemfire-name} cluster that runs in a Docker container.
+
+</div>
+
+<div class="paragraph">
+
+Later, we provide more information on how to scale up, or rather scale
+out, our {pivotal-gemfire-name} cluster that runs in Docker.
+Additionally, we provide details on how you can use
+{pivotal-gemfire-name}'s Docker image with Testcontainers when you write
+integration tests, which formally became part of the Spring Test for
+{pivotal-gemfire-name} (STDG) project.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="footer">
+
+<div id="footer-text">
+
+Last updated 2022-10-10 12:15:33 -0700
+
+</div>
+
+</div>
