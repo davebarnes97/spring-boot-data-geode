@@ -1,16 +1,16 @@
 <div id="header">
 
-</div>
+
 
 <div id="content">
 
-<div class="sect1">
+
 
 ## Apache Geode API Extensions
 
-<div class="sectionbody">
 
-<div class="paragraph">
+
+
 
 When using the Spring programming model and abstractions, it should not
 be necessary to use {pivotal-gemfire-name}
@@ -18,9 +18,9 @@ be necessary to use {pivotal-gemfire-name}
 Spring Cache Abstraction for caching or the Spring Data Repository
 abstraction for DAO development. There are many more examples.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For certain use cases, users may require low level access to
 fine-grained functionally. Spring Boot for {pivotal-gemfire-name}'s
@@ -29,9 +29,9 @@ builds on {pivotal-gemfire-name}'s APIs by including several extensions
 with enhanced functionality to offer an experience familiar to Spring
 users inside a Spring context.
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -40,9 +40,9 @@ users inside a Spring context.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">Spring Data for {pivotal-gemfire-name} (SDG) also
 {spring-data-geode-docs-html}/#apis[includes] additional extensions to
 {pivotal-gemfire-name}'s APIs.</td>
@@ -50,22 +50,22 @@ Tip
 </tbody>
 </table>
 
-</div>
 
-<div class="sect2">
+
+
 
 ### `SimpleCacheResolver`
 
-<div class="paragraph">
+
 
 In some cases, it is necessary to acquire a reference to the cache
 instance in your application components at runtime. For example, you
 might want to create a temporary `Region` on the fly to aggregate data
 for analysis.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Typically, you already know the type of cache your application is using,
 since you must declare your application to be either a client
@@ -80,30 +80,30 @@ your application will be a client. SBDG makes this decision easy, since
 it auto-configures a `ClientCache` instance, [by
 default](#geode-clientcache-applications).
 
-</div>
 
-<div class="paragraph">
+
+
 
 In a Spring context, the cache instance created by the framework is a
 managed bean in the Spring container. You can inject a reference to the
 [*Singleton*](https://en.wikipedia.org/wiki/Singleton_pattern) cache
 bean into any other managed application component:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 1. Autowired Cache Reference using Dependency Injection (DI)
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Service
@@ -117,15 +117,15 @@ class CacheMonitoringService {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 However, in cases where your application component or class is not
 managed by Spring and you need a reference to the cache instance at
@@ -133,21 +133,21 @@ runtime, SBDG provides the abstract
 `org.springframework.geode.cache.SimpleCacheResolver` class (see its
 {spring-boot-data-geode-javadoc}/org/springframework/geode/cache/SimpleCacheResolver.html\[Javadoc\]).
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 2. `SimpleCacheResolver` API
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 package org.springframework.geode.cache;
@@ -165,15 +165,15 @@ abstract class SimpleCacheResolver {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 `SimpleCacheResolver` adheres to [SOLID OO
 Principles](https://en.wikipedia.org/wiki/SOLID). This class is abstract
@@ -181,9 +181,9 @@ and extensible so that you can change the algorithm used to resolve
 client or peer cache instances as well as mock its methods in unit
 tests.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Additionally, each method is precise. For example,
 `resolveClientCache()` resolves a reference to a cache only if the cache
@@ -191,22 +191,22 @@ instance is a “client.” If a cache exists but is a “peer” cache
 instance, `resolveClientCache()` returns `Optional.EMPTY`. The behavior
 of `resolvePeerCache()` is similar.
 
-</div>
 
-<div class="paragraph">
+
+
 
 `require()` returns a non-`Optional` reference to a cache instance and
 throws an `IllegalStateException` if a cache is not present.
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
 
 ### `CacheUtils`
 
-<div class="paragraph">
+
 
 Under the hood, `SimpleCacheResolver` delegates some of its functions to
 the
@@ -214,17 +214,17 @@ the
 abstract utility class, which provides additional, convenient
 capabilities when you use a cache.
 
-</div>
 
-<div class="paragraph">
+
+
 
 While there are utility methods to determine whether a cache instance
 (that is, a `GemFireCache`) or Region is a client or a peer, one of the
 more useful functions is to extract all the values from a Region.
 
-</div>
 
-<div class="paragraph">
+
+
 
 To extract all the values stored in a Region, call
 `CacheUtils.collectValues(:Region<?, T>)`. This method returns a
@@ -234,9 +234,9 @@ appropriately regardless of whether the `Region` is a client or a peer.
 This distinction is important, since client `PROXY` Regions store no
 values.
 
-</div>
 
-<div class="admonitionblock warning">
+
+
 
 <table>
 <colgroup>
@@ -245,9 +245,9 @@ values.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Warning
-</div></td>
+</td>
 <td class="content">Caution is advised when you get all values from a
 Region. While getting filtered reference values from a
 non-transactional, reference data only [<code>REPLICATE</code>] Region
@@ -259,24 +259,24 @@ testing.</td>
 </tbody>
 </table>
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
 
 ### `MembershipListenerAdapter` and `MembershipEvent`
 
-<div class="paragraph">
+
 
 Another useful API hidden by {pivotal-gemfire-name} is the membership
 events and listener interface. This API is especially useful on the
 server side when your Spring Boot application serves as a peer member of
 an {pivotal-gemfire-name} distributed system.
 
-</div>
 
-<div class="paragraph">
+
+
 
 When a peer member is disconnected from the distributed system, perhaps
 due to a network failure, the member is forcibly removed from the
@@ -286,9 +286,9 @@ member must rebuild all cache objects (`Cache`, `Region` instances,
 `Index` instances, `DiskStore` instances, and so on). All previous cache
 objects are now invalid, and their references are stale.
 
-</div>
 
-<div class="paragraph">
+
+
 
 In a Spring context, this is particularly problematic since most
 {pivotal-gemfire-name} objects are *Singleton* beans declared in and
@@ -298,9 +298,9 @@ instances are injected into SDG’s `GemfireTemplate`, Spring Data
 Repositories and possibly application-specific data access objects
 ([DAOs](https://en.wikipedia.org/wiki/Data_access_object)).
 
-</div>
 
-<div class="paragraph">
+
+
 
 If references to those cache objects become stale on a forced disconnect
 event, there is no way to auto-wire fresh object references into the
@@ -310,9 +310,9 @@ fact, there is no way to even know that this event has occurred, since
 the {pivotal-gemfire-name} `MembershipListener` API and corresponding
 events are “internal”.
 
-</div>
 
-<div class="admonitionblock note">
+
+
 
 <table>
 <colgroup>
@@ -321,9 +321,9 @@ events are “internal”.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Note
-</div></td>
+</td>
 <td class="content">The Spring team explored the idea of creating
 proxies for all types of cache objects (<code>Cache</code>,
 <code>Region</code>, <code>Index</code>, <code>DiskStore</code>,
@@ -340,25 +340,25 @@ details.</td>
 </tbody>
 </table>
 
-</div>
 
-<div class="paragraph">
+
+
 
 In the case where membership events are useful to the Spring Boot
 application, SBDG provides the following
 {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/package-frame.html\[API\]:
 
-</div>
 
-<div class="ulist">
+
+
 
 - {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/MembershipListenerAdapter.html\[`MembershipListenerAdapter`\]
 
 - {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/MembershipEvent.html\[`MembershipEvent`\]
 
-</div>
 
-<div class="paragraph">
+
+
 
 The abstract `MembershipListenerAdapter` class implements
 {pivotal-gemfire-name}'s
@@ -366,17 +366,17 @@ The abstract `MembershipListenerAdapter` class implements
 simplify the event handler method signatures by using an appropriate
 `MembershipEvent` type to encapsulate the actors in the event.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The abstract `MembershipEvent` class is further subclassed to represent
 specific membership event types that occur within the
 {pivotal-gemfire-name} system:
 
-</div>
 
-<div class="ulist">
+
+
 
 - {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/support/MemberDepartedEvent.html\[`MemberDepartedEvent`\]
 
@@ -386,25 +386,25 @@ specific membership event types that occur within the
 
 - {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/support/QuorumLostEvent.html\[`QuorumLostEvent`\]
 
-</div>
 
-<div class="paragraph">
+
+
 
 The API is depicted in the following UML diagram:
 
-</div>
 
-<div class="imageblock">
 
-<div class="content">
+
+
+
 
 ![membership api uml](./images/membership-api-uml.png)
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
 
 The membership event type is further categorized with an appropriate
 enumerated value,
@@ -412,16 +412,16 @@ enumerated value,
 as a property of the `MembershipEvent` itself (see
 {spring-boot-data-geode-javadoc}/org/springframework/geode/distributed/event/MembershipEvent.html#getType--\[`getType()`\]).
 
-</div>
 
-<div class="paragraph">
+
+
 
 The type hierarchy is useful in `instanceof` expressions, while the
 `Enum` is useful in `switch` statements.
 
-</div>
 
-<div class="paragraph">
+
+
 
 You can see one particular implementation of the
 `MembershipListenerAdapter` with the
@@ -430,22 +430,22 @@ class, which does exactly as we described earlier, handling
 forced-disconnect/auto-reconnect membership events inside a Spring
 container in order to refresh the Spring `ApplicationContext`.
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
 
 ### PDX
 
-<div class="paragraph">
+
 
 {pivotal-gemfire-name}'s PDX serialization framework is yet another API
 that falls short of a complete stack.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For instance, there is no easy or direct way to serialize an object as
 PDX bytes. It is also not possible to modify an existing `PdxInstance`
@@ -456,13 +456,13 @@ offers no help in this regard. It is also not possible to use PDX in a
 client, local-only mode without a server, since the PDX type registry is
 only available and managed on servers in a cluster.
 
-</div>
 
-<div class="sect3">
+
+
 
 #### `PdxInstanceBuilder`
 
-<div class="paragraph">
+
 
 In such cases, SBDG conveniently provides the
 {spring-boot-data-geode-javadoc}/org/springframework/geode/pdx/PdxInstanceBuilder.html\[`PdxInstanceBuilder`\]
@@ -471,21 +471,21 @@ pattern](https://en.wikipedia.org/wiki/Builder_pattern). The
 `PdxInstanceBuilder` also offers a fluent API for constructing
 `PdxInstances`:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 3. `PdxInstanceBuilder` API
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 class PdxInstanceBuilder {
@@ -497,34 +497,34 @@ class PdxInstanceBuilder {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 For example, you could serialize an application domain object as PDX
 bytes with the following code:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 4. Serializing an Object to PDX
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Component
@@ -539,33 +539,33 @@ class CustomerSerializer {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 You could then modify the `PdxInstance` by copying from the original:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 5. Copy `PdxInstance`
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Component
@@ -586,21 +586,21 @@ class CustomerDecorator {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="sect3">
+
+
+
+
+
+
 
 #### `PdxInstanceWrapper`
 
-<div class="paragraph">
+
 
 SBDG also provides the
 {spring-boot-data-geode-javadoc}/org/springframework/geode/pdx/PdxInstanceWrapper.html\[`PdxInstanceWrapper`\]
@@ -609,9 +609,9 @@ during the conversion from PDX to JSON and from JSON back into a POJO.
 Specifically, the wrapper gives you more control over the configuration
 of Jackson’s `ObjectMapper`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The `ObjectMapper` constructed by {pivotal-gemfire-name}'s own
 `PdxInstance` implementation (`PdxInstanceImpl`) is not configurable,
@@ -620,58 +620,58 @@ not extensible, the `getObject()` method fails when converting the JSON
 generated from PDX back into a POJO for any practical application domain
 model type.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The following example wraps an existing `PdxInstance`:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 6. Wrapping an existing `PdxInstance`
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 PdxInstanceWrapper wrapper = PdxInstanceWrapper.from(pdxInstance);
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 For all operations on `PdxInstance` except `getObject()`, the wrapper
 delegates to the underlying `PdxInstance` method implementation called
 by the user.
 
-</div>
 
-<div class="paragraph">
+
+
 
 In addition to the decorated `getObject()` method, the
 `PdxInstanceWrapper` provides a thorough implementation of the
 `toString()` method. The state of the `PdxInstance` is output in a
 JSON-like `String`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Finally, the `PdxInstanceWrapper` class adds a `getIdentifier()` method.
 Rather than put the burden on the user to have to iterate the field
@@ -681,9 +681,9 @@ field and then call `getField(name)` with the field name to get the ID
 `PdxInstanceWrapper` class provides the `getIdentifier()` method to
 return the ID of the `PdxInstance` directly.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The `getIdentifier()` method is smart in that it first iterates the
 fields of the `PdxInstance`, asking each field if it is the identity
@@ -692,18 +692,18 @@ searches for a field named `id`. If no field with the name `id` exists,
 the algorithm searches for a metadata field called `@identifier`, which
 refers to the field that is the identity field of the `PdxInstance`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The `@identifier` metadata field is useful in cases where the
 `PdxInstance` originated from JSON and the application domain object
 uses a natural identifier, rather than a surrogate ID, such as
 `Book.isbn`.
 
-</div>
 
-<div class="admonitionblock note">
+
+
 
 <table>
 <colgroup>
@@ -712,9 +712,9 @@ uses a natural identifier, rather than a surrogate ID, such as
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Note
-</div></td>
+</td>
 <td class="content">{pivotal-gemfire-name}'s <code>JSONFormatter</code>
 class is not capable of marking the identity field of a
 <code>PdxInstance</code> originating from JSON.</td>
@@ -722,9 +722,9 @@ class is not capable of marking the identity field of a
 </tbody>
 </table>
 
-</div>
 
-<div class="admonitionblock warning">
+
+
 
 <table>
 <colgroup>
@@ -733,9 +733,9 @@ class is not capable of marking the identity field of a
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Warning
-</div></td>
+</td>
 <td class="content">It is not currently possible to implement the
 <code>PdxInstance</code> interface and store instances of this type as a
 value in a Region. {pivotal-gemfire-name} assumes all
@@ -748,24 +748,24 @@ own <code>PdxInstance</code> implementation.</td>
 </tbody>
 </table>
 
-</div>
 
-</div>
 
-<div class="sect3">
+
+
+
 
 #### `ObjectPdxInstanceAdapter`
 
-<div class="paragraph">
+
 
 In rare cases, you may need to treat an `Object` as a `PdxInstance`,
 depending on the context without incurring the overhead of serializing
 an `Object` to PDX. For such cases, SBDG offers the
 `ObjectPdxInstanceAdapter` class.
 
-</div>
 
-<div class="paragraph">
+
+
 
 This might be true when calling a method with a parameter expecting an
 argument of, or returning an instance of, type `PdxInstance`,
@@ -773,9 +773,9 @@ particularly when {pivotal-gemfire-name}'s `read-serialized` PDX
 configuration property is set to `true` and only an object is available
 in the current context.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Under the hood, SBDG’s `ObjectPdxInstanceAdapter` class uses Spring’s
 {spring-framework-javadoc}/org/springframework/beans/BeanWrapper.html\[`BeanWrapper`\]
@@ -788,9 +788,9 @@ API, obtained from
 {apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html#createWriter--\[`PdxInstance.createWriter()`\],
 to modify the underlying `Object` as well.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Like the `PdxInstanceWrapper` class, `ObjectPdxInstanceAdapter` contains
 special logic to resolve the identity field and ID of the `PdxInstance`,
@@ -799,9 +799,9 @@ including consideration for Spring Data’s
 mapping annotation, which can be introspected in this case, given that
 the underlying `Object` backing the `PdxInstance` is a POJO.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The `ObjectPdxInstanceAdapter.getObject()` method returns the wrapped
 `Object` used to construct the `ObjectPdxInstanceAdapter` and is,
@@ -809,27 +809,27 @@ therefore, automatically deserializable, as determined by the
 {apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html#isDeserializable--\[`PdxInstance.isDeseriable()`\]
 method, which always returns `true`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 You can adapt any `Object` as a `PdxInstance`:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 7. Adapt an `Object` as a `PdxInstance`
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 class OfflineObjectToPdxInstanceConverter {
@@ -840,40 +840,40 @@ class OfflineObjectToPdxInstanceConverter {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Once the [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern) is
 created, you can use it to access data on the underlying `Object`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Consider the following example of a `Customer` class:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 8. `Customer` class
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Region("Customers")
@@ -889,34 +889,34 @@ class Customer {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Then you can access an instance of `Customer` by using the `PdxInstance`
 API:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 9. Accessing an `Object` using the `PdxInstance` API
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 class ObjectPdxInstanceAdapterTest {
@@ -939,23 +939,23 @@ class ObjectPdxInstanceAdapterTest {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
+
+
+
+
 
 ### Security
 
-<div class="paragraph">
+
 
 For testing purposes, SBDG provides a test implementation of
 {pivotal-gemfire-name}'s
@@ -963,15 +963,15 @@ For testing purposes, SBDG provides a test implementation of
 interface, which expects the password to match the username
 (case-sensitive) when authenticating.
 
-</div>
 
-<div class="paragraph">
+
+
 
 By default, all operations are authorized.
 
-</div>
 
-<div class="paragraph">
+
+
 
 To match the expectations of SBDG’s `TestSecurityManager`, SBDG
 additionally provides a test implementation of {pivotal-gemfire-name}'s
@@ -979,15 +979,15 @@ additionally provides a test implementation of {pivotal-gemfire-name}'s
 interface, which supplies matching credentials for both the username and
 password.
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
+
+
+
+
+
 
 <div id="footer">
 
@@ -995,6 +995,6 @@ password.
 
 Last updated 2022-10-10 12:14:46 -0700
 
-</div>
 
-</div>
+
+

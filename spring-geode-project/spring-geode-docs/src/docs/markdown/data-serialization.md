@@ -1,25 +1,25 @@
 <div id="header">
 
-</div>
+
 
 <div id="content">
 
-<div class="sect1">
+
 
 ## Data Serialization with PDX
 
-<div class="sectionbody">
 
-<div class="paragraph">
+
+
 
 Anytime data is overflowed or persisted to disk, transferred between
 clients and servers, transferred between peers in a cluster or between
 different clusters in a multi-site WAN topology, all data stored in
 {pivotal-gemfire-name} must be serializable.
 
-</div>
 
-<div class="paragraph">
+
+
 
 To serialize objects in Java, object types must implement the
 `java.io.Serializable` interface. However, if you have a large number of
@@ -28,9 +28,9 @@ application domain object types that currently do not implement
 types to implement `java.io.Serializable` would be a tedious task just
 to store and manage those objects in {pivotal-gemfire-name}.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Additionally, it is not only your application domain object types you
 necessarily need to consider. If you used third-party libraries in your
@@ -39,26 +39,26 @@ domain object types stored in {pivotal-gemfire-name} must also be
 serializable. This type explosion may bleed into class types for which
 you may have no control over.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Furthermore, Java serialization is not the most efficient format, given
 that metadata about your types is stored with the data itself.
 Therefore, even though Java serialized bytes are more descriptive, it
 adds a great deal of overhead.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Then, along came serialization using {pivotal-gemfire-name}'s
 {apache-geode-docs}/developing/data_serialization/gemfire_pdx_serialization.html\[PDX\]
 format. PDX stands for Portable Data Exchange and achieves four goals:
 
-</div>
 
-<div class="ulist">
+
+
 
 - Separates type metadata from the data itself, streamlining the bytes
   during transfer. {pivotal-gemfire-name} maintains a type registry that
@@ -85,29 +85,29 @@ format. PDX stands for Portable Data Exchange and achieves four goals:
   C++ and C#) and Java language clients, with each being able to access
   the same data set regardless from where the data originated.
 
-</div>
 
-<div class="paragraph">
+
+
 
 However, PDX does have limitations.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For instance, unlike Java serialization, PDX does not handle cyclic
 dependencies. Therefore, you must be careful how you structure and
 design your application domain object types.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Also, PDX cannot handle field type changes.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Furthermore, while {pivotal-gemfire-name}'s general
 {apache-geode-docs}/developing/data_serialization/gemfire_data_serialization.html\[Data
@@ -118,16 +118,16 @@ involves a method invocation, which defeats one of the key benefits of
 PDX: preserving format to avoid the cost of serialization and
 deserialization.
 
-</div>
 
-<div class="paragraph">
+
+
 
 However, we think the benefits of using PDX outweigh the limitations
 and, therefore, have enabled PDX by default.
 
-</div>
 
-<div class="paragraph">
+
+
 
 You need do nothing special. You can code your domain types and rest
 assured that objects of those domain types are properly serialized when
@@ -136,22 +136,22 @@ servers, transferred between peers in a cluster, and even when data is
 transferred over the network when you use {pivotal-gemfire-name}'s
 multi-site WAN topology.
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 1. EligibilityDecision is automatically serialiable without
 implementing Java Serializable.
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Region("EligibilityDecisions")
@@ -160,15 +160,15 @@ class EligibilityDecision {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="admonitionblock note">
+
+
+
+
+
 
 <table>
 <colgroup>
@@ -177,9 +177,9 @@ class EligibilityDecision {
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Note
-</div></td>
+</td>
 <td class="content">{pivotal-gemfire-name} does
 {apache-geode-docs}/developing/data_serialization/java_serialization.html[support]
 the standard Java Serialization format.</td>
@@ -187,13 +187,13 @@ the standard Java Serialization format.</td>
 </tbody>
 </table>
 
-</div>
 
-<div class="sect2">
+
+
 
 ### SDG `MappingPdxSerializer` vs. {pivotal-gemfire-name}'s `ReflectionBasedAutoSerializer`
 
-<div class="paragraph">
+
 
 Under-the-hood, Spring Boot for {pivotal-gemfire-name}
 {spring-data-geode-docs-html}/#bootstrap-annotation-config-pdx\[enables\]
@@ -201,9 +201,9 @@ and uses Spring Data for {pivotal-gemfire-name}'s
 {spring-data-geode-javadoc}/org/springframework/data/gemfire/mapping/MappingPdxSerializer.html\[`MappingPdxSerializer`\]
 to serialize your application domain objects with PDX.
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -212,9 +212,9 @@ to serialize your application domain objects with PDX.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">See the SDG
 {spring-data-geode-docs-html}/#mapping.pdx-serializer[Reference Guide]
 for more details on the <code>MappingPdxSerializer</code> class.</td>
@@ -222,18 +222,18 @@ for more details on the <code>MappingPdxSerializer</code> class.</td>
 </tbody>
 </table>
 
-</div>
 
-<div class="paragraph">
+
+
 
 The `MappingPdxSerializer` class offers several advantages above and
 beyond {pivotal-gemfire-name}'s own
 {apache-geode-javadoc}/org/apache/geode/pdx/ReflectionBasedAutoSerializer.html\[`ReflectionBasedAutoSerializer`\]
 class.
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -242,9 +242,9 @@ class.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">See {pivotal-gemfire-name}'s
 {apache-geode-docs}/developing/data_serialization/auto_serialization.html[User
 Guide] for more details about the
@@ -253,16 +253,16 @@ Guide] for more details about the
 </tbody>
 </table>
 
-</div>
 
-<div class="paragraph">
+
+
 
 The SDG `MappingPdxSerializer` class offers the following benefits and
 capabilities:
 
-</div>
 
-<div class="ulist">
+
+
 
 - PDX serialization is based on Spring Data’s powerful mapping
   infrastructure and metadata.
@@ -295,32 +295,32 @@ capabilities:
   {spring-data-geode-docs-html}/#mapping.pdx-serializer.custom-serialization\[customize
   the serialization\] of nested entity/object field and property types.
 
-</div>
 
-<div class="paragraph">
+
+
 
 The support for `includes` and `excludes` deserves special attention,
 since the `MappingPdxSerializer` excludes all Java, Spring, and
 {pivotal-gemfire-name} types, by default. However, what happens when you
 need to serialize one of those types?
 
-</div>
 
-<div class="paragraph">
+
+
 
 For example, suppose you need to serialize objects of type
 `java.security.Principal`. Then you can override the excludes by
 registering an `include` type filter:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
+
 
 ``` highlight
 package example.app;
@@ -349,15 +349,15 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="admonitionblock tip">
+
+
+
+
+
 
 <table>
 <colgroup>
@@ -366,9 +366,9 @@ class SpringBootApacheGeodeClientCacheApplication {
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">Normally, you need not explicitly declare SDG’s
 <code>@EnablePdx</code> annotation to enable and configure PDX. However,
 if you want to override auto-configuration, as we have demonstrated
@@ -377,15 +377,15 @@ above, you must do this.</td>
 </tbody>
 </table>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
+
+
+
+
+
 
 <div id="footer">
 
@@ -393,6 +393,6 @@ above, you must do this.</td>
 
 Last updated 2022-10-10 12:14:04 -0700
 
-</div>
 
-</div>
+
+

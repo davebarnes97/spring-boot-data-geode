@@ -1,18 +1,18 @@
 <div id="header">
 
-</div>
+
 
 <div id="content">
 
-<div class="sect1">
+
 
 ## Samples
 
-<div class="sectionbody">
 
-<div class="quoteblock">
 
-> <div class="admonitionblock note">
+
+
+> 
 >
 > <table>
 > <colgroup>
@@ -21,27 +21,27 @@
 > </colgroup>
 > <tbody>
 > <tr class="odd">
-> <td class="icon"><div class="title">
+> <td class="icon">
 > Note
-> </div></td>
+> </td>
 > <td class="content">You are viewing Samples for Spring Boot for Apache
 > Geode (SBDG) version 1.27.</td>
 > </tr>
 > </tbody>
 > </table>
 >
-> </div>
+> 
 
-</div>
 
-<div class="paragraph">
+
+
 
 This section contains working examples that show how to use Spring Boot
 for {pivotal-gemfire-name} (SBDG) effectively.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Some examples focus on specific use cases (such as (HTTP) session state
 caching), while other examples show how SBDG works under the hood, to
@@ -49,7 +49,7 @@ give you a better understanding of what is actually happening and how to
 debug problems with your Spring Boot {pivotal-gemfire-name}
 applications.
 
-</div>
+
 
 <table class="tableblock frame-all grid-all stretch">
 <caption>Table 1. Example Spring Boot applications using
@@ -186,11 +186,11 @@ Session Caching]</p></td>
 
 Table 1. Example Spring Boot applications using {pivotal-gemfire-name}
 
-</div>
 
-</div>
 
-</div>
+
+
+
 
 <div id="footer">
 
@@ -198,6 +198,6 @@ Table 1. Example Spring Boot applications using {pivotal-gemfire-name}
 
 Last updated 2022-10-10 12:15:43 -0700
 
-</div>
 
-</div>
+
+

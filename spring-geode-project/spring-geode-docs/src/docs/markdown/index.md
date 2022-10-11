@@ -1180,23 +1180,14 @@ $ mvn dependency:tree
 ```
 
 
-Again, it cannot be overstated the importance of being careful when
-declaring exclusions.
+Again, the importance cannot be overstated the importance of being careful when declaring exclusions.
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">Please refer to the appropriate documentation in <a
+Please refer to the appropriate documentation in <a
 href="https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html">Maven</a>
 and <a
 href="https://docs.gradle.org/current/userguide/dependency_downgrade_and_exclude.html">Gradle</a>
 to declare exclusions.</td>
-</tr>
-</tbody>
-</table>
-
 
 
 Version 1.27  

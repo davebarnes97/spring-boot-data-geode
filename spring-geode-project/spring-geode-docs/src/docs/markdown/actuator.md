@@ -1,9 +1,14 @@
+<div id="header">
 
 
+
+<div id="content">
 
 
 
 ## Spring Boot Actuator
+
+
 
 
 
@@ -18,11 +23,13 @@ Application Service (TAS)} platform.
 
 
 
+
 Spring Boot `HealthIndicators` provide details about the runtime
 operation and behavior of your {pivotal-gemfire-name}-based Spring Boot
 applications. For instance, by querying the right `HealthIndicator`
 endpoint, you can get the current hit/miss count for your
 `Region.get(key)` data access operations.
+
 
 
 
@@ -36,7 +43,9 @@ rather than in properties files, Spring configuration, XML, and so on.
 
 
 
+
 The provided Spring Boot `HealthIndicators` fall into three categories:
+
 
 
 
@@ -56,8 +65,10 @@ The provided Spring Boot `HealthIndicators` fall into three categories:
 
 
 
+
 The following sections give a brief overview of all the available Spring
 Boot `HealthIndicators` provided for {pivotal-gemfire-name}.
+
 
 
 
@@ -83,13 +94,16 @@ href="guides/boot-actuator.html">guide</a> and
 
 
 
+
 ### Base HealthIndicators
+
 
 
 This section covers Spring Boot `HealthIndicators` that apply to both
 {pivotal-gemfire-name} peer `Cache` and `ClientCache`, Spring Boot
 applications. That is, these `HealthIndicators` are not specific to the
 cache type.
+
 
 
 
@@ -104,13 +118,16 @@ single instance of that cache type.
 
 
 
+
 #### GeodeCacheHealthIndicator
+
 
 
 `GeodeCacheHealthIndicator` provides essential details about the
 (single) cache instance (client or peer) and the underlying
 `DistributedSystem`, the `DistributedMember` and configuration details
 of the `ResourceManager`.
+
 
 
 
@@ -128,10 +145,12 @@ through the cache instance.
 
 
 
+
 This is no different for a `ClientCache` even though the client is
 technically not part of the peer/server cluster. However, it still
 creates instances of the `DistributedSystem` and `DistributedMember`
 objects, respectively.
+
 
 
 
@@ -324,7 +343,9 @@ Table 4. ResourceManager Details
 
 
 
+
 #### GeodeRegionsHealthIndicator
+
 
 
 `GeodeRegionsHealthIndicator` provides details about all the configured
@@ -332,6 +353,7 @@ and known `Regions` in the cache. If the cache is a client, details
 include all `LOCAL`, `PROXY`, and `CACHING_PROXY` `Regions`. If the
 cache is a peer then details include all `LOCAL`, `PARTITION`, and
 `REPLICATE` `Region` instances.
+
 
 
 
@@ -423,6 +445,7 @@ Region values.</p></td>
 Table 5. Region Details
 
 
+
 The following details also apply when the Region is a peer `Cache`
 `PARTITION` Region:
 
@@ -479,6 +502,7 @@ class="tableblock halign-center valign-top"><p>geode.cache.regions.&lt;name&gt;.
 </table>
 
 Table 6. Partition Region Details
+
 
 
 Finally, when statistics are enabled (for example, when you use
@@ -541,11 +565,14 @@ Table 7. Region Statistic Details
 
 
 
+
 #### GeodeIndexesHealthIndicator
+
 
 
 `GeodeIndexesHealthIndicator` provides details about the configured
 Region `Indexes` used by OQL query data access operations.
+
 
 
 
@@ -597,6 +624,7 @@ Index is applied.</p></td>
 </table>
 
 Table 8. Index Details
+
 
 
 Additionally, when statistics are enabled (for example, when you use
@@ -675,7 +703,9 @@ Table 9. Index Statistic Details
 
 
 
+
 #### GeodeDiskStoresHealthIndicator
+
 
 
 The `GeodeDiskStoresHealthIndicator` provides details about the
@@ -683,6 +713,7 @@ configured `DiskStores` in the system or application. Remember,
 `DiskStores` are used to overflow and persist data to disk, including
 type metadata tracked by PDX when the values in the Regions have been
 serialized with PDX and the Regions are persistent.
+
 
 
 
@@ -787,7 +818,9 @@ Table 10. DiskStore Details
 
 
 
+
 ### `ClientCache` `HealthIndicators`
+
 
 
 The `ClientCache`-based `HealthIndicators` provide additional details
@@ -799,7 +832,9 @@ client), which is the default.
 
 
 
+
 #### GeodeContinuousQueriesHealthIndicator
+
 
 
 `GeodeContinuousQueriesHealthIndicator` provides details about
@@ -810,6 +845,7 @@ query (for example, `SELECT * FROM /Customers c WHERE c.age > 21`). When
 data is inserted or updated and the data matches the criteria specified
 in the OQL query predicate (data of interests), an event is sent to the
 registered client.
+
 
 
 
@@ -871,6 +907,7 @@ CQ has been stopped.</p></td>
 </table>
 
 Table 11. Continuous Query (CQ) Details
+
 
 
 In addition, the following CQ query and statistical data is covered:
@@ -950,6 +987,7 @@ qualified by this CQ.</p></td>
 Table 13. Continuous Query(CQ), Statistic Details
 
 
+
 The {pivotal-gemfire-name} Continuous Query system is also tracked with
 the following additional details on the client:
 
@@ -1013,12 +1051,15 @@ Table 14. Continuous Query (CQ), Additional Statistic Details
 
 
 
+
 #### GeodePoolsHealthIndicator
+
 
 
 `GeodePoolsHealthIndicator` provides details about all the configured
 client connection `Pools`. This `HealthIndicator` primarily provides
 configuration metadata for all the configured `Pools`.
+
 
 
 
@@ -1201,13 +1242,16 @@ Table 15. Pool Details
 
 
 
+
 ### Peer Cache HealthIndicators
+
 
 
 The peer `Cache`-based `HealthIndicators` provide additional details
 specifically for Spring Boot peer cache member applications. These
 `HealthIndicators` are available only when the Spring Boot application
 creates a peer `Cache` instance.
+
 
 
 
@@ -1227,6 +1271,7 @@ for {pivotal-gemfire-name} is a <code>ClientCache</code> instance.</td>
 </tr>
 </tbody>
 </table>
+
 
 
 
@@ -1253,13 +1298,16 @@ such as a “peer”, you can explicitly declare either the
 
 
 
+
 #### GeodeCacheServersHealthIndicator
+
 
 
 The `GeodeCacheServersHealthIndicator` provides details about the
 configured {pivotal-gemfire-name} `CacheServer` instances. `CacheServer`
 instances are required to enable clients to connect to the servers in
 the cluster.
+
 
 
 
@@ -1373,6 +1421,7 @@ class="tableblock halign-center valign-top"><p>geode.cache.server.&lt;index&gt;.
 Table 16. CacheServer Details
 
 
+
 In addition to the configuration settings shown in the preceding table,
 the `ServerLoadProbe` of the `CacheServer` tracks additional details
 about the runtime characteristics of the `CacheServer`:
@@ -1448,12 +1497,15 @@ Table 17. CacheServer Metrics and Load Details
 
 
 
+
 #### GeodeAsyncEventQueuesHealthIndicator
+
 
 
 `GeodeAsyncEventQueuesHealthIndicator` provides details about the
 configured `AsyncEventQueues`. AEQs can be attached to Regions to
 configure asynchronous write-behind behavior.
+
 
 
 
@@ -1570,7 +1622,9 @@ Table 18. AsyncEventQueue Details
 
 
 
+
 #### GeodeGatewayReceiversHealthIndicator
+
 
 
 `GeodeGatewayReceiversHealthIndicator` provides details about the
@@ -1578,6 +1632,7 @@ configured (WAN) `GatewayReceivers`, which are capable of receiving
 events from remote clusters when using {pivotal-gemfire-name}'s
 {apache-geode-docs}/topologies_and_comm/multi_site_configuration/chapter_overview.html\[multi-site,
 WAN topology\].
+
 
 
 
@@ -1669,7 +1724,9 @@ Table 19. GatewayReceiver Details
 
 
 
+
 #### GeodeGatewaySendersHealthIndicator
+
 
 
 The `GeodeGatewaySendersHealthIndicator` provides details about the
@@ -1678,6 +1735,7 @@ Regions in order to send Region events to remote clusters in
 {pivotal-gemfire-name}'s
 {apache-geode-docs}/topologies_and_comm/multi_site_configuration/chapter_overview.html\[multi-site,
 WAN topology\].
+
 
 
 
@@ -1819,6 +1877,21 @@ the receiving <code>GatewayReceiver</code> blocks.</p></td>
 Table 20. GatewaySender Details
 
 
+
+
+
+
+
+
+
+
+
+<div id="footer">
+
+<div id="footer-text">
+
 Last updated 2022-10-10 12:14:58 -0700
+
+
 
 

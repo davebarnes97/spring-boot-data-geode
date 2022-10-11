@@ -1,25 +1,25 @@
 <div id="header">
 
-</div>
+
 
 <div id="content">
 
-<div class="sect1">
+
 
 ## Configuration Metadata Reference
 
-<div class="sectionbody">
 
-<div class="paragraph">
+
+
 
 The following reference sections cover documented and well-known
 properties recognized and processed by Spring Data for
 {apache-geode-name} (SDG) and Spring Session for {apache-geode-name}
 (SSDG).
 
-</div>
 
-<div class="paragraph">
+
+
 
 These properties may be used in Spring Boot `application.properties` or
 as JVM System properties, to configure different aspects of or enable
@@ -27,20 +27,20 @@ individual features of {apache-geode-name} in a Spring application. When
 combined with the power of Spring Boot, they give you the ability to
 quickly create an application that uses {apache-geode-name}.
 
-</div>
 
-<div class="sect2">
+
+
 
 ### Spring Data Based Properties
 
-<div class="paragraph">
+
 
 The following properties all have a `spring.data.gemfire.*` prefix. For
 example, to set the cache `copy-on-read` property, use
 `spring.data.gemfire.cache.copy-on-read` in Spring Boot
 `application.properties`.
 
-</div>
+
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 1. <code>spring.data.gemfire.*</code>
@@ -561,34 +561,34 @@ class="tableblock halign-left valign-top"><p>{spring-data-geode-javadoc}/org/spr
 
 Table 5. `spring.data.gemfire.*` *CacheServer* properties
 
-<div class="paragraph">
+
 
 `CacheServer` properties can be further targeted at specific
 `CacheServer` instances by using an optional bean name of the
 `CacheServer` bean defined in the Spring `ApplicationContext`. Consider
 the following example:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
+
 
 ``` highlight
 spring.data.gemfire.cache.server.[<cacheServerBeanName>].bind-address=...
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
+
+
+
+
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 6. <code>spring.data.gemfire.*</code> Cluster
@@ -758,56 +758,56 @@ class="tableblock halign-left valign-top"><p>{spring-data-geode-javadoc}/org/spr
 
 Table 7. `spring.data.gemfire.*` *DiskStore* properties
 
-<div class="paragraph">
+
 
 `DiskStore` properties can be further targeted at specific `DiskStore`
 instances by setting the
 {apache-geode-javadoc}/org/apache/geode/cache/DiskStore.html#getName--\[`DiskStore.name`\]
 property.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For example, you can specify directory location of the files for a
 specific, named `DiskStore` by using:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
+
 
 ``` highlight
 spring.data.gemfire.disk.store.Example.directory.location=/path/to/geode/disk-stores/Example/
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 The directory location and size of the `DiskStore` files can be further
 divided into multiple locations and size using array syntax:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
+
 
 ``` highlight
 spring.data.gemfire.disk.store.Example.directory[0].location=/path/to/geode/disk-stores/Example/one
@@ -816,15 +816,15 @@ spring.data.gemfire.disk.store.Example.directory[1].location=/path/to/geode/disk
 spring.data.gemfire.disk.store.Example.directory[1].size=8192000
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Both the name and array index are optional, and you can use any
 combination of name and array index. Without a name, the properties
@@ -832,7 +832,7 @@ apply to all `DiskStore` instances. Without array indexes, all named
 `DiskStore` files are stored in the specified location and limited to
 the defined size.
 
-</div>
+
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 8. <code>spring.data.gemfire.*</code> Entity
@@ -1910,20 +1910,20 @@ class="tableblock halign-left valign-top"><p>{spring-data-geode-javadoc}/org/spr
 
 Table 17. `spring.data.gemfire.*` Service properties
 
-</div>
 
-<div class="sect2">
+
+
 
 ### Spring Session Based Properties
 
-<div class="paragraph">
+
 
 The following properties all have a `spring.session.data.gemfire.*`
 prefix. For example, to set the session Region name, set
 `spring.session.data.gemfire.session.region.name` in Spring Boot
 `application.properties`.
 
-</div>
+
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 18. <code>spring.session.data.gemfire.*</code>
@@ -2021,13 +2021,13 @@ class="tableblock halign-left valign-top"><p>{spring-session-data-gemfire-javado
 
 Table 18. `spring.session.data.gemfire.*` properties
 
-</div>
 
-<div class="sect2">
+
+
 
 ### {apache-geode-name} Properties
 
-<div class="paragraph">
+
 
 While we do not recommend using {apache-geode-name} properties directly
 in your Spring applications, SBDG does not prevent you from doing so.
@@ -2035,9 +2035,9 @@ See the
 {apache-geode-docs}/reference/topics/gemfire_properties.html\[complete
 reference to the {apache-geode-name} specific properties\].
 
-</div>
 
-<div class="admonitionblock warning">
+
+
 
 <table>
 <colgroup>
@@ -2046,9 +2046,9 @@ reference to the {apache-geode-name} specific properties\].
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Warning
-</div></td>
+</td>
 <td class="content">{apache-geode-name} is very strict about the
 properties that may be specified in a <code>gemfire.properties</code>
 file. You cannot mix Spring properties with <code>gemfire.*</code>
@@ -2058,15 +2058,15 @@ file.</td>
 </tbody>
 </table>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
+
+
+
+
+
 
 <div id="footer">
 
@@ -2074,6 +2074,6 @@ file.</td>
 
 Last updated 2022-10-06 11:36:31 -0700
 
-</div>
 
-</div>
+
+

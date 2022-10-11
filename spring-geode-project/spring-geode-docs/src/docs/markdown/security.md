@@ -1,24 +1,24 @@
 <div id="header">
 
-</div>
+
 
 <div id="content">
 
-<div class="sect1">
+
 
 ## Security
 
-<div class="sectionbody">
 
-<div class="paragraph">
+
+
 
 This chapter covers security configuration for {pivotal-gemfire-name},
 which includes both authentication and authorization (collectively,
 auth) as well as Transport Layer Security (TLS) using SSL.
 
-</div>
 
-<div class="admonitionblock note">
+
+
 
 <table>
 <colgroup>
@@ -27,18 +27,18 @@ auth) as well as Transport Layer Security (TLS) using SSL.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Note
-</div></td>
+</td>
 <td class="content">Securing data at rest is not supported by
 {pivotal-gemfire-name}.</td>
 </tr>
 </tbody>
 </table>
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -47,9 +47,9 @@ Note
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">See the corresponding sample <a
 href="guides/boot-security.html">guide</a> and
 {github-samples-url}/boot/security[code] to see Spring Boot Security for
@@ -58,13 +58,13 @@ href="guides/boot-security.html">guide</a> and
 </tbody>
 </table>
 
-</div>
 
-<div class="sect2">
+
+
 
 ### Authentication and Authorization
 
-<div class="paragraph">
+
 
 {pivotal-gemfire-name} employs username- and password-based
 {apache-geode-docs}/managing/security/authentication_overview.html\[authentication\]
@@ -72,9 +72,9 @@ and role-based
 {apache-geode-docs}/managing/security/authorization_overview.html\[authorization\]
 to secure your client to server data exchanges and operations.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Spring Data for {pivotal-gemfire-name} provides
 {spring-data-geode-docs-html}/#bootstrap-annotation-config-security\[first-class
@@ -84,9 +84,9 @@ based on the
 interface. Additionally, {pivotal-gemfire-name}'s Security framework is
 integrated with [Apache Shiro](https://shiro.apache.org/).
 
-</div>
 
-<div class="admonitionblock note">
+
+
 
 <table>
 <colgroup>
@@ -95,9 +95,9 @@ integrated with [Apache Shiro](https://shiro.apache.org/).
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Note
-</div></td>
+</td>
 <td class="content">SBDG will eventually provide support for and
 integration with <a
 href="https://spring.io/projects/spring-security">Spring
@@ -106,48 +106,48 @@ Security</a>.</td>
 </tbody>
 </table>
 
-</div>
 
-<div class="paragraph">
+
+
 
 When you use Spring Boot for {pivotal-gemfire-name}, which builds Spring
 Data for {pivotal-gemfire-name}, it makes short work of enabling auth in
 both your clients and servers.
 
-</div>
 
-<div class="sect3">
+
+
 
 #### Auth for Servers
 
-<div class="paragraph">
+
 
 The easiest and most standard way to enable auth in the servers of your
 cluster is to simply define one or more Apache Shiro
 [Realms](https://shiro.apache.org/realm.html) as beans in the Spring
 `ApplicationContext`.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Consider the following example:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 1. Declaring an Apache Shiro Realm
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Configuration
@@ -162,15 +162,15 @@ class ApacheGeodeSecurityConfiguration {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 When an Apache Shiro Realm (such as `DefaultLdapRealm`) is declared and
 registered in the Spring `ApplicationContext` as a Spring bean, Spring
@@ -179,9 +179,9 @@ than one is configured), and the servers in the {pivotal-gemfire-name}
 cluster are automatically configured with authentication and
 authorization enabled.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Alternatively, you can provide a custom, application-specific
 implementation of {pivotal-gemfire-name}'s
@@ -189,21 +189,21 @@ implementation of {pivotal-gemfire-name}'s
 interface, declared and registered as a bean in the Spring
 `ApplicationContext`:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 2. Declaring a custom {pivotal-gemfire-name} `SecurityManager`
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @Configuration
@@ -218,24 +218,24 @@ class ApacheGeodeSecurityConfiguration {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Spring Boot discovers your custom, application-specific
 `SecurityManager` implementation and configures the servers in the
 {pivotal-gemfire-name} cluster with authentication and authorization
 enabled.
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -244,9 +244,9 @@ enabled.
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">The Spring team recommends that you use Apache Shiro
 to manage the authentication and authorization of your servers over
 implementing {pivotal-gemfire-name}'s <code>SecurityManager</code>
@@ -255,55 +255,55 @@ interface.</td>
 </tbody>
 </table>
 
-</div>
 
-</div>
 
-<div class="sect3">
+
+
+
 
 #### Auth for Clients
 
-<div class="paragraph">
+
 
 When servers in an {pivotal-gemfire-name} cluster have been configured
 with authentication and authorization enabled, clients must authenticate
 when connecting.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Spring Boot for {pivotal-gemfire-name} makes this easy, regardless of
 whether you run your Spring Boot `ClientCache` applications in a local,
 non-managed environment or run in a cloud-managed environment.
 
-</div>
 
-<div class="sect4">
+
+
 
 ##### Non-Managed Auth for Clients
 
-<div class="paragraph">
+
 
 To enable auth for clients that connect to a secure
 {pivotal-gemfire-name} cluster, you need only set a username and
 password in Spring Boot `application.properties`:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 3. Spring Boot `application.properties` for the client
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 # Spring Boot client application.properties
@@ -312,35 +312,35 @@ spring.data.gemfire.security.username = jdoe
 spring.data.gemfire.security.password = p@55w0rd
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Spring Boot for {pivotal-gemfire-name} handles the rest.
 
-</div>
 
-</div>
 
-<div class="sect4">
+
+
+
 
 ##### Managed Auth for Clients
 
-<div class="paragraph">
+
 
 Enabling auth for clients that connect to a {pivotal-cloudcache-name}
 service instance (PCC) in {pivotal-cloudfoundry-name} (PCF) is even
 easier: You need do nothing.
 
-</div>
 
-<div class="paragraph">
+
+
 
 If your Spring Boot application uses SBDG and is bound to PCC, when you
 deploy (that is, `cf push`) your application to PCF, Spring Boot for
@@ -350,9 +350,9 @@ in your PCF organization and space. PCC automatically assigns two users
 with roles of `cluster_operator` and `developer`, respectively, to any
 Spring Boot application bound to the PCC service instance.
 
-</div>
 
-<div class="paragraph">
+
+
 
 By default, SBDG auto-configures your Spring Boot application to run
 with the user that has the `cluster_operator` role. This ensures that
@@ -361,57 +361,57 @@ your Spring Boot application has the necessary permission
 the PCC cluster, including, for example, pushing configuration metadata
 from the client to the servers in the PCC cluster.
 
-</div>
 
-<div class="paragraph">
+
+
 
 See the [Running Spring Boot applications as a specific
 user](#cloudfoundry-cloudcache-security-auth-runtime-user-configuration)
 section in the [Pivotal CloudFoundry](#cloudfoundry) chapter for
 additional details on user authentication and authorization.
 
-</div>
 
-<div class="paragraph">
+
+
 
 See the [chapter](#cloudfoundry) (titled “Pivotal CloudFoundry”) for
 more general details.
 
-</div>
 
-<div class="paragraph">
+
+
 
 See the {pivotal-cloudcache-docs}/security.html\[Pivotal Cloud Cache
 documentation\] for security details when you use PCC and PCF.
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
+
+
 
 ### Transport Layer Security using SSL
 
-<div class="paragraph">
+
 
 Securing data in motion is also essential to the integrity of your
 Spring \[Boot\] applications.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For instance, it would not do much good to send usernames and passwords
 over plain text socket connections between your clients and servers nor
 to send other sensitive data over those same connections.
 
-</div>
 
-<div class="paragraph">
+
+
 
 Therefore, {pivotal-gemfire-name} supports SSL between clients and
 servers, between JMX clients (such as Gfsh) and the Manager, between
@@ -419,18 +419,18 @@ HTTP clients when you use the Developer REST API or Pulse, between peers
 in the cluster, and when you use the WAN Gateway to connect multiple
 sites (clusters).
 
-</div>
 
-<div class="paragraph">
+
+
 
 Spring Data for {pivotal-gemfire-name} provides [first-class
 support](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-ssl)
 for configuring and enabling SSL as well. Still, Spring Boot makes it
 even easier to configure and enable SSL, especially during development.
 
-</div>
 
-<div class="paragraph">
+
+
 
 {pivotal-gemfire-name} requires certain properties to be configured.
 These properties translate to the appropriate `javax.net.ssl.*`
@@ -438,24 +438,24 @@ properties required by the JRE to create secure socket connections by
 using
 [JSSE](https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html).
 
-</div>
 
-<div class="paragraph">
+
+
 
 However, ensuring that you have set all the required SSL properties
 correctly is an error prone and tedious task. Therefore, Spring Boot for
 {pivotal-gemfire-name} applies some basic conventions for you.
 
-</div>
 
-<div class="paragraph">
+
+
 
 You can create a `trusted.keystore` as a JKS-based `KeyStore` file and
 place it in one of three well-known locations:
 
-</div>
 
-<div class="ulist">
+
+
 
 - In your application JAR file at the root of the classpath.
 
@@ -464,37 +464,37 @@ place it in one of three well-known locations:
 - In your user home directory (as defined by the `user.home` Java System
   property).
 
-</div>
 
-<div class="paragraph">
+
+
 
 When this file is named `trusted.keystore` and is placed in one of these
 three well-known locations, Spring Boot for {pivotal-gemfire-name}
 automatically configures your client to use SSL socket connections.
 
-</div>
 
-<div class="paragraph">
+
+
 
 If you use Spring Boot to configure and bootstrap an
 {pivotal-gemfire-name} server:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 4. Spring Boot configured and bootstrapped
 {pivotal-gemfire-name} server
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 @SpringBootApplication
@@ -504,22 +504,22 @@ class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 Then Spring Boot also applies the same procedure to enable SSL on the
 servers (between peers).
 
-</div>
 
-<div class="admonitionblock tip">
+
+
 
 <table>
 <colgroup>
@@ -528,9 +528,9 @@ servers (between peers).
 </colgroup>
 <tbody>
 <tr class="odd">
-<td class="icon"><div class="title">
+<td class="icon">
 Tip
-</div></td>
+</td>
 <td class="content">During development, it is convenient to
 <strong>not</strong> set a <code>trusted.keystore</code> password when
 accessing the keys in the JKS file. However, it is highly recommended
@@ -540,28 +540,28 @@ your application to a production environment.</td>
 </tbody>
 </table>
 
-</div>
 
-<div class="paragraph">
+
+
 
 If your `trusted.keystore` file is secured with a password, you need to
 additionally specify the following property:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 5. Accessing a secure `trusted.keystore`
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 # Spring Boot application.properties
@@ -569,35 +569,35 @@ Example 5. Accessing a secure `trusted.keystore`
 spring.data.gemfire.security.ssl.keystore.password=p@55w0rd!
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 You can also configure the location of the keystore and truststore
 files, if they are separate and have not been placed in one of the
 default, well-known locations searched by Spring Boot:
 
-</div>
 
-<div class="exampleblock">
 
-<div class="title">
+
+
+
 
 Example 6. Accessing a secure `trusted.keystore` by location
 
-</div>
 
-<div class="content">
 
-<div class="listingblock">
 
-<div class="content">
+
+
+
+
 
 ``` highlight
 # Spring Boot application.properties
@@ -608,61 +608,61 @@ spring.data.gemfire.security.ssl.truststore = /absolute/file/system/path/to/trus
 spring.data.gemfire.security.ssl.truststore.password = truststorePassword
 ```
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-<div class="paragraph">
+
+
+
+
+
 
 See the SDG
 {spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableSsl.html\[`EnableSsl`\]
 annotation for all the configuration attributes and the corresponding
 properties expressed in `application.properties`.
 
-</div>
 
-</div>
 
-<div class="sect2">
+
+
+
 
 ### Securing Data at Rest
 
-<div class="paragraph">
+
 
 Currently, neither {pivotal-gemfire-name} nor Spring Boot nor Spring
 Data for {pivotal-gemfire-name} offer any support for securing your data
 while at rest (for example, when your data has been overflowed or
 persisted to disk).
 
-</div>
 
-<div class="paragraph">
+
+
 
 To secure data at rest when using {pivotal-gemfire-name}, with or
 without Spring, you must employ third-party solutions, such as disk
 encryption, which is usually highly contextual and technology-specific.
 
-</div>
 
-<div class="paragraph">
+
+
 
 For example, to secure data at rest when you use Amazon EC2, see
 [Instance Store
 Encryption](https://aws.amazon.com/blogs/security/how-to-protect-data-at-rest-with-amazon-ec2-instance-store-encryption/).
 
-</div>
 
-</div>
 
-</div>
 
-</div>
 
-</div>
+
+
+
+
+
 
 <div id="footer">
 
@@ -670,6 +670,6 @@ Encryption](https://aws.amazon.com/blogs/security/how-to-protect-data-at-rest-wi
 
 Last updated 2022-10-10 12:14:24 -0700
 
-</div>
 
-</div>
+
+
