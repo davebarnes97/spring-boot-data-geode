@@ -1,4 +1,6 @@
-# Spring Boot for VMware GemFire Reference Guide
+---
+title: Spring Boot for VMware GemFire Reference Guide
+---
 
 Version 1.27
 
@@ -28,9 +30,7 @@ cemented in Spring Data for VMware GemFire since the Spring Data Kay
 (2.0) Release Train.
 
 
-## 1. Introduction
-
-
+## Introduction
 
 Spring Boot for VMware GemFire automatically applies
 *auto-configuration* to several key application concerns (*use cases*)
@@ -45,10 +45,10 @@ including, but not limited to:
 
 - [*System of Record*
   (SOR)](https://en.wikipedia.org/wiki/System_of_record), persisting
-  application state in VMware GemFire by using [Spring Data
+  application state in VMware GemFire by using [Working with Spring Data
   Repositories](https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories).
   For more information, see
-  [\[geode-repositories\]](#geode-repositories).
+  [Spring Data Repositories](./repositories.html).
 
 - *Transactions*, managing application state consistently with [Spring
   Transaction
@@ -60,16 +60,16 @@ including, but not limited to:
   Transactions.
 
 - *Distributed Computations*, run with VMware GemFire’s [Function
-  Execution](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/function_exec/chapter_overview.html)
+  Execution](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-developing-function_exec-chapter_overview.html)
   framework and conveniently implemented and executed with [POJO-based,
   annotation support for
   Functions](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-annotations).
-  For more information, see [\[geode-functions\]](#geode-functions).
+  For more information, see [Function Implementations & Executions](./functions.md).
 
 - *Continuous Queries*, expressing interests in a stream of events and
   letting applications react to and process changes to data in near
   real-time with VMware GemFire’s [Continuous Query
-  (CQ)](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/continuous_querying/chapter_overview.html).
+  (CQ)](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-developing-continuous_querying-chapter_overview.html).
   Listeners/Handlers are defined as simple Message-Driven POJOs (MDP)
   with Spring’s [Message Listener
   Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#jms-mdp),
@@ -78,48 +78,48 @@ including, but not limited to:
   with its
   [configurable](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-continuous-queries)
   CQ support. For more information, see
-  [\[geode-continuous-query\]](#geode-continuous-query).
+  [Continuous Query](./continuous-query.md).
 
 - *Data Serialization* using VMware GemFire
-  [PDX](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/data_serialization/gemfire_pdx_serialization.html)
+  [PDX](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-developing-data_serialization-gemfire_pdx_serialization.html)
   with first-class
   [configuration](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-pdx)
   and
   [support](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#mapping.pdx-serializer).
   For more information, see
-  [\[geode-data-serialization\]](#geode-data-serialization).
+  [Data Serialization with PDX](./data-serialization.md).
 
 - *Data Initialization* to quickly load (import) data to hydrate the
   cache during application startup or write (export) data on application
   shutdown to move data between environments (for example, TEST to DEV).
-  For more information, see [\[geode-data-using\]](#geode-data-using).
+  For more information, see [Using Data](./data-using.md).
 
 - *Actuator*, to gain insight into the runtime behavior and operation of
   your cache, whether a client or a peer. For more information, see
-  [\[actuator\]](#actuator).
+  [Spring Boot Actuator](./actuator.md).
 
 - *Logging*, to quickly and conveniently enable or adjust VMware GemFire
   log levels in your Spring Boot application to gain insight into the
   runtime operations of the application as they occur. For more
-  information, see [\[geode-logging\]](#geode-logging).
+  information, see [Logging](./logging.md).
 
 - *Security*, including
-  [Authentication](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/managing/security/authentication_overview.html)
+  [Authentication](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-managing-security-authentication_overview.html)
   &
-  [Authorization](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/managing/security/authorization_overview.html),
+  [Authorization](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-managing-security-authorization_overview.html),
   and Transport Layer Security (TLS) with VMware GemFire [Secure Socket
   Layer
-  (SSL)](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/managing/security/ssl_overview.html).
+  (SSL)](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-managing-security-ssl_overview.html).
   Once more, Spring Data for VMware GemFire includes first-class support
   for configuring
   [Auth](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-security)
   and
   [SSL](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-ssl).
-  For more information, see [\[geode-security\]](#geode-security).
+  For more information, see [Security](./security.md).
 
 - *HTTP Session state management*, by including Spring Session for
   VMware GemFire on your application’s classpath. For more information,
-  see [\[geode-session\]](#geode-session).
+  see [Spring Session](./session.md).
 
 - *Testing*. Whether you write Unit or Integration Tests for Apache
   Geode in a Spring context, SBDG covers all your testing needs with the
@@ -134,8 +134,7 @@ easier to do, as we will explore throughout this reference
 documentation.
 
 
-### 1.1. Goals
-
+### Goals
 
 While the SBDG project has many goals and objectives, the primary goals
 of this project center around three key principles:
@@ -169,9 +168,7 @@ GemFire.</td>
 </table>
 
 
-## 2. Getting Started
-
-
+## Getting Started
 
 To be immediately productive and as effective as possible when you use
 Spring Boot for VMware GemFire, it helps to understand the foundation on
@@ -230,7 +227,7 @@ VMware GemFire in action.</td>
 </table>
 
 
-## 3. Using Spring Boot for VMware GemFire
+## Using Spring Boot for VMware GemFire
 
 
 
@@ -266,7 +263,7 @@ dependencies {
 ```
 
 
-### 3.1. Maven BOM
+### Maven BOM
 
 
 If you anticipate using more than one Spring Boot for VMware GemFire
@@ -403,7 +400,7 @@ to get started.</td>
 </table>
 
 
-### 3.2. Gradle Dependency Management
+### Gradle Dependency Management
 
 
 Using Gradle is similar to using Maven.
@@ -511,7 +508,7 @@ to get started.</td>
 </table>
 
 
-## 4. Primary Dependency Versions
+## Primary Dependency Versions
 
 
 
@@ -694,7 +691,7 @@ All of this is made simple by going to
 `{spring-boot-version}` project using VMware GemFire.
 
 
-### 4.1. Overriding Dependency Versions
+### Overriding Dependency Versions
 
 
 While Spring Boot for VMware GemFire requires baseline versions of the
@@ -772,7 +769,7 @@ Management</a> for more details.</td>
 </table>
 
 
-#### 4.1.1. Version Property Override
+#### Version Property Override
 
 
 Perhaps the easiest option to change the version of a Spring Boot
@@ -830,7 +827,7 @@ as well as the Spring Boot Gradle Plugin
 [documentation](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#managing-dependencies).
 
 
-#### 4.1.2. Override with Dependency Management
+#### Override with Dependency Management
 
 
 This option is not specific to Spring in general, or Spring Boot in
@@ -972,7 +969,7 @@ For more details on Gradle dependency management, please refer to the
 [documentation](https://docs.gradle.org/current/userguide/core_dependency_management.html)
 
 
-### 4.2. Excluding Dependencies
+### Excluding Dependencies
 
 
 Sometimes, though rarely, it may be necessary to exclude a (transitive)
