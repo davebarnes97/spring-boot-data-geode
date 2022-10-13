@@ -1,16 +1,6 @@
-<div id="header">
-
-
-
-<div id="content">
-
-
-
-## Caching with Apache Geode
-
-
-
-
+---
+title: Caching with VMware GemFire
+---
 
 One of the easiest, quickest and least invasive ways to start using
 {pivotal-gemfire-name} in your Spring Boot applications is to use

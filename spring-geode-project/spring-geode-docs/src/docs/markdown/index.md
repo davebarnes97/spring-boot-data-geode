@@ -1,21 +1,6 @@
 # Spring Boot for VMware GemFire Reference Guide
 
-
-<span id="revnumber">version 1.27,</span> <span
-id="revdate">2022-10-10</span>
-
-
-
-Table of Contents
-
-- [1. Introduction](#introduction)
-- [2. Getting Started](#getting-started)
-- [3. Using Spring Boot for VMware GemFire](#maven-gradle)
-- [4. Primary Dependency Versions](#sbdg-dependency-versions)
-
-
-
-
+Version 1.27
 
 Spring Boot for VMware GemFire provides the convenience of Spring Boot’s
 *convention over configuration* approach by using *auto-configuration*
@@ -25,7 +10,7 @@ applications in a Spring context.
 
 
 Secondarily, Spring Boot for VMware GemFire provides developers with a
-consistent experience whether building and running Spring Boot, VMware
+consistent experience whether building and running Spring Boot/VMware
 GemFire applications locally or in a managed environment, such as with
 [VMware Tanzu Application Service](https://tanzu.vmware.com/tanzu)
 (TAS).
@@ -56,7 +41,7 @@ including, but not limited to:
   using VMware GemFire as a caching provider in [Spring’s Cache
   Abstraction](https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#cache).
   For more information, see
-  [\[geode-caching-provider\]](#geode-caching-provider).
+  [Caching with VMware GemFire](./caching.html).
 
 - [*System of Record*
   (SOR)](https://en.wikipedia.org/wiki/System_of_record), persisting
