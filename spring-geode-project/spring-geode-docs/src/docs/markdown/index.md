@@ -170,18 +170,9 @@ to a *Non-Managed* environment and even from *Commercial* back to the
 *Open Source* offering, again, with *little to no code or configuration*
 changes.
 
-
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">SBDG’s promise is to deliver on these principles as
+SBDG’s promise is to deliver on these principles as
 much as is technically possible and as is technically allowed by VMware
-GemFire.</td>
-</tr>
-</tbody>
-</table>
-
+GemFire.
 
 ## Getting Started
 
@@ -228,23 +219,12 @@ documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/#g
 
 Finally, we arrive at Spring Boot for VMware GemFire (SBDG).
 
-
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">See the corresponding Sample <a
+See the corresponding Sample <a
 href="guides/getting-started.html">Guide</a> and
-{github-samples-url}/intro/getting-started[Code] to see Spring Boot for
-VMware GemFire in action.</td>
-</tr>
-</tbody>
-</table>
-
+[Code](https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started) to see Spring Boot for
+VMware GemFire in action.
 
 ## Using Spring Boot for VMware GemFire
-
-
 
 To use Spring Boot for VMware GemFire, declare the
 `spring-geode-starter` on your Spring Boot application classpath:
@@ -261,7 +241,7 @@ Example 1. Maven
     <dependency>
         <groupId>org.springframework.geode</groupId>
         <artifactId>spring-geode-starter</artifactId>
-        <version>{spring-boot-data-geode-version}</version>
+        <version>1.27</version>
     </dependency>
 </dependencies>
 ```
@@ -273,7 +253,7 @@ Gradle
 
 ``` prettyprint
 dependencies {
-    compile 'org.springframework.geode:spring-geode-starter:{spring-boot-data-geode-version}'
+    compile 'org.springframework.geode:spring-geode-starter:1.27'
 }
 ```
 
@@ -339,7 +319,7 @@ Example 2. Spring Boot application Maven POM
     <artifactId>my-spring-boot-application</artifactId>
 
     <properties>
-        <spring-geode.version>{spring-boot-data-geode-version}</spring-geode.version>
+        <spring-geode.version>1.27</spring-geode.version>
     </properties>
 
     <dependencyManagement>
@@ -399,21 +379,12 @@ For example, SBDG `1.4.0` is based on Spring Boot `2.4.0`. SBDG
 `1.3.5.RELEASE` is based on Spring Boot `2.3.5.RELEASE`, and so on. It
 is important that the versions align.
 
-
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">All of these concerns are handled for you by going
+All of these concerns are handled for you by going
 to <a href="https://start.spring.io">start.spring.io</a> and adding the
 “_Spring for VMware GemFire_” dependency to a project. For convenience,
 you can click this <a
 href="https://start.spring.io/#!platformVersion=%7Bspring-boot-version%7D&amp;dependencies=geode">link</a>
-to get started.</td>
-</tr>
-</tbody>
-</table>
-
+to get started.
 
 ### Gradle Dependency Management
 
@@ -447,7 +418,7 @@ plugins {
 // ...
 
 ext {
-  set('springGeodeVersion', "{spring-boot-data-geode-version}")
+  set('springGeodeVersion', "1.27")
 }
 
 dependencies {
@@ -508,24 +479,14 @@ on Spring Boot `2.4.0`, SBDG `1.3.5.RELEASE` is based on Spring Boot
 `2.3.5.RELEASE`, and so on. It is important that the versions align.
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">All of these concerns are handled for you by going
+All of these concerns are handled for you by going
 to <a href="https://start.spring.io">start.spring.io</a> and adding the
 “_Spring for VMware GemFire_” dependency to a project. For convenience,
 you can click this <a
 href="https://start.spring.io/#!platformVersion=%7Bspring-boot-version%7D&amp;dependencies=geode">link</a>
-to get started.</td>
-</tr>
-</tbody>
-</table>
-
+to get started.
 
 ## Primary Dependency Versions
-
-
 
 Spring Boot for VMware GemFire 1.27 builds and depends on the following
 versions of the base projects listed below:
@@ -650,7 +611,7 @@ GemFire, `spring-geode-bom` BOM in Maven
 
 ``` prettyprint
 <properties>
-    <spring-geode.version>{spring-boot-data-geode-version}</spring-geode.version>
+    <spring-geode.version>1.27</spring-geode.version>
 </properties>
 
 <dependencyManagement>
@@ -658,7 +619,7 @@ GemFire, `spring-geode-bom` BOM in Maven
         <dependency>
             <groupId>org.springframework.geode</groupId>
             <artifactId>spring-geode-bom</artifactId>
-            <version>${spring-geode.version}</version>
+            <version>$1.27</version>
             <scope>import</scope>
             <type>pom</type>
         </dependency>
@@ -686,7 +647,7 @@ GemFire, `spring-geode-bom` BOM in Gradle
 
 ``` prettyprint
 ext {
-    set('springGeodeVersion', "{spring-boot-data-geode-version}")
+    set('springGeodeVersion', "1.27")
 }
 
 dependencies {
@@ -742,11 +703,9 @@ safe to do so, then you have a few options for how to override the
 dependency version:
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">Use caution when overriding dependencies since they
+<p class="note">
+<strong>Note:</strong>
+Use caution when overriding dependencies since they
 may not be compatible with other dependencies managed by Spring Boot for
 which you may have declared on your application classpath, for example,
 by adding a starter. It is common for multiple Java libraries to share
@@ -758,11 +717,8 @@ order that JARs or paths have been defined on the classpath. Finally,
 Spring does not support dependency versions that have been overridden
 and do not match the versions declared and managed by Spring Boot. See
 <a
-href="https://docs.spring.io/spring-boot/docs/current/reference/html/#appendix.dependency-versions.coordinates">documentation</a>.</td>
-</tr>
-</tbody>
-</table>
-
+href="https://docs.spring.io/spring-boot/docs/current/reference/html/#appendix.dependency-versions.coordinates">documentation</a>.
+</p>
 
 - [Version Property
   Override](#sbdg-dependency-version-overrides-property)
@@ -771,17 +727,10 @@ href="https://docs.spring.io/spring-boot/docs/current/reference/html/#appendix.d
   Management](#sbdg-dependency-version-overrides-dependencymanagement)
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">You should refer to Spring Boot’s documentation on
+Refer to Spring Boot’s documentation on
 <a
 href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.dependency-management">Dependency
-Management</a> for more details.</td>
-</tr>
-</tbody>
-</table>
+Management</a> for more details.
 
 
 #### Version Property Override
@@ -814,19 +763,13 @@ Gradle dependency version property override
     ext['log4j2.version'] = '2.17.2'
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">The Log4j version number used in the Maven and
+<p class="note"><strong>Note:</strong>
+The Log4j version number used in the Maven and
 Gradle examples shown above is arbitrary. You must set the
 <code>log4j2.version</code> property to a valid Log4j version that would
 be resolvable by Maven or Gradle when given the fully qualified
-artifact: <code>org.apache.logging.log4j:log4j:2.17.2</code>.</td>
-</tr>
-</tbody>
-</table>
-
+artifact: <code>org.apache.logging.log4j:log4j:2.17.2</code>.
+</p>
 
 The version property name must precisely match the version property
 declared in the `spring-boot-dependencies` Maven POM.
@@ -901,19 +844,12 @@ could add dependency management in either Maven or Gradle to control the
 `opentest4j` dependency version.
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">The <code>opentest4j</code> dependency is pulled in
+<p class="note"><strong>Note:</strong>
+The <code>opentest4j</code> dependency is pulled in
 by JUnit and is not a dependency that Spring Boot specifically manages.
 Of course, Maven or Gradle’s dependency management capabilities can be
 used to override dependencies that are managed by Spring Boot as
-well.</td>
-</tr>
-</tbody>
-</table>
-
+well.
 
 Using the `opentest4j` dependency as an example, you can override the
 dependency version by doing the following:
@@ -1005,18 +941,12 @@ Either way, you have concluded that it is safe to exclude this
 and correctness of your Spring Boot application.
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td class="icon"><em></em></td>
-<td class="content">You should be absolutely certain that removing the
+<p class="important"><strong>Important:</strong>
+You should be absolutely certain that removing the
 (transitive) dependency, rather than <a
 href="#sbdg-dependency-version-overrides">overridding</a> the
-(transitive) dependency is the correct course of action.</td>
-</tr>
-</tbody>
-</table>
-
+(transitive) dependency is the correct course of action.
+</p>
 
 For example, when you include the `spring-geode-starter` (the base
 starter of Spring Boot for Apache Geode), you notice that Apache Lucene
@@ -1024,7 +954,7 @@ is transitively included by `org.apache.geode:geode-lucene`:
 
 
 
-Analyzing Dependencies using Gradle
+#### Analyzing Dependencies using Gradle
 
 
 ``` prettyprint
@@ -1051,7 +981,7 @@ compileClasspath - Compile classpath for source set 'main'.
 
 
 
-Analyzing Dependencies using Maven
+#### Analyzing Dependencies using Maven
 
 
 ``` prettyprint
@@ -1093,8 +1023,7 @@ and included by Spring Boot for Apache Geode’s `spring-geode-starter`,
 like so:
 
 
-
-Declaring Exclusions with Gradle
+#### Declaring Exclusions with Gradle
 
 
 ``` prettyprint
@@ -1133,7 +1062,7 @@ After the appropriate exclusion is declared, the resulting dependencies
 
 
 
-Analyzing Dependencies using Gradle after Exclusions
+#### Analyzing Dependencies using Gradle after Exclusions
 
 
 ``` prettyprint
@@ -1156,7 +1085,7 @@ compileClasspath - Compile classpath for source set 'main'.
 
 
 
-Analyzing Dependencies using Maven
+#### Analyzing Dependencies using Maven
 
 
 ``` prettyprint
