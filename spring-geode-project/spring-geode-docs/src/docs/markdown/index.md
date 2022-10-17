@@ -219,8 +219,8 @@ documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/#g
 
 Finally, we arrive at Spring Boot for VMware GemFire (SBDG).
 
-See the corresponding Sample <a
-href="guides/getting-started.html">Guide</a> and
+See the corresponding Sample
+[Guide](guides/getting-started.html) and
 [Code](https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started) to see Spring Boot for
 VMware GemFire in action.
 
@@ -850,13 +850,14 @@ by JUnit and is not a dependency that Spring Boot specifically manages.
 Of course, Maven or Gradle’s dependency management capabilities can be
 used to override dependencies that are managed by Spring Boot as
 well.
+</p>
 
 Using the `opentest4j` dependency as an example, you can override the
 dependency version by doing the following:
 
 
 
-Maven dependency version override
+#### Maven dependency version override
 
 
 ``` prettyprint
@@ -877,7 +878,7 @@ Maven dependency version override
 
 
 
-Gradle dependency version override
+#### Gradle dependency version override
 
 
 ``` prettyprint
