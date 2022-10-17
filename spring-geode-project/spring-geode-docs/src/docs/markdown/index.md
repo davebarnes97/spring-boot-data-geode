@@ -313,7 +313,7 @@ Example 2. Spring Boot application Maven POM
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>{spring-boot-version}</version>
+        <version>2.7.4</version>
     </parent>
 
     <artifactId>my-spring-boot-application</artifactId>
@@ -410,7 +410,7 @@ Example 3. Spring Boot application Gradle build file
 
 ``` prettyprint
 plugins {
-  id 'org.springframework.boot' version '{spring-boot-version}'
+  id 'org.springframework.boot' version '2.7.4'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
   id 'java'
 }
@@ -511,18 +511,18 @@ versions of the base projects listed below:
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>VMware GemFire</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{apache-geode-artifact-version}</p></td>
+class="tableblock halign-left valign-top"><p>1.14.4</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring
 Framework</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-version}</p></td>
+class="tableblock halign-left valign-top"><p>5.3.23</p></td>
 </tr>
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>Spring Boot</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-boot-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.4</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring Data for VMware
@@ -574,7 +574,7 @@ Example 4. Spring Boot application Maven POM parent
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>{spring-boot-version}</version>
+    <version>2.7.4</version>
 </parent>
 ```
 
@@ -591,7 +591,7 @@ required for dependency management
 
 ``` prettyprint
 plugins {
-  id 'org.springframework.boot' version '{spring-boot-version}'
+  id 'org.springframework.boot' version '2.7.4'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
   id 'java'
 }
@@ -664,7 +664,7 @@ dependencyManagement {
 
 All of this is made simple by going to
 [start.spring.io](https://start.spring.io) and creating a Spring Boot
-`{spring-boot-version}` project using VMware GemFire.
+`2.7.4` project using VMware GemFire.
 
 
 ### Overriding Dependency Versions
@@ -883,7 +883,7 @@ dependency version by doing the following:
 
 ``` prettyprint
 plugins {
-    id 'org.springframework.boot' version '{spring-boot-version}'
+    id 'org.springframework.boot' version '2.7.4'
 }
 
 apply plugin:  'io.spring.dependency-management'
@@ -1107,7 +1107,7 @@ $ mvn dependency:tree
 ```
 
 
-Again, the importance cannot be overstated the importance of being careful when declaring exclusions.
+Again, we cannot overstate the importance of being careful when declaring exclusions.
 
 
 Please refer to the appropriate documentation in <a
