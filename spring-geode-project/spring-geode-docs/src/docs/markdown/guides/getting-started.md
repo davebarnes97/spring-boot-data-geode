@@ -1,16 +1,21 @@
-<div id="header">
-
 # Getting Started Quickly, Easily and Reliably with Spring Boot for VMware GemFire & Pivotal Cloud Cache
 
+<!-- 
+ Copyright (c) VMware, Inc. 2022. All rights reserved.
+ Licensed to the Apache Software Foundation (ASF) under one or more contributor license
+ agreements. See the NOTICE file distributed with this work for additional information regarding
+ copyright ownership. The ASF licenses this file to You under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance with the License. You may obtain a
+ copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software distributed under the License
+ is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ or implied. See the License for the specific language governing permissions and limitations under
+ the License.
+-->
 
-
-<span id="author" class="author">John Blum</span>  
-
-
-
-<div id="toc" class="toc2">
-
-<div id="toctitle">
 
 Table of Contents
 
@@ -41,17 +46,6 @@ Table of Contents
 - [Summary](#spring-geode-samples-getting-started-summary)
 
 
-
-
-
-<div id="content">
-
-<div id="preamble">
-
-
-
-
-
 This guide walks you through building and running a simple Spring Boot,
 VMware GemFire `ClientCache` application using the Spring Boot for
 VMware GemFire (SBDG) framework. Later in this guide, we switch the
@@ -61,13 +55,7 @@ Cloud Cache](https://pivotal.io/pivotal-cloud-cache) and deploy (i.e
 Platform*](https://pivotal.io/platform).
 
 
-
-
-
 Specifically, you will:
-
-
-
 
 
 1.  Create a new "*Spring for VMware GemFire*" project using *Spring
@@ -100,31 +88,14 @@ Our goal is to accomplish each step with *little to no code or
 configuration* changes. It should just work!
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">It is also possible to migrate from a Commercial,
+<p class="note">
+<strong>Note:</strong>
+It is also possible to migrate from a Commercial,
 Managed environment (running in <em>Pivotal Platform</em> using
 <em>Pivotal Cloud Cache</em> (PCC)) back to an Open Source, Non-Managed
 environment (i.e. running with an externally managed VMware GemFire
-cluster).</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+cluster).
+</p>
 
 By the end of this guide, you should feel comfortable and ready to begin
 building Spring Boot applications using either VMware GemFire standalone
@@ -132,48 +103,16 @@ or by deploying and running in *Pivotal Platform* using *Pivotal Cloud
 Cache* (PCC).
 
 
-
-
-
 Let’s begin!
 
-
-
-<div id="index-link" class="paragraph">
-
-[Index](../index.html)
-
-
-
-
-
-[Back to Samples](../index.html#geode-samples)
-
-
-
-
-
-
-
-
-
 ## Begin with Spring Initializer at start.spring.io
-
-
-
 
 
 First, open your Web browser to <a href="https://start.spring.io"
 class="bare">https://start.spring.io</a>.
 
 
-
-
-
 When creating the example app for this guide, we selected:
-
-
-
 
 
 - *Project*: **Maven Project** (alternatively, you can create a "*Gradle
@@ -210,29 +149,14 @@ When creating the example app for this guide, we selected:
   Spring Boot application to be a Web application.
 
 
-
-
-
 You can use this
 [link](https://start.spring.io/#!platformVersion=%7Bspring-boot-version%7D&groupId=example.app&artifactId=crm&dependencies=geode&input-packageName=example.app.crm)
 to get you started. You will most likely need to set the "*Spring Boot*"
 version as well as the "*Package Name*".
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Warning
-</td>
-<td class="content">As of this writing, Spring Boot
+<p class="important">
+<strong>Important:</strong>
+As of this writing, Spring Boot
 <code>2.2.0.RC1</code> was the latest version. However, that may not be
 the case after you read this, so please select the latest, non-SNAPSHOT
 version of Spring Boot greater than <code>2.2.0.RC1</code>. The
@@ -240,69 +164,33 @@ instructions reflect the screenshots of Spring Initializer at
 start.spring.io below when this guide was written, therefore you will
 see that <code>2.2.0.RC1</code> was selected when the project was
 generated. For more on versions see the <a
-href="#about-versions">sidebar</a> at the end of this section.</td>
-</tr>
-</tbody>
-</table>
-
-
-
+href="#about-versions">sidebar</a> at the end of this section.
+</p>
 
 
 Your selections should look similar to:
-
-
-
-
-
 
 
 ![spring initializer
 screenshot](./images/spring-initializer-screenshot.png)
 
 
-
-
-
-
-
 Be sure to click the "**+**" button next to the "*Spring for VMware
 GemFire*" dependency to select and add it to the generated project Maven
 POM file.
 
-
-
-
-
 You can explore the contents of the generated project by pressing the
 `CTRL+SPACE` keys:
 
-
-
-
-
-
-
 ![spring initializer explore project
 screenshot](./images/spring-initializer-explore-project-screenshot.png)
-
-
-
-
-
 
 
 Click the "*Generate the project*" button. This generates a **Java 8**
 project with **JAR** packaging.
 
 
-
-
-
 Download the ZIP file and unpack it to your desired working directory.
-
-
-
 
 
 You can then use your favorite IDE (e.g. [IntelliJ
@@ -310,27 +198,14 @@ IDEA](https://www.jetbrains.com/idea/) or [Spring Tool
 Suite](https://spring.io/tools) (STS)) to open the generated project.
 
 
-
-
-
 You are ready to begin developing your Spring Boot, VMware GemFire
 `ClientCache` application.
 
 
-
-<div id="about-versions" class="sidebarblock">
-
+### Versions
 
 
-
-
-Versions
-
-
-
-
-
-As mentioned in the WARNING above, Spring Boot `2.2.0.RC1` was the
+As mentioned in the note above, Spring Boot `2.2.0.RC1` was the
 latest version of Spring Boot when this guide was written. You should
 always choose to use the latest, non-SNAPSHOT version of Spring Boot in
 a particular release line, whether that is `2.1.x`, `2.2.x`, `2.3.x`,
@@ -339,22 +214,12 @@ versions are a moving target, and may change daily due to ongoing
 development.
 
 
-
-
-
 SBDG `minor` versions will always match `minor` versions of Spring Boot.
 The SBDG `major` version will always be one version behind the `major`
 version of Spring Boot. For example, SBDG 1.1 is based on Spring Boot
 2.1. SBDG 1.2 is based on Spring Boot 2.2. And, SBDG 1.3 will be based
 on Spring Boot 2.3. When Spring Boot reaches 3.0, SBDG will be at 2.0,
 and so on.
-
-
-
-
-
-
-
 
 
 ### Exploring the Source Code and Running the CrmApplication
@@ -366,14 +231,7 @@ class that is annotated with the `@SpringBootApplication` annotation.
 
 
 
-
-
-
-
-Main `CrmApplication` class
-
-
-
+#### Main `CrmApplication` class
 
 
 ``` highlight
@@ -393,25 +251,13 @@ public class CrmApplication {
 
 
 
-
-
-
-
 Additionally, in the project Maven POM file, we see the "*Spring Boot
 for VMware GemFire*" (SBDG) dependency
 (`org.springframework.geode:spring-geode-starter)`:
 
 
 
-
-
-
-
-Spring Boot for VMware GemFire dependency
-
-
-
-
+#### Spring Boot for VMware GemFire dependency
 
 ``` highlight
 <dependency>
@@ -419,11 +265,6 @@ Spring Boot for VMware GemFire dependency
     <artifactId>spring-geode-starter</artifactId>
 </dependency>
 ```
-
-
-
-
-
 
 
 With the *Spring Boot for VMware GemFire* dependency (i.e.
@@ -434,14 +275,7 @@ application, this application will startup and run as an VMware GemFire
 
 
 
-
-
-
-
-Application log output
-
-
-
+#### Application log output
 
 
 ``` highlight
@@ -907,20 +741,10 @@ validate-serializable-objects=false
 Process finished with exit code 0
 ```
 
-
-
-
-
-
-
 First, you see the JVM bootstrap Spring Boot, which in turn runs our
 `CrmApplication` and also auto-configures and bootstraps an VMware
 GemFire `ClientCache` instance. Most of the output comes from VMware
 GemFire.
-
-
-
-
 
 The application falls straight through because it is not doing anything
 interesting, and technically, because there are no non-daemon Threads
@@ -930,44 +754,20 @@ that prevents the "main" Java Thread from exiting immediately.
 
 
 
-
-
-
-
-
-
-
-
 ## Build a Spring Boot, VMware GemFire `ClientCache` application
-
-
-
-
 
 Our Spring Boot application is a simple *Customer Relationship
 Management* (CRM) application that allows users to persist `Customer`
 data in VMware GemFire and lookup `Customers` by name.
 
-
-
-
-
 ### `Customer` class
-
 
 
 First, we define a `Customer` class:
 
 
 
-
-
-
-
 `Customer` class
-
-
-
 
 
 ``` highlight
@@ -987,16 +787,8 @@ public class Customer {
 ```
 
 
-
-
-
-
-
 The CRM application defines a `Customer` in terms of an identifier (i.e.
 `Long id`) and a name (i.e. `String name`). Both fields are required.
-
-
-
 
 
 Additionally, we map `Customer` objects to the "*/Customers*" Region
@@ -1005,16 +797,9 @@ using Spring Data for VMware GemFire’s (SDG)
 annotation.
 
 
-
-
-
 The `@Region` annotation tells Spring Data where to persist and access
 `Customer` objects in VMware GemFire. It is basically equivalent to
 JPA’s `@javax.persistence.Table` annotation.
-
-
-
-
 
 Additionally, we annotate the `Long id` field with Spring Data’s
 `@org.springframework.data.annotation.Id` annotation. This designates
@@ -1025,74 +810,32 @@ interface implements the `java.uti.Map` interface making it a `Map` data
 structure.
 
 
-
-
-
 We use [Project Lombok](https://projectlombok.org/) to simply the
 implementation of the `Customer` class.
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">If you want to use Project Lombok, you will need
+<p class="note">
+<strong>Note:</strong>
+If you want to use Project Lombok, you will need
 <code>org.projectlombok:lombok</code> on your application classpath as a
-compile-time dependency.</td>
-</tr>
-</tbody>
-</table>
+compile-time dependency.
+</p>
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Warning
-</td>
-<td class="content">While Project Lombok is useful and convenient for
+<p class="note">
+<strong>Note:</strong>
+While Project Lombok is useful and convenient for
 prototyping and testing purposes, it has become a rather subjective
 topic on whether to use Lombok in production code. We have no opinion
-here.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+here.
+</p>
 
 ### `CustomerRepository` interface
-
 
 
 Now that we have defined a basic model for managing customer data, we
 can create a Spring Data `CrudRepository` used by our application to
 persist `Customer` objects to VMware GemFire. This same *Repository* can
 be used to lookup, or query `Customers` by name.
-
-
-
-
-
 
 
 `CustomerRepository` interface
@@ -1110,60 +853,26 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 ```
 
 
-
-
-
-
-
 A Spring Data `CrudRepository` is a [*Data Access
 Object*](https://en.wikipedia.org/wiki/Data_access_object) (DAO) that
 enables an application to perform basic CRUD (i.e. CREATE, READ, UPDATE,
 DELETE) as well as simple Query data access operations on a persistent
 entity (e.g. `Customer`).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Review the Spring Data Commons Reference Guide for
+Review the Spring Data Commons Reference Guide for
 more details on <a
 href="https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories">Working
 with Spring Data Repositories</a> and Spring Data for VMware GemFire’s
 (SDG) <a
 href="https://docs.spring.io/spring-data/geode/docs/current/reference/html/#gemfire-repositories">extension
 and implementation</a> of Spring Data Commons Repository
-Abstraction.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+Abstraction.
 
 ### `CustomerController` interface
-
-
 
 **OPTIONAL:** And, dependent on
 `org.springframework.boot:spring-boot-starter-web`, the "*Spring Web*"
 dependency.
-
-
-
-
 
 If you selected the "*Spring Web*" dependency from the beginning when
 you generated the project using the Spring Initializer, then you can
@@ -1171,16 +880,7 @@ create a Spring Web MVC `@RestController` to access the CRM application
 from your Web browser.
 
 
-
-
-
-
-
 `CustomerController` class
-
-
-
-
 
 ``` highlight
 @RestController
@@ -1221,11 +921,6 @@ public class CustomerController {
     }
 }
 ```
-
-
-
-
-
 
 
 The `CustomerController` class is a Spring Web MVC `@RestController`
@@ -1284,42 +979,19 @@ Table 1. Customer Web service endpoints
 
 
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">If you did not enable the Web components by adding
+If you did not enable the Web components by adding
 the Spring Web dependency to your application classpath, then no
 worries, we will still be inspecting the application’s effects on VMware
 GemFire using <em>Gfsh</em> (VMware GemFire’s command-line shell tool).
 Of course, you can just add the
 <code>org.springframework.boot:spring-boot-starter-web</code> dependency
-to your Maven POM file as well.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+to your Maven POM file as well.
 
 ### `CustomerConfiguration` class
 
 
-
 The final bit of code required by the CRM application is to take care of
 some boilerplate configuration.
-
-
-
 
 
 This will no doubt cause you to pause and think, why do I need any
@@ -1328,14 +1000,8 @@ and specifically SBDG, *Auto-configuration* take care of all our
 non-custom "configuration" needs?
 
 
-
-
-
 For the most part, YES, and we’ll be reviewing further below what is
 actually being handled by SBDG, and Spring Boot in general.
-
-
-
 
 
 But, there are certain cases that not even SBDG will take for granted
@@ -1343,19 +1009,10 @@ and assume, which becomes part of your responsibility as the application
 developer. One example is Region configuration.
 
 
-
-
-
 #### Configure the "/Customers" Region
-
-
 
 There are many ways to configure a Region and it varies significantly
 from application Use Case to application Use Case.
-
-
-
-
 
 First, there are different data management policies (e.g. `PARTITION` or
 `REPLICATE`) that might be applicable depending on the type of data you
@@ -1367,27 +1024,15 @@ you can configure additional per node and total Region memory usage
 restrictions, collocate the Region with another Region for use in JOIN
 Queries, etc.
 
-
-
-
-
 Still, we want the *getting started* experience to be as simple and as
 easy as possible, and to do so in a reliable way, especially during
 development. So, while SBDG may not provide implicit
 *auto-configuration* support for every concern, this does not mean you
 are left to figure it all out by yourself (e.g. Region configuration).
 
-
-
-
-
 During development, if you don’t care specifically "*how*" your data is
 stored and you just want to simply and rapidly iterate, putting and
 getting data into and out of VMware GemFire, then SBDG can help.
-
-
-
-
 
 The first thing we will do is annotate our application configuration
 with SDG’s `@EnableEntityDefinedRegions` annotation and set the
@@ -1395,14 +1040,7 @@ with SDG’s `@EnableEntityDefinedRegions` annotation and set the
 
 
 
-
-
-
-
-Using `EnableEntityDefinedRegions`.
-
-
-
+#### Using `EnableEntityDefinedRegions`
 
 
 ``` highlight
@@ -1413,16 +1051,9 @@ public class CustomerConfiguration {  }
 
 
 
-
-
-
-
 Using the `@EnableEntityDefinedRegions` annotation is basically
 equivalent to the JPA entity scan and Hibernate’s auto-schema creation
 (DDL generation) based on your JPA annotated entity classes.
-
-
-
 
 
 The `basePackageClasses` attribute is a type-safe way to specify the
@@ -1439,30 +1070,16 @@ classes in the package and sub-packages. One class per unique top-level
 package is sufficient.
 
 
-
-
-
 `@EnableEntityDefinedRegions` creates Regions local to your application.
 By default, your SBDG based application is a `ClientCache` and therefore
 will create client Regions for your entities.
-
-
-
 
 
 The alternative to using `@EnableEntityDefinedRegions` (or the like) is
 to define Regions explicitly using Spring *JavaConfig*, like so:
 
 
-
-
-
-
-
-Using Spring JavaConfig
-
-
-
+#### Using Spring JavaConfig
 
 
 ``` highlight
@@ -1484,22 +1101,11 @@ class GeodeConfiguration {
 
 
 
-
-
-
-
 You can also use Spring XML:
 
 
 
-
-
-
-
-Using Spring XML
-
-
-
+#### Using Spring XML
 
 
 ``` highlight
@@ -1507,15 +1113,7 @@ Using Spring XML
 ```
 
 
-
-
-
-
-
-
-
 #### Configure the Application to be Cluster-Aware
-
 
 
 The final bit of configuration helps determine whether the client
@@ -1523,23 +1121,14 @@ application is by itself or whether a cluster of VMware GemFire servers
 are available to manage the application’s data.
 
 
-
-
-
 During development, you might be iteratively and rapidly developing
 inside your IDE, debugging and testing new functions locally and then
 switch to a client/server environment for further integration testing.
 
 
-
-
-
 VMware GemFire requires 1) all client Regions that send data to/from the
 cluster be `*PROXY` Regions and 2) that a server-side Region by the same
 name exists in the cluster.
-
-
-
 
 
 Switching the data management policy for all client Regions' from
@@ -1552,16 +1141,7 @@ error-prone task. So, SBDG has introduced the new `@EnableClusterAware`
 annotation for this very purpose.
 
 
-
-
-
-
-
-Using `@EnableClusterAware`
-
-
-
-
+#### Using `@EnableClusterAware`
 
 ``` highlight
 @Configuration
@@ -1569,24 +1149,10 @@ Using `@EnableClusterAware`
 public class CustomerConfiguration {  }
 ```
 
-
-
-
-
-
-
 The nearly equivalent alternative to `@EnableClusterAware` is:
 
 
-
-
-
-
-
-Manually Configuring Client Region Data Management Policies
-
-
-
+#### Manually Configuring Client Region Data Management Policies
 
 
 ``` highlight
@@ -1595,12 +1161,6 @@ Manually Configuring Client Region Data Management Policies
 public class CustomerConfiguration {  }
 ```
 
-
-
-
-
-
-
 If you switch to a client/server topology, then you would need to
 remember to change the `clientRegionShortcut` to
 `ClientRegionShortcut.PROXY` (the default). Of course, you could use
@@ -1608,42 +1168,18 @@ Spring Profiles with a profile customized for each environment where the
 application will be run. Or, you can just simply use the
 `@EnableClusterAware` annotation.
 
-
-
-
-
 We say "nearly" equivalent because the `@EnableClusterAware` annotation
 does much more than control the data management policy used by your
 client Regions, particularly when a cluster of servers is available, as
 we’ll see further below.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">The <code>clientRegionShortcut</code> attribute is
+<p class="note><strong>Note: </strong>
+The <code>clientRegionShortcut</code> attribute is
 available for all application-defined Region annotations:
 [<code>@EnableEntityDefinedRegions</code>,
 <code>@EnableCachingDefinedRegions</code>,
-<code>@EnableClusterDefinedRegions</code>].</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
+<code>@EnableClusterDefinedRegions</code>].
+</p>
 
 
 #### Configuration Summary
@@ -1653,16 +1189,7 @@ available for all application-defined Region annotations:
 The final application specific configuration appears as follows:
 
 
-
-
-
-
-
 `CustomerConfiguration` class
-
-
-
-
 
 ``` highlight
 @Configuration
@@ -1675,23 +1202,7 @@ public class CustomerConfiguration {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Run the Application Locally
-
-
-
-
 
 To make it apparent that the CRM application does something, we add the
 following Spring Boot `ApplicationRunner` bean to our main
@@ -1699,15 +1210,8 @@ following Spring Boot `ApplicationRunner` bean to our main
 
 
 
-
-
-
-
 Spring Boot `ApplicationRunner` in the main `@SpringBootApplication`
 class
-
-
-
 
 
 ``` highlight
@@ -1741,70 +1245,32 @@ class
 ```
 
 
-
-
-
-
-
 The runner creates a new `Customer` "*JonDoe*", persists "*JonDoe*" to
 VMware GemFire in the "*/Customers*" client `LOCAL` Region, runs an OQL
 query to lookup "*JonDoe*" by name using a wildcard query with the LIKE
 operator and argument "*%Doe*", then asserts that the result is correct.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The example code uses <em>AssertJ</em> to perform
+<p class="note">
+<strong>Note:</strong>
+The example code uses <em>AssertJ</em> to perform
 assertions inside the <code>ApplicationRunner</code> bean, which means
 you would need <code>org.assertj:assertj-core</code> on your application
-classpath as a compile-time dependency.</td>
-</tr>
-</tbody>
-</table>
-
-
-
+classpath as a compile-time dependency.
+</p>
 
 
 There are 2 primary ways to run the `CrmApplication` class.
 
 
-
-
-
 First, you can use Gradle to run the `CrmApplication`.
 
 
-
-
-
-
-
-Using Gradle to run the `CrmApplication`
-
-
-
+#### Using Gradle to run the `CrmApplication`
 
 
 ``` highlight
 $ gradlew :spring-geode-samples-getting-started:bootRun
 ```
-
-
-
-
-
 
 
 The convenient thing about using Gradle is that you can run this from
@@ -1813,90 +1279,40 @@ the SBDG project home directory, as in from
 your local file sytem.
 
 
-
-
-
 The downside of using Gradle is that the SBDG project Gradle build will
 build (compile) most modules of the SBDG project.
-
-
-
 
 
 Alternatively, you can now run this Getting Started Sample using Maven.
 
 
-
-
-
-
-
-Using Maven to run the `CrmApplication`
-
-
-
+#### Using Maven to run the `CrmApplication`
 
 
 ``` highlight
 $ mvn spring-boot:run
 ```
 
-
-
-
-
-
-
 You must first change working directories to
 `/path/to/spring-boot-data-geode/spring-geode-samples/intro/getting-started`
 then execute the `mvn` command above.
-
-
-
-
 
 The Sample specific Maven POM file resolves all dependencies from Maven
 Central or Spring’s Artifact Repositories, therefore building the entire
 project is no longer necessary.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The Sample specific Maven POM files are generated
+<p class="note><strong>Note:</strong>
+The Sample specific Maven POM files are generated
 from the Gradle build and so the Maven POMs are guaranteed to match the
 projects Gradle build in terms of dependencies and versions, and so
-on.</td>
-</tr>
-</tbody>
-</table>
-
-
-
+on.
+</p>
 
 
 After running the application again, you should see:
 
 
-
-
-
-
-
-Application Log Output in Local Run
-
-
-
+#### Application Log Output in Local Run
 
 
 ``` highlight
@@ -1908,17 +1324,9 @@ Customer was [Customer(name=JonDoe)]
 ```
 
 
-
-
-
-
-
 SBDG, with the help of `@EnableEntityDefinedRegions` and
 `@EnableClusterAware`, along with Spring Data, has already done quite a
 bit of work for us:
-
-
-
 
 
 1.  SBDG *auto-configured* a `ClientCache` instance required to use
@@ -1939,22 +1347,11 @@ bit of work for us:
     of the application (e.g. local or client/server).
 
 
-
-
-
 To show one aspect of SBDG’s *auto-configuration* at play, what would
 happen if you did not annotate the application configuration with
 `@EnableClusterAware`?
 
-
-
-
-
 Then, you would hit the following Exception:
-
-
-
-
 
 
 
@@ -2013,19 +1410,9 @@ Caused by: o.a.g.cache.client.NoAvailableServersException: null
 ```
 
 
-
-
-
-
-
 The application will continue to run if you included the Spring Web
 dependencies in your application classpath, in which case, you can then
 inspect the application using a Web client (e.g. Web browser):
-
-
-
-
-
 
 
 ![customer service application
@@ -2034,35 +1421,17 @@ jondoe](./images/customer-service-application-jondoe.png)
 
 
 
-
-
-
-
-
-
-
 ## Run the Application in a Client/Server Topology
-
-
-
 
 
 Now that we have a simple Spring Boot, VMware GemFire `ClientCache`
 application running locally inside our IDE, we want to expand on this
 bit and switch to a client/server topology.
 
-
-
-
-
 Although we are not quite ready to move to a managed cloud platform
 environment, like *Pivotal Platform* (formerly known as *Pivotal
 CloudFoundry*) using *Pivotal Cloud Cache* (PCC), we no longer want to
 maintain the data locally.
-
-
-
-
 
 Without persistence, we would lose all our data if the client
 application were shutdown since the data is maintained in-memory.
@@ -2071,30 +1440,14 @@ applications, or even other instances of our existing application (e.g.
 in a Microservices landscape) would not be able to use this data, which
 is useless!
 
-
-
-
-
 To switch to a client/server topology, we need to first configure and
 bootstrap an VMware GemFire cluster.
-
-
-
-
 
 The Example Code for this Guide already provides the necessary Geode
 shell script (*Gfsh*) to start a cluster:
 
 
-
-
-
-
-
 Gfsh shell script to start an VMware GemFire cluster
-
-
-
 
 
 ``` highlight
@@ -2106,75 +1459,30 @@ start server --name=ServerTwo --log-level=config --server-port=50505
 ```
 
 
-
-
-
-
-
 The cluster can be conveniently started with the following *Gfsh*
 command:
 
-
-
-
-
-
-
-Run the Gfsh shell script
-
-
-
+#### Run the Gfsh shell script
 
 
 ``` highlight
 gfsh> run --file=@SBDG_HOME@/spring-geode-samples/intro/getting-started/src/main/resources/geode/bin/start-cluster.gfsh
 ```
 
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
+<p class="note><strong>Note: </strong>
 </td>
 <td class="content">Be sure to change the <code>@SBDG_HOME@</code>
-placeholder variable with the location of your cloned copy of SBDG.</td>
-</tr>
-</tbody>
-</table>
-
-
-
+placeholder variable with the location of your cloned copy of SBDG.
+</p>
 
 
 The *Gfsh* shell script starts an VMware GemFire cluster with 1
 *Locator* and 2 *Servers*.
 
-
-
-
-
 The output from the shell script will look similar to:
 
 
-
-
-
-
-
-Starting the cluster
-
-
-
+#### Starting the cluster
 
 
 ``` highlight
@@ -2258,23 +1566,11 @@ Status    : PASSED
 
 
 
-
-
-
-
 After the cluster is started, *Gfsh* will connect to the
 *Locator/Manager* where you can then inspect the cluster:
 
 
-
-
-
-
-
-List & Decsribe Members
-
-
-
+#### List & Describe Members
 
 
 ``` highlight
@@ -2328,23 +1624,11 @@ Client Connections       : 0
 
 
 
-
-
-
-
 Note that we do not currently have any server-side Regions (e.g.
 "*/Customers*") defined. This is deliberate!
 
 
-
-
-
-
-
-List Regions (No Regions Found)
-
-
-
+#### List Regions (No Regions Found)
 
 
 ``` highlight
@@ -2353,25 +1637,11 @@ No Regions Found
 ```
 
 
-
-
-
-
-
 Now, without any code or configuration changes, simply run the CRM
 application again!
 
 
-
-
-
-
-
 Application Log Output in Client/Server Topology
-
-
-
-
 
 ``` highlight
 ...
@@ -2387,30 +1657,14 @@ Customer was [Customer(name=JonDoe)]
 ```
 
 
-
-
-
-
-
 The output is nearly identical except for the PDX Type metadata
 registration. We will explain this more below.
-
-
-
 
 
 Now, list Regions in the cluster again, using *Gfsh*:
 
 
-
-
-
-
-
 "/Customers" Region was created
-
-
-
 
 
 ``` highlight
@@ -2422,30 +1676,13 @@ Customers
 
 
 
-
-
-
-
 The "*/Customers*" Region has been magically created!
-
-
-
-
 
 When we describe the "*/Customers*" Region, we can see that it has 1
 entry:
 
 
-
-
-
-
-
 Describe the "/Customers" Region
-
-
-
-
 
 ``` highlight
 gfsh>describe region --name=/Customers
@@ -2465,17 +1702,9 @@ Region | size        | 1
 
 
 
-
-
-
-
 The "*/Customers*" Region entry is from the Spring Boot
 `ApplicationRunner` bean, which added `Customer` "*JonDoe*" at runtime
 during startup of the application.
-
-
-
-
 
 You will also notice that the server-side "*/Customers*" Region is
 created as a `PARTITION` Region, which provides the best data management
@@ -2483,44 +1712,19 @@ policy and organization for transactional data. The "*/Customers*"
 Region is being hosted on our 2 *Servers*, "ServerOne" and "ServerTwo".
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Warning
-</td>
-<td class="content">You must have redundancy (and optionally,
+<p class="important"><strong>Important:</strong>
+You must have redundancy (and optionally,
 persistence) configured in your cluster to prevent (complete) data loss,
 which forms the basis for high-availability (HA) in VMware GemFire and
-Pivotal Cloud Cache (PCC).</td>
-</tr>
-</tbody>
-</table>
-
-
+VMware GemFire for TAS.
+</p>
 
 
 
 We can query "*JonDoe*" from *Gfsh*:
 
 
-
-
-
-
-
 Query for "/Customers"
-
-
-
-
 
 ``` highlight
 gfsh>query --query="SELECT customer.id, customer.name FROM /Customers customer"
@@ -2535,17 +1739,9 @@ id | name
 ```
 
 
-
-
-
-
-
 Thanks to the `@EnableClusterAware` annotation, the application
 seamlessly switched from local to a client/server topology without so
 much as a single line of code, or any configuration changes!
-
-
-
 
 
 Technically, SBDG identified the configuration of the client application
@@ -2556,22 +1752,11 @@ remember the configuration on restarts and when new nodes are added,
 they will get the same configuration.
 
 
-
-
-
 For instance, if we start another server, it too will have the
 "*/Customers*" Region, which is important when you are "scaling-out".
 
 
-
-
-
-
-
 Add yet another server
-
-
-
 
 
 ``` highlight
@@ -2627,50 +1812,19 @@ Client Connections       : 0
 ```
 
 
-
-
-
-
-
 You can see that "ServerThree" is hosting the "*/Customers*" Region.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">You can still access this application from your Web
-client (e.g. Web browser) and view the data.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+You can still access this application from your Web
+client (e.g. Web browser) and view the data.
 
 Once again, SBDG is providing you with tremendous power and convenience
 that you may not be aware of.
 
 
 
-
-
 While there are very apparent things happening, there are also a few
 non-apparent things happening as well. In addition to the aforementioned
 things in the last section, we are now benefiting from:
-
-
-
 
 
 1.  SBDG appropriately configured and relied on VMware GemFire internal
@@ -2684,32 +1838,16 @@ things in the last section, we are now benefiting from:
     Serialization framework and alternative to *Java Serialization*.
 
 
-
-
-
 Once we migrate to a managed cloud platform environment, we’ll see the
 full effects of SBDG’s *auto-configuration* at play.
 
 
 
-
-
-
-
-
-
-PDX vs. Java Serialization
-
-
-
+#### PDX vs. Java Serialization
 
 
 Anytime you need to send data over the network, persist or overflow data
 to disk, your objects need to be serializable.
-
-
-
-
 
 SBDG employs VMware GemFire’s [PDX
 Serialization](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/data_serialization/gemfire_pdx_serialization.html)
@@ -2719,15 +1857,8 @@ framework so your application entity classes do not need to implement
 domain types are composed of types from 3rd party libraries for which
 you have no control over.
 
-
-
-
-
 Perhaps you don’t want to use *Java Serialization* given the inherit
 overhead of the *Java Serialization* format.
-
-
-
 
 
 In any case, using VMware GemFire PDX Serialization is ideal if you have
@@ -2736,48 +1867,24 @@ that needs to be serialized is easy to do. PDX allows you to query data
 in serialized form and even allows non-Java clients (e.g. native clients
 written in C#/C++) to access the same data.
 
-
-
-
-
 Using PDX also prevents you from having to configure the cluster to
 include the application entity classes on the servers classpath, which
 is apparent if you try to deserialize the data on the server.
 
-
-
-
-
 For instance, if you had written the OQL query ran in *Gfsh* above as
 `SELECT *` this would have caused a deserialization.
-
-
-
-
 
 For example:
 
 
 
-
-
-
-
-OQL Query causing a deserialization
-
-
-
-
+#### OQL Query causing a deserialization
 
 ``` highlight
 gfsh>query --query="SELECT * FROM /Customers"
 Result  : false
 Message : Could not create an instance of a class example.app.crm.model.Customer
 ```
-
-
-
-
 
 
 
@@ -2789,29 +1896,10 @@ is also why PDX Serialization and [Delta
 Propagation](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/delta_propagation/chapter_overview.html)
 do not mix naturally.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content"><em>Delta Propagation</em> is implemented by calling
+<em>Delta Propagation</em> is implemented by calling
 methods: <code>Delta.toDelta(:DataOutput)</code> and
 <code>Delta.fromDelta(:DataInput)</code> on the <code>Delta</code>
-implementing application domain class type of the object.</td>
-</tr>
-</tbody>
-</table>
-
-
+implementing application domain class type of the object.
 
 
 
@@ -2819,14 +1907,7 @@ If SBDG’s Auto-configuration for PDX was disabled, such as by doing:
 
 
 
-
-
-
-
-Disable PDX Auto-configuration
-
-
-
+#### Disable PDX Auto-configuration
 
 
 ``` highlight
@@ -2835,23 +1916,11 @@ class CrmApplication {  }
 ```
 
 
-
-
-
-
-
 Then you would have encountered a serialization Exception:
 
 
 
-
-
-
-
-Serialization Exception
-
-
-
+#### Serialization Exception
 
 
 ``` highlight
@@ -2919,33 +1988,13 @@ Caused by: java.io.NotSerializableException: example.app.crm.model.Customer
     ... 38 common frames omitted
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Enabling Cluster Configuration
-
-
-
+#### Enabling Cluster Configuration
 
 
 Using SBDG cluster configuration from a client is convenient during
 development. However, the Spring team recommends users use explicit
 configuration when deploying their apps to production and setting up the
 environment.
-
-
-
 
 
 Using `@EnableClusterAware`, or the `@EnableClusterConfiguration`
@@ -2955,14 +2004,7 @@ class:
 
 
 
-
-
-
-
-Create server-side Region manually
-
-
-
+#### Create server-side Region manually
 
 
 ``` highlight
@@ -2971,17 +2013,10 @@ gfsh> create region --name=Example --type=PARTITION ...
 
 
 
-
-
-
-
 While this can be scripted and the script can be checked into source
 control (a definitive plus) the same as the application code, you sill
 need to create matching Regions on the client, for which there is no
 assistance provided by VMware GemFire or Pivotal Cloud Cache.
-
-
-
 
 
 This is why `@EnableClusterAware` will help you be much more productive
@@ -2993,34 +2028,14 @@ the server-side cluster configuration using *Gfsh* and then
 that same configuration into another environment.
 
 
-
-
-
 The exported configuration can be checked into the source control and
 versioned along with the application as the code evolves.
-
-
-
 
 
 Again, this is highly recommended in practice.
 
 
-
-
-
-
-
-
-
-
-
-
-
 ## Run the Application in a Cloud Platform Environment
-
-
-
 
 
 Now that we have built and ran our application locally as well as in a
@@ -3029,14 +2044,8 @@ managed cloud platform environment, like *Pivotal Platform* using
 *Pivotal Cloud Cache* (PCC).
 
 
-
-
-
 This is the final step in our journey to the cloud and SBDG makes this a
 non-event!
-
-
-
 
 
 While SBDG handles most application development concerns, *Pivotal Cloud
@@ -3044,107 +2053,43 @@ Cache* (PCC), in conjunction with *Pivotal Platform*, handles most
 operational concerns.
 
 
-
-
-
-
-
-
-
-Using Pivotal Platform
-
-
-
+#### Using Pivotal Platform
 
 
 To deploy this application to *Pivotal Platform* and use *Pivotal Cloud
 Cache* (PCC), you will need access to a *Pivotal Platform* environment
 (e.g. PWS) with the PCC tile installed.
 
-
-
-
-
 Please see [Pivotal Web Services](https://run.pivotal.io/) (PWS) website
 for more details on how to get started.
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Alternatively, you can run this example in a locally
+<p class="note"><strong>Note:</strong>
+Alternatively, you can run this example in a locally
 hosted <em>Pivotal Platform</em> environment called <a
 href="https://docs.pivotal.io/pcf-dev/index.html">PCF Dev</a>. See <a
 href="../index.html#cloudfoundry-geode">Hybrid Cloud Environments</a>
-for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
-
+for more details.
+</p>
 
 
 Once you have acquired a *Pivotal Platform* environment and installed
 the required tools (e.g. CF CLI), then you can package the application
 and deploy (i.e. "*push*") it to *Pivotal Platform*.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See the <a
+See the <a
 href="../index.html#geode-gemfire-switch">Appendix</a> for more details
-on making the switch.</td>
-</tr>
-</tbody>
-</table>
+on making the switch.
 
 
 
-
-
-
-
-
-
-Matching Client/Server Versions
-
-
-
+#### Matching Client/Server Versions
 
 
 It is important to match versions when deploying to Pivotal Platform
 (formerly known as Pivotal CloudFoundry; PCF) using Pivotal Cloud Cache
 (PCC). This is technically a Pivotal GemFire restriction and has nothing
 to do with Spring.
-
-
-
 
 
 In a nutshell, older clients can connect to and communicate with the
@@ -3156,15 +2101,9 @@ communicate with a server having the same `major.minor` version (e.g. a
 still be able to connect to and communicate with a 9.10.0 server).
 
 
-
-
-
 The opposite is not true. A newer client cannot connect to and
 communicate with an older server. For example, a 9.10 client cannot
 connect to and communicate with a 9.9, or earlier version of a, server.
-
-
-
 
 
 Use the following table to make sure your client and server versions are
@@ -3242,39 +2181,14 @@ href="https://resources.docs.pivotal.io/pdfs/p-cloud-cache-1.5.pdf">1.5.x+</a></
 Table 2. Client/Server Versions
 
 
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Your Spring Boot application is the client and the
+<p class="note"><strong>Note:</strong>
+Your Spring Boot application is the client and the
 cloud environment, hosting the Pivotal GemFire cluster, is the
-server-side.</td>
-</tr>
-</tbody>
-</table>
+server-side.
+</p>
 
 
-
-
-
-
-
-
-
-
-
-
-
-Required Spring Boot Actuator Bits
-
-
+#### Required Spring Boot Actuator Bits
 
 
 
@@ -3284,22 +2198,13 @@ VMware GemFire requires you to declare Micrometer on the classpath as a
 compile-time dependency.
 
 
-
-
-
 Technically, the Micrometer bits are pulled in by
 `org.apache.geode:geode-core:1.9.0` and the Micrometer version is
 determined by the version of Spring Boot you are using:
 
 
 
-
-
-
-
-Micrometer compile-time dependency
-
-
+#### Micrometer compile-time dependency
 
 
 
@@ -3310,11 +2215,6 @@ Micrometer compile-time dependency
 ```
 
 
-
-
-
-
-
 As of this writing, due to an
 [Issue](https://github.com/cloudfoundry/java-buildpack-metric-writer/issues/6)
 in the *Java buildpack* for CloudFoundry, you are also required to put
@@ -3323,14 +2223,7 @@ using VMware GemFire or PCC:
 
 
 
-
-
-
-
-Declaring Spring Boot Actuator on the application classpath
-
-
-
+#### Declaring Spring Boot Actuator on the application classpath
 
 
 ``` highlight
@@ -3342,11 +2235,6 @@ Declaring Spring Boot Actuator on the application classpath
 ```
 
 
-
-
-
-
-
 This is because the *Java buildpack* detects Micrometer on the
 application classpath, which Apach Geode or PCC depends on and pulls in,
 therefore the *Java buildpack* will enable Spring Boot’s Actuator
@@ -3355,15 +2243,7 @@ well, will lead to the following Exception in a CloudFoudry environment
 when starting your app:
 
 
-
-
-
-
-
-Exception in CloudFoundry
-
-
-
+#### Exception in CloudFoundry
 
 
 ``` highlight
@@ -3377,23 +2257,12 @@ OUT     at o.s.c.a.TypeMappedAnnotation.getValue(TypeMappedAnnotation.java:403)
 
 
 
-
-
-
-
 On the other hand, if you try to exclude Micrometer from the VMware
 GemFire or PCC dependency, for example:
 
 
 
-
-
-
-
-Excluding the Micrometer dependency from `spring-geode-starter`
-
-
-
+#### Excluding the Micrometer dependency from `spring-geode-starter`
 
 
 ``` highlight
@@ -3411,36 +2280,18 @@ Excluding the Micrometer dependency from `spring-geode-starter`
 ```
 
 
-
-
-
-
-
 Then, you will get past the *Java buildpack* Exception, but you will
 encounter another Exception when Spring Boot tries to bootstrap VMware
 GemFire on startup:
 
 
-
-
-
-
-
-Exception in VMware GemFire
-
-
-
+#### Exception in VMware GemFire
 
 
 ``` highlight
 [OUT] Caused by: java.lang.NoClassDefFoundError: io/micrometer/core/instrument/MeterRegistry
 [OUT]     at o.a.g.c.c.ClientCacheFactory.basicCreate(ClientCacheFactory.java:261)
 ```
-
-
-
-
-
 
 
 Therefore, you must include Spring Boot Actuator on your Spring Boot
@@ -3450,28 +2301,13 @@ the `org.springframework.geode:spring-geode-starter-actuator` dependency
 on your application classpath.
 
 
-
-
-
-
-
-
-
 Additionally, and specifically when deploying to *Pivotal Platform*, we
 will create a `manifest.yml` file containing details about the services
 our application requires at runtime to function properly up in the
 cloud:
 
 
-
-
-
-
-
-Manifest.yml
-
-
-
+#### Manifest.yml
 
 
 ``` highlight
@@ -3488,18 +2324,9 @@ applications:
 ```
 
 
-
-
-
-
-
 The `manifest.yml` file is a type of deployment descriptor for our
 application to inform the cloud platform about the runtime environment
 required to run our application.
-
-
-
-
 
 In order to properly package the application for deployment to a managed
 cloud platform environment, such as *Pivotal Platform*, you use the
@@ -3509,14 +2336,7 @@ which was added to the generated project by *Spring Initializer*:
 
 
 
-
-
-
-
-Spring Boot Maven Plugin
-
-
-
+#### Spring Boot Maven Plugin
 
 
 ``` highlight
@@ -3530,25 +2350,12 @@ Spring Boot Maven Plugin
 </build>
 ```
 
-
-
-
-
-
-
 Then, you only need to run the `mvn` command from the command-line to
 package the CRM application:
 
 
 
-
-
-
-
-Maven Package Command
-
-
-
+#### Maven Package Command
 
 
 ``` highlight
@@ -3556,23 +2363,10 @@ $ mvn clean package
 ```
 
 
-
-
-
-
-
 This will produce artifacts similar to:
 
 
-
-
-
-
-
-Build artifacts
-
-
-
+#### Build artifacts
 
 
 ``` highlight
@@ -3593,60 +2387,28 @@ drwxr-xr-x   3 jblum  staff        96 Sep 16 18:21 test-classes
 
 
 
-
-
-
-
 The `crm-0.0.1-SNAPSHOT.jar` file contains the entire application:
 classes, configuration files and all the dependencies needed to run this
 application in the cloud.
-
-
-
 
 
 Now, we are ready to deploy, or "push" our CRM application up to the
 cloud.
 
 
-
-
-
 The first thing you will need to do is login to your *Pivotal Platform*
 environment from the command-line using the CF CLI tool (i.e. `cf`):
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The following CF CLI commands show what we did in
+<p class="note"><strong>Note:</strong>
+The following CF CLI commands show what we did in
 our <em>Pivotal Platform</em> environment. You will follow a similar
 procedure for your <em>Pivotal Platform</em> environment. Sensitive
-information has be stared (<strong>*</strong>) out.</td>
-</tr>
-</tbody>
-</table>
+information has be stared (<strong>*</strong>) out.
+</p>
 
 
-
-
-
-
-
-Login to the Pivotal Platform environment
-
-
-
+#### Login to the Pivotal Platform environment
 
 
 ``` highlight
@@ -3669,31 +2431,15 @@ No org or space targeted, use 'cf target -o ORG -s SPACE'
 ```
 
 
-
-
-
-
-
 The "*Temporary Authentication Code*" (i.e. "passcode") is obtained by
 following the provided HTTPS URL in your Web browser.
-
-
-
-
 
 After you successfully authenticate you can set your target Org and
 Space to which your Spring Boot applications will be deployed:
 
 
 
-
-
-
-
-Set the target Organization and Space
-
-
-
+#### Set the target Organization and Space
 
 
 ``` highlight
@@ -3706,25 +2452,11 @@ space:          playground
 ```
 
 
-
-
-
-
-
 Now you can push your CRM, Spring Boot application up to your cloud
 environment:
 
 
-
-
-
-
-
-Push your app
-
-
-
-
+#### Push your app
 
 ``` highlight
 $ cf push crm-app -u none --no-start -p build/libs/spring-geode-samples-getting-started-1.2.0.BUILD-SNAPSHOT.jar
@@ -3771,28 +2503,13 @@ memory usage:   768M
 ```
 
 
-
-
-
-
-
 The CRM, Spring Boot application is now deployed to the cloud.
-
-
-
-
 
 We can list the deployed apps and their current state:
 
 
 
-
-
-
-
-List current deployed apps
-
-
+#### List current deployed apps
 
 
 
@@ -3809,16 +2526,7 @@ data-pcc-demo        stopped           0/1         768M     1G
 ```
 
 
-
-
-
-
-
 We see the "*crm-app*" in the table of apps, which is currently stopped.
-
-
-
-
 
 We can either start and stop the app, restage the app, bind services,
 and so on, all from the command-line using `cf`, or we can perform these
@@ -3826,25 +2534,12 @@ actions from within *Pivotal AppsManager*, which is what we will do:
 
 
 
-
-
-
-
 ![pvtl appsmanager org space
 apps](./images/pvtl-appsmanager-org-space-apps.png)
 
 
-
-
-
-
-
 Again, we see the "*crm-app*". You can click on the app name and drill
 in to get more details:
-
-
-
-
 
 
 
@@ -3853,27 +2548,13 @@ overview](./images/pvtl-appsmanager-org-space-apps-crm-app-overview.png)
 
 
 
-
-
-
-
 If you click on "*Service (1)*" in the left navigation bar, you will see
 that the "*crm-app*" is bound to the "*pccServiceOne*" Pivotal Cloud
 Cache service instance:
 
 
-
-
-
-
-
 ![pvtl appsmanager org space apps crm app
 service](./images/pvtl-appsmanager-org-space-apps-crm-app-service.png)
-
-
-
-
-
 
 
 If you click on "*Settings*" in the left navigation bar and "REVEAL ENV
@@ -3882,33 +2563,15 @@ connect to the Pivotal Cloud Cache cluster using *Gfsh* from your local
 development environment:
 
 
-
-
-
-
-
 ![pvtl appsmanager org space apps crm app
 settings](./images/pvtl-appsmanager-org-space-apps-crm-app-settings.png)
-
-
-
-
-
 
 
 Let’s do that now. Copy the "*Gfsh login string*" and enter it in
 *Gfsh*:
 
 
-
-
-
-
-
-Connect to the PCC cluster using Gfsh
-
-
-
+#### Connect to the PCC cluster using Gfsh
 
 
 ``` highlight
@@ -3954,33 +2617,14 @@ No Regions Found
 ```
 
 
-
-
-
-
-
 Now, we can start the CRM, Spring Boot application using *Pivotal
 AppsManager* from the "*crm-app Overview*" page.
-
-
-
-
 
 The "*crm-app*" will be staged and then started:
 
 
-
-
-
-
-
 ![pvtl appsmanager org space apps crm app
 start](./images/pvtl-appsmanager-org-space-apps-crm-app-start.png)
-
-
-
-
-
 
 
 Click the "*play*" button in the upper right corner above the log output
@@ -3989,18 +2633,8 @@ Eventually, you should see the application log the interaction with
 "*JonDoe*".
 
 
-
-
-
-
-
 ![pvtl appsmanager org space apps crm app logs
 output](./images/pvtl-appsmanager-org-space-apps-crm-app-logs-output.png)
-
-
-
-
-
 
 
 As you can see in the image above, the application successfully logged
@@ -4009,24 +2643,12 @@ since the interactions with logged with `System.err.printf` statements.
 
 
 
-
-
 If you now click on "VIEW APP" link in the upper right-hand corner, it
 will open a new tab to the CRM Web app’s home page:
 
 
-
-
-
-
-
 ![getting started crm app
 homepage](./images/getting-started-crm-app-homepage.png)
-
-
-
-
-
 
 
 Then, you get all customers in JSON by using HTTP
@@ -4036,17 +2658,8 @@ service endpoint:
 
 
 
-
-
-
-
 ![getting started crm app
 getallcustomers](./images/getting-started-crm-app-getallcustomers.png)
-
-
-
-
-
 
 
 Now, back in *Gfsh*, you can see that the 1) "*/Customers*" Region was
@@ -4054,17 +2667,8 @@ added to the cluster of PCC servers and that 2) "*JonDoe*" was persisted
 to the cluster and you are able to query for "*JonDoe*".
 
 
-
-
-
-
-
 Listing and Describing the "/Customers" server Region and Querying for
 "JonDoe"
-
-
-
-
 
 ``` highlight
 Cluster-0 gfsh>list regions
@@ -4103,26 +2707,14 @@ id | name
 ```
 
 
-
-
-
-
-
 You successfully deployed the CRM, Spring Boot VMware GemFire/Pivotal
 Cloud Cache `ClientCache` application to the cloud!
-
-
-
-
 
 In this final incarnation of our CRM, Spring Boot application, SBDG yet
 again handled many different concerns for us so we did not need to. This
 is in addition to all the things mentioned above when running the
 application locally as well as running the application using a
 client/server topology. Now, we also benefit from:
-
-
-
 
 
 1.  SBDG figures out the connection criteria needed to connect your
@@ -4145,32 +2737,16 @@ client/server topology. Now, we also benefit from:
     match your client app.
 
 
-
-
-
 This is very powerful, and it greatly simplifies development, especially
 are you traversing environments.
 
 
 
-
-
-
-
-
-
 ## Running the Application in a Hybrid Environment
-
-
-
-
 
 While it is possible to run the CRM, Spring Boot `ClientCache`
 application in a Hybrid Cloud Environment, we will not specifically
 cover the details of doing so in this guide.
-
-
-
 
 
 Running in a Hybrid Cloud Environment specifically means deploying your
@@ -4180,29 +2756,10 @@ externally managed VMware GemFire cluster, i.e. the VMware GemFire
 cluster is running and managed off platform.
 
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">As of this writing, the inverse is also being
+As of this writing, the inverse is also being
 explored, running your Spring Boot applications off platform, but
 connecting those apps to managed data services (e.g. Pivotal Cloud Cache
-(PCC)) on platform.</td>
-</tr>
-</tbody>
-</table>
-
-
-
+(PCC)) on platform.
 
 
 There may be cases where you are unable to move your data management
@@ -4213,32 +2770,15 @@ in moving to the cloud, being able to migrate application services when
 it is applicable or possible to do so.
 
 
-
-
-
 You can find more information on running in a Hybrid Cloud Environment,
 [here](../index.html#cloudfoundry-geode).
 
 
-
-
-
-
-
-
-
 ## Summary
-
-
-
-
 
 In this guide, we saw first-hand the power of Spring Boot for VMware
 GemFire (SBDG) when building VMware GemFire powered Spring Boot
 applications.
-
-
-
 
 
 VMware GemFire can truly make your Spring Boot applications highly
@@ -4246,48 +2786,18 @@ resilient to failures, highly available, performant (i.e. high
 throughput and low latency), without sacrificing consistency, which is
 paramount to any data intensive application.
 
-
-
-
-
 SBDG handles a lot of low-level application concerns so you do not have
 to. Your focus, as an application developer, can remain on building the
 application to meet your customers' needs, collect feedback, iterate
 rapidly, and realize the value proposition sooner.
 
-
-
-
-
 Indeed, our intended goal is to make developing VMware GemFire
 applications with Spring, and Spring Boot in particular, a highly
 productive and enjoyable experience.
 
-
-
-
-
 We hope you enjoy!
 
 
-
-
-
-[Back to Samples](../index.html#geode-samples)
-
-
-
-
-
-
-
-
-
-<div id="footer">
-
-<div id="footer-text">
-
-Last updated 2022-10-10 12:24:02 -0700
 
 
 
