@@ -97,7 +97,7 @@ Tip
 Tip
 </td>
 <td class="content">See the corresponding sample <a
-href="guides/caching-http-session.html.html">guide</a> and
+href="guides/caching-http-session.html">guide</a> and
 {github-samples-url}/caching/http-session[code] to see Spring Session
 for {pivotal-gemfire-name} in action.</td>
 </tr>

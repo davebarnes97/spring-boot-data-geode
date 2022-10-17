@@ -107,7 +107,7 @@ including, but not limited to:
 - *Data Initialization* to quickly load (import) data to hydrate the
   cache during application startup or write (export) data on application
   shutdown to move data between environments (for example, TEST to DEV).
-  For more information, see [Using Data](./data-using.md).
+  For more information, see [Using Data](./data.md).
 
 - *Actuator*, to gain insight into the runtime behavior and operation of
   your cache, whether a client or a peer. For more information, see

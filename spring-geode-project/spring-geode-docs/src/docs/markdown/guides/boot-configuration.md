@@ -1101,7 +1101,7 @@ In today’s age, Security is no laughing matter and making sure your
 applications are secure is a first-class concern. This is why SBDG takes
 Security very seriously and attempts to make this as simple as possible.
 You are definitely encouraged to read the relevant
-[chapter](../%3Cem%3Eincludes/security.html#geode-security) in this
+[chapter](../security.html#geode-security) in this
 Reference Documentation on the provided Security \_auto-configuration
 support.
 
@@ -1175,7 +1175,7 @@ SBDG does provide server-side, peer Security
 and bootstrap your VMware GemFire servers with Spring. Again, an example
 of configuring/bootstrapping VMware GemFire servers with Spring is
 provided <a
-href="../_includes/configuration-auto.html#geode-cluster-configuration-bootstrapping">here</a>.
+href="../configuration-auto.html#geode-cluster-configuration-bootstrapping">here</a>.
 </p>
 
 

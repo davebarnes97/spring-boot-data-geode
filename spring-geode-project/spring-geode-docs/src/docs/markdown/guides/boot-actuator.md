@@ -40,7 +40,7 @@ information.
 ## Example Application
 
 This guide additionally provides a working
-[example application](/Users/daveba/Repo/spring-boot-data-geode/spring-geode-samples/boot/actuator) to review some of the Actuator Health Endpoints.
+[example application](https://github.com/spring-projects/spring-boot-data-geode/spring-geode-samples/boot/actuator) to review some of the Actuator Health Endpoints.
 
 The example application is a simple Temperature Monitoring Service,
 simulating a real-world, Internet of Things (IOT) Use Case (UC).

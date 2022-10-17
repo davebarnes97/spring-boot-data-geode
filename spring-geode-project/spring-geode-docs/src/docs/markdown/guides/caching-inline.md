@@ -871,8 +871,8 @@ asserting the behavior demonstrated above in the example. The test class
 is available here:
 
 <a
-href="/Users/daveba/Repo/spring-boot-data-geode/spring-geode-samples/caching/inline/src/test/java/example/app/caching/inline/CalculatorApplicationIntegrationTests.java"
-class="bare">/Users/daveba/Repo/spring-boot-data-geode/spring-geode-samples/caching/inline/src/test/java/example/app/caching/inline/CalculatorApplicationIntegrationTests.java</a>
+href="https://github.com/spring-projects/spring-boot-data-geode/spring-geode-samples/caching/inline/src/test/java/example/app/caching/inline/CalculatorApplicationIntegrationTests.java"
+class="bare">https://github.com/spring-projects/spring-boot-data-geode/spring-geode-samples/caching/inline/src/test/java/example/app/caching/inline/CalculatorApplicationIntegrationTests.java</a>
 
 
 ## Summary
