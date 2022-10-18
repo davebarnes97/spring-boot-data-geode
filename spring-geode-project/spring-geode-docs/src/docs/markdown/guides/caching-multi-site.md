@@ -51,7 +51,7 @@ It is assumed that the reader is familiar with the Spring *programming
 model*. While a user only requires a cursory knowledge of Spring’s
 *Cache Abstraction*, thorough knowledge of VMware GemFire’s multi-site
 data management capabilities using a [WAN
-topology](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/topologies_and_comm/multi_site_configuration/chapter_overview.html)
+topology](https://geode.apache.org/docs/guide/1.15/topologies_and_comm/multi_site_configuration/chapter_overview.html)
 would be beneficial.
 
 Additionally, this sample builds on the concepts introduced in the
@@ -562,9 +562,9 @@ Of course, to make *Multi-Site Caching* possible, we need to employ the
 client/server and WAN topologies.
 
 Refer to the documentation on <a
-href="https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/topologies_and_comm/cs_configuration/chapter_overview.html">Client/Server
+href="https://geode.apache.org/docs/guide/1.15/topologies_and_comm/cs_configuration/chapter_overview.html">Client/Server
 Configuration</a> as well as <a
-href="https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/topologies_and_comm/multi_site_configuration/chapter_overview.html">Multi-site
+href="https://geode.apache.org/docs/guide/1.15/topologies_and_comm/multi_site_configuration/chapter_overview.html">Multi-site
 (WAN) Configuration</a> for more details.
 
 Naturally, we use Spring Boot to configure and bootstrap an VMware
@@ -983,7 +983,7 @@ resolution policies, etc, in order to properly address the unique
 requirements (or SLAs) of your application use case(s), that are quite
 frankly, well beyond the scope of this guide. Therefore, you are
 encouraged to follow the VMware GemFire [User
-Guide](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/topologies_and_comm/multi_site_configuration/chapter_overview.html)
+Guide](https://geode.apache.org/docs/guide/1.15/topologies_and_comm/multi_site_configuration/chapter_overview.html)
 for further guidance.
 
 Although, there is 1 aspect of the Gateway configuration we want to
@@ -1017,7 +1017,7 @@ run the example and have a look at the cluster using *Gfsh*.
 
 For this exercise, it would be helpful to have an installation of VMware
 GemFire installed on your system. Follow the instructions in the [User
-Guide](https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/prereq_and_install.html)
+Guide](https://geode.apache.org/docs/guide/1.15/prereq_and_install.html)
 to get started.
 
 Once you have installed VMware GemFire and set your environment
@@ -1715,7 +1715,7 @@ cannot control, and that may not implement `java.io.Serializable`.
 
 You should refer to the VMware GemFire User Guide on
 more details on <a
-href="https://geode.apache.org/docs/guide/%7Bapache-geode-doc-version%7D/developing/data_serialization/gemfire_pdx_serialization.html">PDX</a>.
+href="https://geode.apache.org/docs/guide/1.15/developing/data_serialization/gemfire_pdx_serialization.html">PDX</a>.
 You can also refer to SBDG’s support of <a
 href="../index.html#geode-data-serialization">PDX
 Serialization</a>.
