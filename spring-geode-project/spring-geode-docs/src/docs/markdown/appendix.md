@@ -32,7 +32,7 @@ Boot applications backed by VMware GemFire:
 4.  [Switching from VMware GemFire to VMware GemFire or
     VMware GemFire for TAS](#geode-gemfire-switch)
 
-5.  [Running an VMware GemFire cluster with Spring Boot from your
+5.  [Running a VMware GemFire cluster with Spring Boot from your
     IDE](#geode-cluster-configuration-bootstrapping)
 
 6.  [Testing](#geode-testing-support)
@@ -59,7 +59,7 @@ action.
 To help answer this question, you must start by reviewing the complete
 collection of available Spring Data for VMware GemFire (SDG)
 annotations. These annotations are provided in the
-[`org.springframework.data.gemfire.config.annotation`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/package-summary.html)
+[`org.springframework.data.gemfire.config.annotation`](https://docs.spring.io/spring/docs/current/javadoc-api/)
 package. Most of the essential annotations begin with `@Enable...`, except
 for the base annotations: `@ClientCacheApplication`,
 `@PeerCacheApplication` and `@CacheServerApplication`.
@@ -705,7 +705,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>cache.log-level</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Configure the log-level
-of an VMware GemFire cache.</p></td>
+of a VMware GemFire cache.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>config</code></p></td>
 <td
@@ -1447,7 +1447,7 @@ properties</caption>
 <td
 class="tableblock halign-left valign-top"><p><code>management.use-http</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Whether to use the HTTP
-protocol to communicate with an VMware GemFire Manager.</p></td>
+protocol to communicate with a VMware GemFire Manager.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
 <td
@@ -2489,7 +2489,7 @@ Warning
 <td class="content">VMware GemFire is very strict about the
 properties that may be specified in a <code>gemfire.properties</code>
 file. You cannot mix Spring properties with <code>gemfire.*</code>
-properties in an VMware GemFire <code>gemfire.properties</code>
+properties in a VMware GemFire <code>gemfire.properties</code>
 file.</td>
 </tr>
 </tbody>
@@ -2618,7 +2618,7 @@ respectively.</td>
 </tbody>
 </table>
 
-### Running an VMware GemFire cluster with Spring Boot from your IDE
+### Running a VMware GemFire cluster with Spring Boot from your IDE
 
 As described in
 [geode-clientcache-applications](#geode-clientcache-applications),
@@ -2630,7 +2630,7 @@ applications quickly and easily.
 Spring Boot for VMware GemFire includes such a class:
 
 Example 11. Spring Boot application class used to configure and
-bootstrap an VMware GemFire server
+bootstrap a VMware GemFire server
 
 
 ``` highlight

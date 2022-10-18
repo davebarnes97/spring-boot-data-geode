@@ -1,7 +1,6 @@
 ---
-title: Building `ClientCache` Applications
+title: Building ClientCache Applications
 ---
-
 
 <!-- 
  Copyright (c) VMware, Inc. 2022. All rights reserved.
@@ -19,49 +18,26 @@ title: Building `ClientCache` Applications
  the License.
 -->
 
-
-
 The first opinionated option provided to you by Spring Boot for
-{pivotal-gemfire-name} (SBDG) is a
-{apache-geode-javadoc}/org/apache/geode/cache/client/ClientCache.html\[`ClientCache`\]
+VMware GemFire (SBDG) is a
+[`ClientCache`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/client/ClientCache.html)
 instance that you get by declaring Spring Boot for
-{pivotal-gemfire-name} on your application classpath.
-
-
-
-
+VMware GemFire on your application classpath.
 
 It is assumed that most application developers who use Spring Boot to
-build applications backed by {pivotal-gemfire-name} are building cache
-client applications deployed in an {pivotal-gemfire-name}
-{apache-geode-docs}/topologies_and_comm/cs_configuration/chapter_overview.html\[Client/Server
-Topology\]. The client/server topology is the most common and
+build applications backed by VMware GemFire are building cache
+client applications deployed in a VMware GemFire
+[Client/Server Topology](https://geode.apache.org/docs/guide/115/topologies_and_comm/cs_configuration/chapter_overview.html).
+The client/server topology is the most common and
 traditional architecture employed by enterprise applications that use
-{pivotal-gemfire-name}.
+VMware GemFire.
 
-
-
-
-
-For example, you can begin building a Spring Boot {pivotal-gemfire-name}
+For example, you can begin building a Spring Boot VMware GemFire
 `ClientCache` application by declaring the `spring-geode-starter` on
 your application’s classpath:
 
-
-
-
-
-
-
-Example 1. Spring Boot for {pivotal-gemfire-name} on the application
+Example 1. Spring Boot for VMware GemFire on the application
 classpath
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -71,34 +47,11 @@ classpath
 </dependency>
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then you configure and bootstrap your Spring Boot,
-{pivotal-gemfire-name} `ClientCache` application with the following main
+VMware GemFire `ClientCache` application with the following main
 application class:
 
-
-
-
-
-
-
-Example 2. Spring Boot, {pivotal-gemfire-name} `ClientCache` Application
-
-
-
-
-
-
-
+Example 2. Spring Boot, VMware GemFire `ClientCache` Application
 
 
 ``` highlight
@@ -111,55 +64,20 @@ public class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Your application now has a `ClientCache` instance that can connect to an
-{pivotal-gemfire-name} server running on `localhost` and listening on
+VMware GemFire server running on `localhost` and listening on
 the default `CacheServer` port, `40404`.
 
-
-
-
-
-By default, an {pivotal-gemfire-name} server (that is, `CacheServer`)
+By default, a VMware GemFire server (that is, `CacheServer`)
 must be running for the application to use the `ClientCache` instance.
 However, it is perfectly valid to create a `ClientCache` instance and
 perform data access operations by using `LOCAL` Regions. This is useful
 during development.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">To develop with <code>LOCAL</code> Regions,
+To develop with <code>LOCAL</code> Regions,
 configure your cache Regions with the
-{apache-geode-javadoc}/org/apache/geode/cache/client/ClientRegionShortcut.html#LOCAL[<code>ClientRegionShortcut.LOCAL</code>]
-data management policy.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>ClientRegionShortcut.LOCAL</code>](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/client/ClientRegionShortcut.html#LOCAL)
+data management policy.
 
 When you are ready to switch from your local development environment
 (IDE) to a client/server architecture in a managed environment, change
@@ -167,62 +85,24 @@ the data management policy of the client Region from `LOCAL` back to the
 default (`PROXY`) or even a `CACHING_PROXY`, which causes the data to be
 sent to and received from one or more servers.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Compare and contrast the preceding configuration
-with the Spring Data for {pivotal-gemfire-name}
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-geode-applications[approach].</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+Compare and contrast the preceding configuration
+with the Spring Data for VMware GemFire
+[approach](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-geode-applications).
 
 It is uncommon to ever need a direct reference to the `ClientCache`
 instance provided by SBDG injected into your application components (for
 example, `@Service` or `@Repository` beans defined in a Spring
 `ApplicationContext`), whether you are configuring additional
-{pivotal-gemfire-name} objects (Regions, Indexes, and so on) or are
+VMware GemFire objects (Regions, Indexes, and so on) or are
 using those objects indirectly in your applications. However, it is
 possible to do so if and when needed.
 
-
-
-
-
 For example, perhaps you want to perform some additional `ClientCache`
 initialization in a Spring Boot
-{spring-boot-javadoc}/org/springframework/boot/ApplicationRunner.html\[`ApplicationRunner`\]
+[`ApplicationRunner`](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/ApplicationRunner.html)
 on startup:
 
-
-
-
-
-
-
 Example 3. Injecting a `GemFireCache` reference
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -246,40 +126,16 @@ public class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 ### Building Embedded (Peer & Server) Cache Applications
 
-
-
 What if you want to build an embedded peer `Cache` application instead?
-
-
-
-
 
 Perhaps you need an actual peer cache member, configured and
 bootstrapped with Spring Boot, along with the ability to join this
 member to an existing cluster (of data servers) as a peer node.
 
-
-
-
-
 Remember the second goal in Spring Boot’s
-{spring-boot-docs-html}/#getting-started-introducing-spring-boot\[documentation\]:
-
-
-
-
+[documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/#getting-started-introducing-spring-boot):
 
 > 
 >
@@ -288,40 +144,19 @@ Remember the second goal in Spring Boot’s
 >
 > 
 
-
-
-
-
 Here, we focus on the second part of the goal: "*get out of the way
 quickly as requirements start to diverge from the defaults*".
-
-
-
-
 
 If your application requirements demand you use Spring Boot to configure
 and bootstrap an embedded peer `Cache` instance, declare your intention
 with either SDG’s
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html\[`@PeerCacheApplication`\]
+[`@PeerCacheApplication`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html)
 annotation, or, if you also need to enable connections from
 `ClientCache` applications, use SDG’s
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/CacheServerApplication.html\[`@CacheServerApplication`\]
+[`@CacheServerApplication`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/CacheServerApplication.html)
 annotation:
 
-
-
-
-
-
-
-Example 4. Spring Boot, {pivotal-gemfire-name} `CacheServer` Application
-
-
-
-
-
-
-
+Example 4. Spring Boot, VMware GemFire `CacheServer` Application
 
 
 ``` highlight
@@ -335,70 +170,26 @@ public class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">An {pivotal-gemfire-name} server is not necessarily
+A VMware GemFire server is not necessarily
 a <code>CacheServer</code> capable of serving cache clients. It is
-merely a peer member node in an {pivotal-gemfire-name} cluster (that is,
-a distributed system) that stores and manages data.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+merely a peer member node in a VMware GemFire cluster (that is,
+a distributed system) that stores and manages data.
 
 By explicitly declaring the `@CacheServerApplication` annotation, you
 tell Spring Boot that you do not want the default `ClientCache` instance
 but rather want an embedded peer `Cache` instance with a `CacheServer`
 component, which enables connections from `ClientCache` applications.
 
-
-
-
-
-You can also enable two other {pivotal-gemfire-name} services: \* An
+You can also enable two other VMware GemFire services: \* An
 embedded *Locator*, which allows clients or even other peers to locate
 servers in the cluster. \* An embedded *Manager*, which allows the
-{pivotal-gemfire-name} application process to be managed and monitored
+VMware GemFire application process to be managed and monitored
 by using
-{apache-geode-docs}/tools_modules/gfsh/chapter_overview.html\[Gfsh\],
-{pivotal-gemfire-name}'s command-line shell tool:
+[Gfsh](https://geode.apache.org/docs/guide/115/tools_modules/gfsh/chapter_overview.html),
+VMware GemFire's command-line shell tool:
 
-
-
-
-
-
-
-Example 5. Spring Boot {pivotal-gemfire-name} `CacheServer` Application
+Example 5. Spring Boot VMware GemFire `CacheServer` Application
 with *Locator* and *Manager* services enabled
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -414,27 +205,7 @@ public class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then you can use Gfsh to connect to and manage this server:
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 $ echo $GEMFIRE
@@ -481,33 +252,13 @@ Running                  : true
 Client Connections       : 0
 ```
 
-
-
-
-
-
-
-
-
-
-
 You can even start additional servers in Gfsh. These additional servers
 connect to your Spring Boot configured and bootstrapped
-{pivotal-gemfire-name} `CacheServer` application. These additional
+VMware GemFire `CacheServer` application. These additional
 servers started in Gfsh know about the Spring Boot,
-{pivotal-gemfire-name} server because of the embedded Locator service,
+VMware GemFire server because of the embedded Locator service,
 which is running on `localhost` and listening on the default Locator
 port, `10334`:
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 gfsh>start server --name=GfshServer --log-level=config --disable-default-server
@@ -530,30 +281,10 @@ SpringBootApacheGeodeCacheServerApplication | 10.0.0.121(SpringBootApacheGeodeCa
 GfshServer                                  | 10.0.0.121(GfshServer:30031)<v1>:1025
 ```
 
-
-
-
-
-
-
-
-
-
-
 Perhaps you want to start the other way around. You may need to connect
-a Spring Boot configured and bootstrapped {pivotal-gemfire-name} server
+a Spring Boot configured and bootstrapped VMware GemFire server
 application to an existing cluster. You can start the cluster in Gfsh
 with the following commands (shown with partial typical output):
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 gfsh>start locator --name=GfshLocator --port=11235 --log-level=config
@@ -593,34 +324,11 @@ GfshLocator | 10.0.0.121(GfshLocator:30245:locator)<ec><v0>:1024
 GfshServer  | 10.0.0.121(GfshServer:30270)<v1>:1025
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then modify the `SpringBootApacheGeodeCacheServerApplication` class to
 connect to the existing cluster:
 
-
-
-
-
-
-
-Example 6. Spring Boot {pivotal-gemfire-name} `CacheServer` Application
+Example 6. Spring Boot VMware GemFire `CacheServer` Application
 connecting to an external cluster
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -634,53 +342,16 @@ public class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Notice that the
+Notice that the
 <code>SpringBootApacheGeodeCacheServerApplication</code> class,
 <code>@CacheServerApplication</code> annotation’s <code>locators</code>
 property are configured with the host and port
 (<code>localhost[11235]</code>), on which the Locator was started by
-using Gfsh.</td>
-</tr>
-</tbody>
-</table>
+using Gfsh.
 
-
-
-
-
-After running your Spring Boot {pivotal-gemfire-name} `CacheServer`
+After running your Spring Boot VMware GemFire `CacheServer`
 application again and executing the `list members` command in Gfsh
 again, you should see output similar to the following:
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 gfsh>list members
@@ -711,32 +382,14 @@ Running                  : true
 Client Connections       : 0
 ```
 
-
-
-
-
-
-
-
-
-
-
 In both scenarios, the Spring Boot configured and bootstrapped
-{pivotal-gemfire-name} server, the Gfsh Locator and Gfsh server formed a
+VMware GemFire server, the Gfsh Locator and Gfsh server formed a
 cluster.
-
-
-
-
 
 While you can use either approach and Spring does not care, it is far
 more convenient to use Spring Boot and your IDE to form a small cluster
 while developing. Spring profiles make it far simpler and much faster to
 configure and start a small cluster.
-
-
-
-
 
 Also, this approach enables rapidly prototyping, testing, and debugging
 your entire end-to-end application and system architecture right from
@@ -744,80 +397,31 @@ the comfort and familiarity of your IDE. No additional tooling (such as
 Gfsh) or knowledge is required to get started quickly and easily. Just
 build and run.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">Be careful to vary your port numbers for the
+<p class="note"><strong>Note:</strong>
+Be careful to vary your port numbers for the
 embedded services, like the <code>CacheServer</code>, Locators, and the
 Manager, especially if you start multiple instances on the same machine.
 Otherwise, you are likely to run into a
-<code>java.net.BindException</code> caused by port conflicts.</td>
-</tr>
-</tbody>
-</table>
+<code>java.net.BindException</code> caused by port conflicts.
+</p>
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See the <a
-href="#geode-cluster-configuration-bootstrapping">[geode-cluster-configuration-bootstrapping]</a>
-appendix for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Running a VMware GemFire cluster with Spring Boot from your IDE](https://docs-staging.vmware.com/en/Spring-Boot-for-GemFire/1.7/sbfg/GUID-appendix.html#geode-cluster-configuration-bootstrapping)
+ for more details.
 
 ### Building Locator Applications
 
-
-
 In addition to `ClientCache`, `CacheServer`, and peer `Cache`
 applications, SDG, and by extension SBDG, now supports Spring Boot
-{pivotal-gemfire-name} Locator applications.
+VMware GemFire Locator applications.
 
-
-
-
-
-An {pivotal-gemfire-name} Locator is a location-based service or, more
+A VMware GemFire Locator is a location-based service or, more
 typically, a standalone process that lets clients locate a cluster of
-{pivotal-gemfire-name} servers to manage data. Many cache clients can
+VMware GemFire servers to manage data. Many cache clients can
 connect to the same cluster to share data. Running multiple clients is
 common in a Microservices architecture where you need to scale-up the
 number of application instances to satisfy the demand.
 
-
-
-
-
-An {pivotal-gemfire-name} Locator is also used by joining members of an
+A VMware GemFire Locator is also used by joining members of an
 existing cluster to scale-out and increase capacity of the logically
 pooled system resources (memory, CPU, network and disk). A Locator
 maintains metadata that is sent to the clients to enable such
@@ -828,31 +432,14 @@ which enables the load to be uniformly distributed across the cluster
 while also providing fail-over services to a redundant member if the
 primary fails. A Locator provides many more benefits, and we encourage
 you to read the
-{apache-geode-docs}/configuring/running/running_the_locator.html\[documentation\]
+[documentation](https://geode.apache.org/docs/guide/115/configuring/running/running_the_locator.html)
 for more details.
-
-
-
-
 
 As shown earlier, you can embed a Locator service within either a Spring
 Boot peer `Cache` or a `CacheServer` application by using the SDG
 `@EnableLocator` annotation:
 
-
-
-
-
-
-
 Example 7. Embedded Locator Service
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -864,16 +451,6 @@ class SpringBootCacheServerWithEmbeddedLocatorApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 However, it is more common to start standalone Locator JVM processes.
 This is useful when you want to increase the resiliency of your cluster
 in the face of network and process failures, which are bound to happen.
@@ -881,60 +458,24 @@ If a Locator JVM process crashes or gets severed from the cluster due to
 a network failure or partition, having multiple Locators provides a
 higher degree of availability (HA) through redundancy.
 
-
-
-
-
 Even if all Locators in the cluster go down, the cluster still remains
 intact. You cannot add more peer members (that is, scale-up the number
 of data nodes in the cluster) or connect any more clients, but the
 cluster is fine. If all the locators in the cluster go down, it is safe
 to restart them only after a thorough diagnosis.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">Once a client receives metadata about the cluster of
+<p class="note"><strong>Note:</strong>
+Once a client receives metadata about the cluster of
 servers, all data-access operations are sent directly to servers in the
 cluster, not a Locator. Therefore, existing, connected clients remain
-connected and operable.</td>
-</tr>
-</tbody>
-</table>
+connected and operable.
+</p>
 
-
-
-
-
-To configure and bootstrap Spring Boot {pivotal-gemfire-name} Locator
+To configure and bootstrap Spring Boot VMware GemFire Locator
 applications as standalone JVM processes, use the following
 configuration:
 
-
-
-
-
-
-
 Example 8. Standalone Locator Process
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -945,43 +486,16 @@ class SpringBootApacheGeodeLocatorApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Instead of using the `@EnableLocator` annotation, you now use the
 `@LocatorApplication` annotation.
 
-
-
-
-
 The `@LocatorApplication` annotation works in the same way as the
 `@PeerCacheApplication` and `@CacheServerApplication` annotations,
-bootstrapping an {pivotal-gemfire-name} process and overriding the
+bootstrapping a VMware GemFire process and overriding the
 default `ClientCache` instance provided by SBDG.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">If your <code>@SpringBootApplication</code> class is
+<p class="note"><strong>Note:</strong>
+If your <code>@SpringBootApplication</code> class is
 annotated with <code>@LocatorApplication</code>, it must be a
 <code>Locator</code> and not a <code>ClientCache</code>,
 <code>CacheServer</code>, or peer <code>Cache</code> application. If you
@@ -990,41 +504,18 @@ with embedded <code>CacheServer</code> components and an embedded
 Locator, you need to follow the approach shown earlier: using the
 <code>@EnableLocator</code> annotation with either the
 <code>@PeerCacheApplication</code> or
-<code>@CacheServerApplication</code> annotation.</td>
-</tr>
-</tbody>
-</table>
+<code>@CacheServerApplication</code> annotation.
+</p>
 
-
-
-
-
-With our Spring Boot {pivotal-gemfire-name} Locator application, we can
+With our Spring Boot VMware GemFire Locator application, we can
 connect both Spring Boot configured and bootstrapped peer members (peer
 `Cache`, `CacheServer` and `Locator` applications) as well as Gfsh
 started Locators and servers.
 
-
-
-
-
 First, we need to start two Locators by using our Spring Boot
-{pivotal-gemfire-name} Locator application class:
-
-
-
-
-
-
+VMware GemFire Locator application class:
 
 Example 9. SpringBootApacheGeodeLocatorApplication class
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1054,24 +545,10 @@ public class SpringBootApacheGeodeLocatorApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 We also need to vary the configuration for each Locator application
 instance.
 
-
-
-
-
-{pivotal-gemfire-name} requires each peer member in the cluster to be
+VMware GemFire requires each peer member in the cluster to be
 uniquely named. We can set the name of the Locator by using the
 `spring.data.gemfire.locator.name` SDG property set as a JVM System
 Property in your IDE’s run configuration profile for the main
@@ -1079,70 +556,29 @@ application class:
 `-Dspring.data.gemfire.locator.name=SpringLocatorOne`. We name the
 second Locator application instance `SpringLocatorTwo`.
 
-
-
-
-
 Additionally, we must vary the port numbers that the Locators use to
-listen for connections. By default, an {pivotal-gemfire-name} Locator
+listen for connections. By default, a VMware GemFire Locator
 listens on port `10334`. We can set the Locator port by using the
 `spring.data.gemfire.locator.port` SDG property.
-
-
-
-
 
 For our first Locator application instance (`SpringLocatorOne`), we also
 enable the "manager" profile so that we can connect to the Locator by
 using Gfsh.
 
-
-
-
-
 Our IDE run configuration profile for our first Locator application
 instance appears as:
 
-
-
-
-
 `-server -ea -Dspring.profiles.active=manager -Dspring.data.gemfire.locator.name=SpringLocatorOne -Dlogback.log.level=INFO`
-
-
-
-
 
 And our IDE run configuration profile for our second Locator application
 instance appears as:
 
-
-
-
-
 `-server -ea -Dspring.profiles.active= -Dspring.data.gemfire.locator.name=SpringLocatorTwo -Dspring.data.gemfire.locator.port=11235 -Dlogback.log.level=INFO`
-
-
-
-
 
 You should see log output similar to the following when you start a
 Locator application instance:
 
-
-
-
-
-
-
-Example 10. Spring Boot {pivotal-gemfire-name} Locator log output
-
-
-
-
-
-
-
+Example 10. Spring Boot VMware GemFire Locator log output
 
 
 ``` highlight
@@ -1221,34 +657,11 @@ Class Path:
 Press <enter> to exit!
 ```
 
-
-
-
-
-
-
-
-
-
-
 Next, start up the second Locator application instance (you should see
 log output similar to the preceding list). Then connect to the cluster
 of Locators by using Gfsh:
 
-
-
-
-
-
-
 Example 11. Cluster of Locators
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1276,35 +689,12 @@ SpringLocatorOne | 10.99.199.24(SpringLocatorOne:30043:locator)<ec><v0>:41000 [C
 SpringLocatorTwo | 10.99.199.24(SpringLocatorTwo:30077:locator)<ec><v1>:41001
 ```
 
-
-
-
-
-
-
-
-
-
-
 By using our `SpringBootApacheGeodeCacheServerApplication` main class
 from the previous section, we can configure and bootstrap an
-{pivotal-gemfire-name} `CacheServer` application with Spring Boot and
+VMware GemFire `CacheServer` application with Spring Boot and
 connect it to our cluster of Locators:
 
-
-
-
-
-
-
 Example 12. SpringBootApacheGeodeCacheServerApplication class
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1335,47 +725,16 @@ public class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 To do so, enable the "clustered" profile by using an IDE run profile
 configuration similar to:
 
-
-
-
-
 `-server -ea -Dspring.profiles.active=clustered -Dspring.data.gemfire.name=SpringServer -Dspring.data.gemfire.cache.server.port=41414 -Dlogback.log.level=INFO`
-
-
-
-
 
 After the server starts up, you should see the new peer member in the
 cluster:
 
-
-
-
-
-
-
 Example 13. Cluster with Spring Boot configured and bootstrapped
-{pivotal-gemfire-name} `CacheServer`
-
-
-
-
-
-
-
+VMware GemFire `CacheServer`
 
 
 ``` highlight
@@ -1387,33 +746,10 @@ SpringLocatorTwo | 10.99.199.24(SpringLocatorTwo:30077:locator)<ec><v1>:41001
 SpringServer     | 10.99.199.24(SpringServer:30216)<v2>:41002
 ```
 
-
-
-
-
-
-
-
-
-
-
 Finally, we can even start additional Locators and servers connected to
 this cluster by using Gfsh:
 
-
-
-
-
-
-
 Example 14. Gfsh started Locators and Servers
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1451,81 +787,33 @@ GfshLocator      | 10.99.199.24(GfshLocator:30259:locator)<ec><v3>:41003
 GfshServer       | 10.99.199.24(GfshServer:30295)<v4>:41004
 ```
 
-
-
-
-
-
-
-
-
-
-
 You must be careful to vary the ports and name of your peer members
-appropriately. Spring, and Spring Boot for {pivotal-gemfire-name} (SBDG)
+appropriately. Spring, and Spring Boot for VMware GemFire (SBDG)
 in particular, make doing so easy.
-
-
-
-
-
-
 
 ### Building Manager Applications
 
-
-
 As discussed in the previous sections, you can enable a Spring Boot
-configured and bootstrapped {pivotal-gemfire-name} peer member node in
+configured and bootstrapped VMware GemFire peer member node in
 the cluster to function as a Manager.
 
-
-
-
-
-An {pivotal-gemfire-name} Manager is a peer member node in the cluster
+A VMware GemFire Manager is a peer member node in the cluster
 that runs the management service, letting the cluster be managed and
 monitored with JMX-based tools, such as Gfsh, JConsole, or JVisualVM.
 Any tool using the JMX API can connect to and manage an
-{pivotal-gemfire-name} cluster for whatever purpose.
-
-
-
-
+VMware GemFire cluster for whatever purpose.
 
 Like Locators, the cluster may have more than one Manager for
 redundancy. Only server-side, peer member nodes in the cluster may
 function Managers. Therefore, a `ClientCache` application cannot be a
 Manager.
 
-
-
-
-
 To create a Manager, use the SDG `@EnableManager` annotation.
-
-
-
-
 
 The three primary uses of the `@EnableManager` annotation to create a
 Manager are:
 
-
-
-
-
 1 - CacheServer Manager Application
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 @SpringBootApplication
@@ -1536,27 +824,7 @@ class CacheServerManagerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 2 - Peer Cache Manager Application
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 @SpringBootApplication
@@ -1567,27 +835,7 @@ class PeerCacheManagerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 3 - Locator Manager Application
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 @SpringBootApplication
@@ -1598,92 +846,31 @@ class LocatorManagerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 \#1 creates a peer `Cache` instance with a `CacheServer` component that
 accepts client connections along with an embedded Manager that lets JMX
 clients connect.
-
-
-
-
 
 \#2 creates only a peer `Cache` instance along with an embedded Manager.
 As a peer `Cache` with no `CacheServer` component, clients are not able
 to connect to this node. It is merely a server managing data.
 
-
-
-
-
 \#3 creates a Locator instance with an embedded Manager.
-
-
-
-
 
 In all configuration arrangements, the Manager is configured to start
 immediately.
 
+See the Javadoc for the
+[<code>@EnableManager</code> annotation](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableManager.html) for additional configuration options.
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See the Javadoc for the
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableManager.html[<code>@EnableManager</code>
-annotation] for additional configuration options.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-As of {pivotal-gemfire-name} 1.11.0, you must include additional
-{pivotal-gemfire-name} dependencies on your Spring Boot application
-classpath to make your application a proper {pivotal-gemfire-name}
+As of VMware GemFire 1.11.0, you must include additional
+VMware GemFire dependencies on your Spring Boot application
+classpath to make your application a proper VMware GemFire
 Manager in the cluster, particularly if you also enable the embedded
 HTTP service in the Manager.
 
-
-
-
-
 The required dependencies are:
 
-
-
-
-
-
-
 Example 15. Additional Manager dependencies expressed in Gradle
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1692,92 +879,31 @@ runtime "org.apache.geode:geode-web"
 runtime "org.springframework.boot:spring-boot-starter-jetty"
 ```
 
-
-
-
-
-
-
-
-
-
-
 The embedded HTTP service (implemented with the Eclipse Jetty Servlet
 Container), runs the Management (Admin) REST API, which is used by
-{pivotal-gemfire-name} tooling, such as Gfsh, to connect to an
-{pivotal-gemfire-name} cluster over HTTP. In addition, it also enables
-the {pivotal-gemfire-name}
-{apache-geode-docs}/tools_modules/pulse/pulse-overview.html\[Pulse\]
+VMware GemFire tooling, such as Gfsh, to connect to an
+VMware GemFire cluster over HTTP. In addition, it also enables
+the VMware GemFire
+[Pulse](https://geode.apache.org/docs/guide/115/tools_modules/pulse/pulse-overview.html)
 Monitoring Tool (and Web application) to run.
-
-
-
-
 
 Even if you do not start the embedded HTTP service, a Manager still
 requires the `geode-http-service`, `geode-web` and
 `spring-boot-starter-jetty` dependencies.
 
-
-
-
-
 Optionally, you may also include the `geode-pulse` dependency, as
 follows:
 
-
-
-
-
-
-
 Example 16. Additional, optional Manager depdendencies expressed in
 Gradle
-
-
-
-
-
-
-
 
 
 ``` highlight
 runtime "org.apache.geode:geode-pulse"
 ```
 
-
-
-
-
-
-
-
-
-
-
 The `geode-pulse` dependency is only required if you want the Manager to
-automatically start the {pivotal-gemfire-name}
-{apache-geode-docs}/tools_modules/pulse/pulse-overview.html\[Pulse\]
+automatically start the VMware GemFire
+[Pulse](https://geode.apache.org/docs/guide/115/tools_modules/pulse/pulse-overview.html)
 Monitoring Tool. Pulse enables you to view the nodes of your
-{pivotal-gemfire-name} cluster and monitor them in realtime.
-
-
-
-
-
-
-
-
-
-
-
-<div id="footer">
-
-<div id="footer-text">
-
-Last updated 2022-10-10 12:11:22 -0700
-
-
-
-
+VMware GemFire cluster and monitor them in realtime.
