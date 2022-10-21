@@ -21,8 +21,8 @@ Title: Apache Geode API Extensions
 
 
 When using the Spring programming model and abstractions, it should not
-be necessary to use {pivotal-gemfire-name}
-{apache-geode-javadoc}\[APIs\] at all — for example, when using the
+be necessary to use VMware GemFire
+https://geode.apache.org/releases/latest/javadoc\[APIs\] at all — for example, when using the
 Spring Cache Abstraction for caching or the Spring Data Repository
 abstraction for DAO development. There are many more examples.
 
@@ -31,9 +31,9 @@ abstraction for DAO development. There are many more examples.
 
 
 For certain use cases, users may require low level access to
-fine-grained functionally. Spring Boot for {pivotal-gemfire-name}'s
+fine-grained functionally. Spring Boot for VMware GemFire's
 `org.springframework.geode:apache-geode-extensions` module and library
-builds on {pivotal-gemfire-name}'s APIs by including several extensions
+builds on VMware GemFire's APIs by including several extensions
 with enhanced functionality to offer an experience familiar to Spring
 users inside a Spring context.
 
@@ -51,9 +51,9 @@ users inside a Spring context.
 <td class="icon">
 Tip
 </td>
-<td class="content">Spring Data for {pivotal-gemfire-name} (SDG) also
-{spring-data-geode-docs-html}/#apis[includes] additional extensions to
-{pivotal-gemfire-name}'s APIs.</td>
+<td class="content">Spring Data for VMware GemFire (SDG) also
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#apis[includes] additional extensions to
+VMware GemFire's APIs.</td>
 </tr>
 </tbody>
 </table>
@@ -78,12 +78,12 @@ for analysis.
 Typically, you already know the type of cache your application is using,
 since you must declare your application to be either a client
 (`ClientCache`) in the
-{apache-geode-docs}/topologies_and_comm/cs_configuration/chapter_overview.html\[client/server
+https://geode.apache.org/docs/guide/115/topologies_and_comm/cs_configuration/chapter_overview.html\[client/server
 topology\], or a
-{apache-geode-docs}/topologies_and_comm/p2p_configuration/chapter_overview.html\[peer
+https://geode.apache.org/docs/guide/115/topologies_and_comm/p2p_configuration/chapter_overview.html\[peer
 member or node\] (`Cache`) in the cluster on startup. This is expressed
 in configuration when creating the cache instance required to interact
-with the {pivotal-gemfire-name} data management system. In most cases,
+with the VMware GemFire data management system. In most cases,
 your application will be a client. SBDG makes this decision easy, since
 it auto-configures a `ClientCache` instance, [by
 default](#geode-clientcache-applications).
@@ -277,10 +277,10 @@ testing.</td>
 
 
 
-Another useful API hidden by {pivotal-gemfire-name} is the membership
+Another useful API hidden by VMware GemFire is the membership
 events and listener interface. This API is especially useful on the
 server side when your Spring Boot application serves as a peer member of
-an {pivotal-gemfire-name} distributed system.
+an VMware GemFire distributed system.
 
 
 
@@ -299,7 +299,7 @@ objects are now invalid, and their references are stale.
 
 
 In a Spring context, this is particularly problematic since most
-{pivotal-gemfire-name} objects are *Singleton* beans declared in and
+VMware GemFire objects are *Singleton* beans declared in and
 managed by the Spring container. Those beans may be injected and used in
 other framework and application components. For instance, `Region`
 instances are injected into SDG’s `GemfireTemplate`, Spring Data
@@ -315,7 +315,7 @@ event, there is no way to auto-wire fresh object references into the
 dependent application or framework components when the peer member is
 reconnected, unless the Spring `ApplicationContext` is “refreshed”. In
 fact, there is no way to even know that this event has occurred, since
-the {pivotal-gemfire-name} `MembershipListener` API and corresponding
+the VMware GemFire `MembershipListener` API and corresponding
 events are “internal”.
 
 
@@ -369,7 +369,7 @@ application, SBDG provides the following
 
 
 The abstract `MembershipListenerAdapter` class implements
-{pivotal-gemfire-name}'s
+VMware GemFire's
 `org.apache.geode.distributed.internal.MembershipListener` interface to
 simplify the event handler method signatures by using an appropriate
 `MembershipEvent` type to encapsulate the actors in the event.
@@ -380,7 +380,7 @@ simplify the event handler method signatures by using an appropriate
 
 The abstract `MembershipEvent` class is further subclassed to represent
 specific membership event types that occur within the
-{pivotal-gemfire-name} system:
+VMware GemFire system:
 
 
 
@@ -448,7 +448,7 @@ container in order to refresh the Spring `ApplicationContext`.
 
 
 
-{pivotal-gemfire-name}'s PDX serialization framework is yet another API
+VMware GemFire's PDX serialization framework is yet another API
 that falls short of a complete stack.
 
 
@@ -459,7 +459,7 @@ For instance, there is no easy or direct way to serialize an object as
 PDX bytes. It is also not possible to modify an existing `PdxInstance`
 by adding or removing fields, since doing so would require a new PDX
 type. In this case, you must create a new `PdxInstance` and copy from an
-existing `PdxInstance`. Unfortunately, the {pivotal-gemfire-name} API
+existing `PdxInstance`. Unfortunately, the VMware GemFire API
 offers no help in this regard. It is also not possible to use PDX in a
 client, local-only mode without a server, since the PDX type registry is
 only available and managed on servers in a cluster.
@@ -621,7 +621,7 @@ of Jackson’s `ObjectMapper`.
 
 
 
-The `ObjectMapper` constructed by {pivotal-gemfire-name}'s own
+The `ObjectMapper` constructed by VMware GemFire's own
 `PdxInstance` implementation (`PdxInstanceImpl`) is not configurable,
 nor was it configured correctly. Unfortunately, since `PdxInstance` is
 not extensible, the `getObject()` method fails when converting the JSON
@@ -723,7 +723,7 @@ uses a natural identifier, rather than a surrogate ID, such as
 <td class="icon">
 Note
 </td>
-<td class="content">{pivotal-gemfire-name}'s <code>JSONFormatter</code>
+<td class="content">VMware GemFire's <code>JSONFormatter</code>
 class is not capable of marking the identity field of a
 <code>PdxInstance</code> originating from JSON.</td>
 </tr>
@@ -746,9 +746,9 @@ Warning
 </td>
 <td class="content">It is not currently possible to implement the
 <code>PdxInstance</code> interface and store instances of this type as a
-value in a Region. {pivotal-gemfire-name} assumes all
+value in a Region. VMware GemFire assumes all
 <code>PdxInstance</code> objects are an implementation created by
-{pivotal-gemfire-name} itself (that is, <code>PdxInstanceImpl</code>),
+VMware GemFire itself (that is, <code>PdxInstanceImpl</code>),
 which has a tight coupling to the PDX type registry. An
 <code>Exception</code> is thrown if you try to store instances of your
 own <code>PdxInstance</code> implementation.</td>
@@ -777,7 +777,7 @@ an `Object` to PDX. For such cases, SBDG offers the
 
 This might be true when calling a method with a parameter expecting an
 argument of, or returning an instance of, type `PdxInstance`,
-particularly when {pivotal-gemfire-name}'s `read-serialized` PDX
+particularly when VMware GemFire's `read-serialized` PDX
 configuration property is set to `true` and only an object is available
 in the current context.
 
@@ -786,14 +786,14 @@ in the current context.
 
 
 Under the hood, SBDG’s `ObjectPdxInstanceAdapter` class uses Spring’s
-{spring-framework-javadoc}/org/springframework/beans/BeanWrapper.html\[`BeanWrapper`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/BeanWrapper.html\[`BeanWrapper`\]
 class along with Java’s introspection and reflection functionality to
 adapt the given `Object` and access it with the full
-{apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html\[`PdxInstance`\]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/PdxInstance.html\[`PdxInstance`\]
 API. This includes the use of the
-{apache-geode-javadoc}/org/apache/geode/pdx/WritablePdxInstance.html\[`WritablePdxInstance`\]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/WritablePdxInstance.html\[`WritablePdxInstance`\]
 API, obtained from
-{apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html#createWriter--\[`PdxInstance.createWriter()`\],
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/PdxInstance.html#createWriter--\[`PdxInstance.createWriter()`\],
 to modify the underlying `Object` as well.
 
 
@@ -803,7 +803,7 @@ to modify the underlying `Object` as well.
 Like the `PdxInstanceWrapper` class, `ObjectPdxInstanceAdapter` contains
 special logic to resolve the identity field and ID of the `PdxInstance`,
 including consideration for Spring Data’s
-{spring-data-commons-javadoc}/org/springframework/data/annotation/Id.html\[`@Id`\]
+https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/annotation/Id.html\[`@Id`\]
 mapping annotation, which can be introspected in this case, given that
 the underlying `Object` backing the `PdxInstance` is a POJO.
 
@@ -814,7 +814,7 @@ the underlying `Object` backing the `PdxInstance` is a POJO.
 The `ObjectPdxInstanceAdapter.getObject()` method returns the wrapped
 `Object` used to construct the `ObjectPdxInstanceAdapter` and is,
 therefore, automatically deserializable, as determined by the
-{apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html#isDeserializable--\[`PdxInstance.isDeseriable()`\]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/PdxInstance.html#isDeserializable--\[`PdxInstance.isDeseriable()`\]
 method, which always returns `true`.
 
 
@@ -966,8 +966,8 @@ class ObjectPdxInstanceAdapterTest {
 
 
 For testing purposes, SBDG provides a test implementation of
-{pivotal-gemfire-name}'s
-{apache-geode-javadoc}/org/apache/geode/security/SecurityManager.html\[`SecurityManager`\]
+VMware GemFire's
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/security/SecurityManager.html\[`SecurityManager`\]
 interface, which expects the password to match the username
 (case-sensitive) when authenticating.
 
@@ -982,8 +982,8 @@ By default, all operations are authorized.
 
 
 To match the expectations of SBDG’s `TestSecurityManager`, SBDG
-additionally provides a test implementation of {pivotal-gemfire-name}'s
-{apache-geode-javadoc}/org/apache/geode/security/AuthInitialize.html\[`AuthInitialize`\]
+additionally provides a test implementation of VMware GemFire's
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/security/AuthInitialize.html\[`AuthInitialize`\]
 interface, which supplies matching credentials for both the username and
 password.
 

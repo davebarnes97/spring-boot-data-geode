@@ -22,8 +22,8 @@ Title: Externalized Configuration
 
 
 Like Spring Boot itself (see
-{spring-boot-docs-html}/boot-features-external-config.html\[Spring
-Boot’s documentation\]), Spring Boot for {pivotal-gemfire-name} (SBDG)
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html\[Spring
+Boot’s documentation\]), Spring Boot for VMware GemFire (SBDG)
 supports externalized configuration.
 
 
@@ -32,11 +32,11 @@ supports externalized configuration.
 
 By externalized configuration, we mean configuration metadata stored in
 Spring Boot
-{spring-boot-docs-html}/boot-features-external-config.html#boot-features-external-config-application-property-files\[`application.properties`\].
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-application-property-files\[`application.properties`\].
 You can even separate concerns by addressing each concern in an
 individual properties file. Optionally, you could also enable any given
 property file for only a specific
-{spring-boot-docs-html}/boot-features-external-config.html#boot-features-external-config-profile-specific-properties\[profile\].
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-profile-specific-properties\[profile\].
 
 
 
@@ -44,20 +44,20 @@ property file for only a specific
 
 You can do many other powerful things, such as (but not limited to)
 using
-{spring-boot-docs-html}/boot-features-external-config.html#boot-features-external-config-placeholders-in-properties\[placeholders\]
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-placeholders-in-properties\[placeholders\]
 in properties,
-{spring-boot-docs-html}/boot-features-external-config.html#boot-features-encrypting-properties\[encrypting\]
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-encrypting-properties\[encrypting\]
 properties, and so on. In this section, we focus particularly on
-{spring-boot-docs-html}/boot-features-external-config.html#boot-features-external-config-typesafe-configuration-properties\[type
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-typesafe-configuration-properties\[type
 safety\].
 
 
 
 
 
-Like Spring Boot, Spring Boot for {pivotal-gemfire-name} provides a
+Like Spring Boot, Spring Boot for VMware GemFire provides a
 hierarchy of classes that captures configuration for several
-{pivotal-gemfire-name} features in an associated
+VMware GemFire features in an associated
 `@ConfigurationProperties` annotated class. Again, the configuration
 metadata is specified as well-known, documented properties in one or
 more Spring Boot `application.properties` files.
@@ -66,7 +66,7 @@ more Spring Boot `application.properties` files.
 
 
 
-For instance, a Spring Boot, {pivotal-gemfire-name} `ClientCache`
+For instance, a Spring Boot, VMware GemFire `ClientCache`
 application might be configured as follows:
 
 
@@ -76,7 +76,7 @@ application might be configured as follows:
 
 
 Example 1. Spring Boot `application.properties` containing Spring Data
-properties for {pivotal-gemfire-name}
+properties for VMware GemFire
 
 
 
@@ -87,7 +87,7 @@ properties for {pivotal-gemfire-name}
 
 
 ``` highlight
-# Spring Boot application.properties used to configure {geode-name}
+# Spring Boot application.properties used to configure VMware GemFire
 
 spring.data.gemfire.name=MySpringBootApacheGeodeApplication
 
@@ -117,8 +117,8 @@ spring.data.gemfire.pool.locators=10.105.120.16[11235],boombox[10334]
 
 
 You can use many other properties to externalize the configuration of
-your Spring Boot, {pivotal-gemfire-name} applications. See the
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/package-frame.html\[Javadoc\]
+your Spring Boot, VMware GemFire applications. See the
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/package-frame.html\[Javadoc\]
 for specific configuration properties. Specifically, review the
 `enabling` annotation attributes.
 
@@ -130,7 +130,7 @@ You may sometimes require access to the configuration metadata
 (specified in properties) in your Spring Boot applications themselves,
 perhaps to further inspect or act on a particular configuration setting.
 You can access any property by using Spring’s
-{spring-framework-javadoc}/org/springframework/core/env/Environment.html\[`Environment`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/env/Environment.html\[`Environment`\]
 abstraction:
 
 
@@ -227,7 +227,7 @@ class MyApplicationComponent {
 Given a handle to
 {spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/configuration/GemFireProperties.html\[`GemFireProperties`\],
 you can access any of the configuration properties that are used to
-configure {pivotal-gemfire-name} in a Spring context. You need only
+configure VMware GemFire in a Spring context. You need only
 autowire an instance of `GemFireProperties` into your application
 component.
 
@@ -248,7 +248,7 @@ See the complete reference for the
 
 
 You can access the externalized configuration of Spring Session when you
-use {pivotal-gemfire-name} as your (HTTP) session state caching
+use VMware GemFire as your (HTTP) session state caching
 provider.
 
 
@@ -264,7 +264,7 @@ class.
 
 
 As shown earlier in this chapter, you can specify Spring Session for
-{pivotal-gemfire-name} (SSDG) properties as follows:
+VMware GemFire (SSDG) properties as follows:
 
 
 
@@ -273,7 +273,7 @@ As shown earlier in this chapter, you can specify Spring Session for
 
 
 Example 4. Spring Boot `application.properties` for Spring Session using
-{pivotal-gemfire-name} as the (HTTP) session state caching provider
+VMware GemFire as the (HTTP) session state caching provider
 
 
 
@@ -284,7 +284,7 @@ Example 4. Spring Boot `application.properties` for Spring Session using
 
 
 ``` highlight
-# Spring Boot application.properties used to configure {geode-name} as a (HTTP) session state caching provider
+# Spring Boot application.properties used to configure VMware GemFire as a (HTTP) session state caching provider
 # in Spring Session
 
 spring.session.data.gemfire.session.expiration.max-inactive-interval-seconds=300

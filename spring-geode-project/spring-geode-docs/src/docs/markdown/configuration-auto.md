@@ -2,7 +2,6 @@
 Title: Auto-configuration
 ---
 
-
 <!-- 
  Copyright (c) VMware, Inc. 2022. All rights reserved.
  Licensed to the Apache Software Foundation (ASF) under one or more contributor license
@@ -19,15 +18,10 @@ Title: Auto-configuration
  the License.
 -->
 
-
-The following Spring Framework, Spring Data for {pivotal-gemfire-name}
-(SDG) and Spring Session for {pivotal-gemfire-name} (SSDG) annotations
-are implicitly declared by Spring Boot for {pivotal-gemfire-name}'s
+The following Spring Framework, Spring Data for VMware GemFire
+(SDG) and Spring Session for VMware GemFire (SSDG) annotations
+are implicitly declared by Spring Boot for VMware GemFire's
 (SBDG) auto-configuration.
-
-
-
-
 
 - `@ClientCacheApplication`
 
@@ -52,149 +46,48 @@ are implicitly declared by Spring Boot for {pivotal-gemfire-name}'s
 
 - `@EnableGemFireHttpSession`
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">This means that you need not explicitly declare any
+This means that you need not explicitly declare any
 of these annotations on your <code>@SpringBootApplication</code> class,
 since they are provided by SBDG already. The only reason you would
 explicitly declare any of these annotations is to override Spring
 Boot’s, and in particular, SBDG’s auto-configuration. Otherwise, doing
-so is unnecessary.</td>
-</tr>
-</tbody>
-</table>
+so is unnecessary.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">You should read the chapter in Spring Boot’s
+You should read the chapter in Spring Boot’s
 reference documentation on
-{spring-boot-docs-html}/#using-boot-auto-configuration[auto-configuration].</td>
-</tr>
-</tbody>
-</table>
+[auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/#using-boot-auto-configuration).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">You should review the chapter in Spring Data for
-{pivotal-gemfire-name}'s (SDG) reference documentation on
-{spring-data-geode-docs-html}/#bootstrap-annotation-config[annotation-based
-configuration]. For a quick reference and overview of annotation-based
+You should review the chapter in Spring Data for
+VMware GemFire's (SDG) reference documentation on
+[annotation-based configuration](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config). For a quick reference and overview of annotation-based
 configuration, see the
-{spring-data-geode-docs-html}/#bootstap-annotations-quickstart[annotations
-quickstart].</td>
-</tr>
-</tbody>
-</table>
+[annotations quickstart](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstap-annotations-quickstart).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See the corresponding sample <a
-href="guides/boot-configuration.html">guide</a> and
-{github-samples-url}/boot/configuration[code] to see Spring Boot
-auto-configuration for {pivotal-gemfire-name} in action.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+See the corresponding sample
+[guide](guides/boot-configuration.html) and
+[code](https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/configuration) to see Spring Boot
+auto-configuration for VMware GemFire in action.
 
 ### Customizing Auto-configuration
-
-
 
 You might ask, “How do I customize the auto-configuration provided by
 SBDG if I do not explicitly declare the annotation?”
 
-
-
-
-
 For example, you may want to customize the member’s name. You know that
 the
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html\[`@ClientCacheApplication`\]
+[`@ClientCacheApplication`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html)
 annotation provides the
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableGemFireProperties.html#name--\[`name`\]
+[`name`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableGemFireProperties.html#name--)
 attribute so that you can set the client member’s name. However, SBDG
 has already implicitly declared the `@ClientCacheApplication` annotation
 through auto-configuration on your behalf. What do you do?
 
-
-
-
-
 In this case, SBDG supplies a few additional annotations.
-
-
-
-
 
 For example, to set the (client or peer) member’s name, you can use the
 `@UseMemberName` annotation:
 
-
-
-
-
-
-
 Example 1. Setting the member’s name using `@UseMemberName`
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -205,35 +98,12 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Alternatively, you could set the `spring.application.name` or the
 `spring.data.gemfire.name` property in Spring Boot
 `application.properties`:
 
-
-
-
-
-
-
 Example 2. Setting the member’s name using the `spring.application.name`
 property
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -243,26 +113,8 @@ spring.application.name = MyMemberName
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
 Example 3. Setting the member’s name using the
 `spring.data.gemfire.cache.name` property
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -271,124 +123,49 @@ Example 3. Setting the member’s name using the
 spring.data.gemfire.cache.name = MyMemberName
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The <code>spring.data.gemfire.cache.name</code>
+<p class="note"><strong>Note:</strong>
+The <code>spring.data.gemfire.cache.name</code>
 property is an alias for the <code>spring.data.gemfire.name</code>
 property. Both properties do the same thing (set the name of the client
-or peer member node).</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+or peer member node).
+</p>
 
 In general, there are three ways to customize configuration, even in the
 context of SBDG’s auto-configuration:
 
-
-
-
-
 - Using
-  {spring-boot-data-geode-javadoc}/org/springframework/geode/config/annotation/package-summary.html\[annotations\]
+  [annotations](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/config/annotation/package-summary.html)
   provided by SBDG for common and popular concerns (such as naming
   client or peer members with the `@UseMemberName` annotation or
   enabling durable clients with the `@EnableDurableClient` annotation).
 
 - Using well-known and documented
-  {spring-data-geode-docs-html}/#bootstrap-annotation-config-properties\[properties\]
+  https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-properties\[properties\]
   (such as `spring.application.name`, or `spring.data.gemfire.name`, or
   `spring.data.gemfire.cache.name`).
 
 - Using
-  {spring-data-geode-docs-html}/#bootstrap-annotation-config-configurers\[configurers\]
+  [configurers](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-configurers)
   (such as
-  {spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/ClientCacheConfigurer.html\[`ClientCacheConfigurer`\]).
+  [`ClientCacheConfigurer`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheConfigurer.html)).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">For the complete list of documented properties, see
-<a
-href="#geode-configuration-metadata">[geode-configuration-metadata]</a>.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
+For the complete list of documented properties, see
+[Configuration Metadata Reference](https://docs.spring.io/spring-boot-data-geode-build/current/reference/html5/#geode-configuration-metadata).
 
 
 ### Disabling Auto-configuration
 
-
-
 Spring Boot’s reference documentation explains how to
-{spring-boot-docs-html}/#using-boot-disabling-specific-auto-configuration\[disable
-Spring Boot auto-configuration\].
+[disable Spring Boot auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/#using-boot-disabling-specific-auto-configuration).
 
-
-
-
-
-[\[geode-auto-configuration-disable\]](#geode-auto-configuration-disable)
+[Disabling Auto-configuration](./appendix.html#geode-auto-configuration-disable)
 also explains how to disable SBDG auto-configuration.
-
-
-
-
 
 In a nutshell, if you want to disable any auto-configuration provided by
 either Spring Boot or SBDG, declare your intent in the
 `@SpringBootApplication` annotation:
 
-
-
-
-
-
-
 Example 4. Disabling Specific Auto-configuration Classes
-
-
-
-
-
-
 
 
 
@@ -401,75 +178,25 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Caution
-</td>
-<td class="content">Make sure you understand what you are doing when you
-disable auto-configuration.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+<p class="caution"><strong>Caution:</strong>
+Make sure you understand what you are doing when you
+disable auto-configuration.
+</p>
 
 ### Overriding Auto-configuration
 
-
-
-[\[geode-autoconfiguration-annotations-overriding\]](#geode-autoconfiguration-annotations-overriding)
+[Overriding](./appendix#geode-auto-configuration-annotations-overriding)
 explains how to override SBDG auto-configuration.
-
-
-
-
 
 In a nutshell, if you want to override the default auto-configuration
 provided by SBDG, you must annotate your `@SpringBootApplication` class
 with your intent.
 
-
-
-
-
 For example, suppose you want to configure and bootstrap an
-{pivotal-gemfire-name} `CacheServer` application (a peer, not a client):
-
-
-
-
-
-
+VMware GemFire `CacheServer` application (a peer, not a client):
 
 Example 5. Overriding the default `ClientCache` *Auto-Configuration* by
 configuring & bootstrapping a `CacheServer` application
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -480,33 +207,10 @@ class SpringBootApacheGeodeCacheServerApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 You can also explicitly declare the `@ClientCacheApplication` annotation
 on your `@SpringBootApplication` class:
 
-
-
-
-
-
-
 Example 6. Overriding by explicitly declaring `@ClientCacheApplication`
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -517,29 +221,11 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 You are overriding SBDG’s auto-configuration of the `ClientCache`
 instance. As a result, you have now also implicitly consented to being
 responsible for other aspects of the configuration (such as security).
 
-
-
-
-
 Why does that happen?
-
-
-
-
 
 It happens because, in certain cases, such as security, certain aspects
 of security configuration (such as SSL) must be configured before the
@@ -547,129 +233,49 @@ cache instance is created. Also, Spring Boot always applies user
 configuration before auto-configuration partially to determine what
 needs to be auto-configured in the first place.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Caution
-</td>
-<td class="content">Make sure you understand what you are doing when you
-override auto-configuration.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+<p class="caution"><strong>Caution:</strong>
+Make sure you understand what you are doing when you
+override auto-configuration.
+</p>
 
 ### Replacing Auto-configuration
 
-
-
 See the Spring Boot reference documentation on
-{spring-boot-docs-html}/#using-boot-replacing-auto-configuration\[replacing
-auto-configuration\].
-
-
-
-
-
-
+[replacing auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/#using-boot-replacing-auto-configuration).
 
 ### Understanding Auto-configuration
-
-
 
 This section covers the SBDG provided auto-configuration classes that
 correspond to the SDG annotations in more detail.
 
-
-
-
-
-To review the complete list of SBDG auto-confiugration classes, see
-[\[geode-auto-configuration-disable-classes\]](#geode-auto-configuration-disable-classes).
-
-
-
-
+To review the complete list of SBDG auto-configuration classes, see
+[Complete Set of Auto-configuration Classes](./appendix.html#geode-auto-configuration-disable-classes).
 
 #### `@ClientCacheApplication`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/ClientCacheAutoConfiguration.html[<code>ClientCacheAutoConfiguration</code>]
+The SBDG
+[<code>ClientCacheAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/ClientCacheAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html[<code>@ClientCacheApplication</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
+[<code>@ClientCacheApplication</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html)
+annotation.
 
-
-
-
-
-As explained in [\[getting-started\]](#getting-started) SBDG starts with
+As explained in [Getting Started](./index.html#getting-started) SBDG starts with
 the opinion that application developers primarily build
-{pivotal-gemfire-name} [client
-applications](#geode-clientcache-applications) by using Spring Boot.
-
-
-
-
+VMware GemFire [client
+applications](./clientcache-applications.html) by using Spring Boot.
 
 Technically, this means building Spring Boot applications with an
-{pivotal-gemfire-name} `ClientCache` instance connected to a dedicated
-cluster of {pivotal-gemfire-name} servers that manage the data as part
+VMware GemFire `ClientCache` instance connected to a dedicated
+cluster of VMware GemFire servers that manage the data as part
 of a
-{apache-geode-docs}/topologies_and_comm/cs_configuration/chapter_overview.html\[client/server\]
+[client/server](https://geode.apache.org/docs/guide/115/topologies_and_comm/cs_configuration/chapter_overview.html)
 topology.
-
-
-
-
 
 By way of example, this means that you need not explicitly declare and
 annotate your `@SpringBootApplication` class with SDG’s
 `@ClientCacheApplication` annotation, as the following example shows:
 
-
-
-
-
-
-
 Example 7. Do Not Do This
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -680,33 +286,10 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 SBDG’s provided auto-configuration class is already meta-annotated with
 SDG’s `@ClientCacheApplication` annotation. Therefore, you need only do:
 
-
-
-
-
-
-
 Example 8. Do This
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -716,88 +299,24 @@ class SpringBootApacheGeodeClientCacheApplication {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See SDG’s reference documentation for more details
-on {pivotal-gemfire-name}
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-geode-applications[cache
-applications] and
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-client-server-applications[client/server
-applications] in particular.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See SDG’s reference documentation for more details
+on VMware GemFire
+[cache applications](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-geode-applications) and
+[client/server applications](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-client-server-applications) in particular.
 
 #### `@EnableGemfireCaching`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/CachingProviderAutoConfiguration.html[<code>CachingProviderAutoConfiguration</code>]
+The SBDG
+[<code>CachingProviderAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/CachingProviderAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/cache/config/EnableGemfireCaching.html[<code>@EnableGemfireCaching</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnableGemfireCaching</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/cache/config/EnableGemfireCaching.html)
+annotation.
 
 If you used the core Spring Framework to configure
-{pivotal-gemfire-name} as a caching provider in
-{spring-framework-docs}/integration.html#cache\[Spring’s Cache
-Abstraction\], you need to:
-
-
-
-
-
-
+VMware GemFire as a caching provider in
+[Spring’s Cache Abstraction](https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#cache), you need to:
 
 Example 9. Configuring caching using the Spring Framework
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -817,35 +336,12 @@ class CachingUsingApacheGeodeConfiguration {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-If you use Spring Data for {pivotal-gemfire-name}'s
+If you use Spring Data for VMware GemFire's
 `@EnableGemfireCaching` annotation, you can simplify the preceding
 configuration:
 
-
-
-
-
-
-
 Example 10. Configuring caching using Spring Data for
-{pivotal-gemfire-name}
-
-
-
-
-
-
-
+VMware GemFire
 
 
 ``` highlight
@@ -856,33 +352,10 @@ class CachingUsingApacheGeodeConfiguration {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Also, if you use SBDG, you need only do:
 
-
-
-
-
-
-
 Example 11. Configuring caching using Spring Boot for
-{pivotal-gemfire-name}
-
-
-
-
-
-
-
+VMware GemFire
 
 
 ``` highlight
@@ -892,35 +365,12 @@ class CachingUsingApacheGeodeConfiguration {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 This lets you focus on the areas in your application that would benefit
 from caching without having to enable the plumbing. You can then
 demarcate the service methods in your application that are good
 candidates for caching:
 
-
-
-
-
-
-
 Example 12. Using caching in your application
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -934,87 +384,26 @@ class CustomerService {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a href="#geode-caching-provider">documentation
-on caching</a> for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Caching with VMware GemFire](./caching.html) for more details.
 
 #### `@EnableContinuousQueries`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/ContinuousQueryAutoConfiguration.html[<code>ContinuousQueryAutoConfiguration</code>]
+The SBDG
+[<code>ContinuousQueryAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/ContinuousQueryAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableContinuousQueries.html[<code>@EnableContinuousQueries</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnableContinuousQueries</code>])(https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableContinuousQueries.html)
+annotation.
 
 Without having to enable anything, you can annotate your application
 (POJO) component method(s) with the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/listener/annotation/ContinuousQuery.html\[`@ContinuousQuery`\]
+[`@ContinuousQuery`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/listener/annotation/ContinuousQuery.html)
 annotation to register a CQ and start receiving events. The method acts
-as a `CqEvent` handler or, in {pivotal-gemfire-name}'s terminology, the
+as a `CqEvent` handler or, in VMware GemFire's terminology, the
 method is an implementation of the
-{apache-geode-javadoc}/org/apache/geode/cache/query/CqListener.html\[`CqListener`\]
+[`CqListener`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/query/CqListener.html)
 interface.
 
-
-
-
-
-
-
 Example 13. Declare application CQs
-
-
-
-
-
-
 
 
 
@@ -1031,100 +420,34 @@ class MyCustomerApplicationContinuousQueries {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 As the preceding example shows, you can define the events you are
 interested in receiving by using an OQL query with a finely tuned query
 predicate that describes the events of interests and implements the
 handler method to process the events (such as applying a credit to the
 customer’s account and following up in email).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a
-href="#geode-continuous-query">[geode-continuous-query]</a> for more
-details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Continuous Query](continuous-query.html) for more
+details.
 
 #### `@EnableGemfireFunctionExecutions` & `@EnableGemfireFunctions`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/FunctionExecutionAutoConfiguration.html[<code>FunctionExecutionAutoConfiguration</code>]
+The SBDG
+https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/FunctionExecutionAutoConfiguration.html[<code>FunctionExecutionAutoConfiguration</code>]
 class corresponds to both the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/function/config/EnableGemfireFunctionExecutions.html[<code>@EnableGemfireFunctionExecutions</code>]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/function/config/EnableGemfireFunctionExecutions.html[<code>@EnableGemfireFunctionExecutions</code>]
 and SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/function/config/EnableGemfireFunctions.html[<code>@EnableGemfireFunctions</code>]
-annotations.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/function/config/EnableGemfireFunctions.html[<code>@EnableGemfireFunctions</code>]
+annotations.
 
 Whether you need to
-{spring-data-geode-docs-html}/#function-execution\[execute\] or
-{spring-data-geode-docs-html}/#function-implementation\[implement\] a
+[execute](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-execution) or
+[implement](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-implementation) a
 `Function`, SBDG detects the Function definition and auto-configures it
 appropriately for use in your Spring Boot application. You need only
 define the Function execution or implementation in a package below the
 main `@SpringBootApplication` class:
 
-
-
-
-
-
-
 Example 14. Declare a Function Execution
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1138,33 +461,10 @@ interface MyCustomerApplicationFunctions {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then you can inject the Function execution into any application
 component and use it:
 
-
-
-
-
-
-
 Example 15. Use the Function
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1187,100 +487,29 @@ class CustomerService {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 The same pattern basically applies to Function implementations, except
 in the implementation case, SBDG registers the Function implementation
 for use (that is, to be called by a Function execution).
-
-
-
-
 
 Doing so lets you focus on defining the logic required by your
 application and not worry about how Functions are registered, called,
 and so on. SBDG handles this concern for you.
 
+<p class="note"><strong>Note:</strong>
+Function implementations are typically defined and
+registered on the server-side.
+</p>
 
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">Function implementations are typically defined and
-registered on the server-side.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a href="#geode-functions">[geode-functions]</a>
-for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Function Implementations & Executions](functions.html)
+for more details.
 
 #### `@EnableGemfireRepositories`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/GemFireRepositoriesAutoConfigurationRegistrar.html[<code>GemFireRepositoriesAutoConfigurationRegistrar</code>]
+The SBDG
+[<code>GemFireRepositoriesAutoConfigurationRegistrar</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/GemFireRepositoriesAutoConfigurationRegistrar.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/repository/config/EnableGemfireRepositories.html[<code>@EnableGemfireRepositories</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnableGemfireRepositories</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/repository/config/EnableGemfireRepositories.html)
+annotation.
 
 As with Functions, you need concern yourself only with the data access
 operations (such as basic CRUD and simple queries) required by your
@@ -1288,26 +517,9 @@ application to carry out its operation, not with how to create and
 perform them (for example, `Region.get(key)` and `Region.put(key, obj)`)
 or execute them (for example, `Query.execute(arguments)`).
 
-
-
-
-
 Start by defining your Spring Data Repository:
 
-
-
-
-
-
-
 Example 16. Define an application-specific Repository
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1320,33 +532,10 @@ interface CustomerRepository extends CrudRepository<Customer, Long> {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then you can inject the Repository into an application component and use
 it:
 
-
-
-
-
-
-
 Example 17. Using the application-specific Repository
-
-
-
-
-
-
-
 
 
 ``` highlight
@@ -1368,102 +557,31 @@ class CustomerService {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Your application-specific Repository simply needs to be declared in a
 package below the main `@SpringBootApplication` class. Again, you are
 focusing only on the data access operations and queries required to
 carry out the operatinons of your application, nothing more.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a
-href="#geode-repositories">[geode-repositories]</a> for more
-details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Spring Data Repositories](repositories.html)
+for more details.
 
 #### `@EnableLogging`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/LoggingAutoConfiguration.html[<code>LoggingAutoConfiguration</code>]
+The SBDG
+[<code>LoggingAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/LoggingAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableLogging.html[<code>@EnableLogging</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnableLogging</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableLogging.html)
+annotation.
 
 Logging is an essential application concern to understand what is
 happening in the system along with when and where the events occurred.
-By default, SBDG auto-configures logging for {pivotal-gemfire-name} with
+By default, SBDG auto-configures logging for VMware GemFire with
 the default log-level, “config”.
-
-
-
-
 
 You can change any aspect of logging, such as the log-level, in Spring
 Boot `application.properties`:
 
-
-
-
-
-
-
-Example 18. Change the log-level for {pivotal-gemfire-name}
-
-
-
-
-
-
-
-
+Example 18. Change the log-level for VMware GemFire
 
 ``` highlight
 # Spring Boot application.properites.
@@ -1471,46 +589,17 @@ Example 18. Change the log-level for {pivotal-gemfire-name}
 spring.data.gemfire.cache.log-level=debug
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The 'spring.data.gemfire.logging.level' property is
-an alias for <code>spring.data.gemfire.cache.log-level</code>.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+<p class="note"><strong>Note:</strong>
+The 'spring.data.gemfire.logging.level' property is
+an alias for <code>spring.data.gemfire.cache.log-level</code>.
+</p>
 
 You can also configure other aspects, such as the log file size and disk
 space limits for the filesystem location used to store the
-{pivotal-gemfire-name} log files at runtime.
+VMware GemFire log files at runtime.
 
-
-
-
-
-Under the hood, {pivotal-gemfire-name}'s logging is based on Log4j.
-Therefore, you can configure {pivotal-gemfire-name} logging to use any
+Under the hood, VMware GemFire's logging is based on Log4j.
+Therefore, you can configure VMware GemFire logging to use any
 logging provider (such as Logback) and configuration metadata
 appropriate for that logging provider so long as you supply the
 necessary adapter between Log4j and whatever logging system you use. For
@@ -1519,38 +608,13 @@ instance, if you include
 Logback and you will need the `org.apache.logging.log4j:log4j-to-slf4j`
 adapter.
 
-
-
-
-
-
-
 #### `@EnablePdx`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/PdxSerializationAutoConfiguration.html[<code>PdxSerializationAutoConfiguration</code>]
+The SBDG
+[<code>PdxSerializationAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/PdxSerializationAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnablePdx.html[<code>@EnablePdx</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnablePdx</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnablePdx.html)
+annotation.
 
 Any time you need to send an object over the network or overflow or
 persist an object to disk, your application domain model object must be
@@ -1559,50 +623,23 @@ serializable. It would be painful to have to implement
 objects (such as `Customer`) that would potentially need to be
 serialized.
 
-
-
-
-
 Furthermore, using Java Serialization may not be ideal (it may not be
 the most portable or efficient solution) in all cases or even possible
 in other cases (such as when you use a third party library over which
 you have no control).
 
-
-
-
-
 In these situations, you need to be able to send your object anywhere,
 anytime without unduly requiring the class type to be serializable and
 exist on the classpath in every place it is sent. Indeed, the final
 destination may not even be a Java application. This is where
-{pivotal-gemfire-name}
-{apache-geode-docs}/developing/data_serialization/gemfire_pdx_serialization.html\[PDX
-Serialization\] steps in to help.
-
-
-
-
+VMware GemFire
+[PDX Serialization](https://docs.vmware.com/en/VMware-Tanzu-GemFire/9.15/tgf/GUID-developing-data_serialization-gemfire_pdx_serialization.html) steps in to help.
 
 However, you need not figure out how to configure PDX to identify the
 application class types that needs to be serialized. Instead, you can
 define your class type as follows:
 
-
-
-
-
-
-
 Example 19. Customer class
-
-
-
-
-
-
-
-
 
 ``` highlight
 @Region("Customers")
@@ -1618,95 +655,28 @@ class Customer {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 SBDG’s auto-configuration handles the rest.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a
-href="#geode-data-serialization">[geode-data-serialization]</a> for more
-details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Data Serialization with PDX](data-serialization.html) for more
+details.
 
 #### `@EnableSecurity`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/ClientSecurityAutoConfiguration.html[<code>ClientSecurityAutoConfiguration</code>]
+The SBDG
+[<code>ClientSecurityAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/ClientSecurityAutoConfiguration.html)
 class and
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/PeerSecurityAutoConfiguration.html[<code>PeerSecurityAutoConfiguration</code>]
+[<code>PeerSecurityAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/PeerSecurityAutoConfiguration.html)
 class correspond to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableSecurity.html[<code>@EnableSecurity</code>]
+[<code>@EnableSecurity</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableSecurity.html)
 annotation, but they apply security (specifically, authentication and
-authorization (auth) configuration) for both clients and servers.</td>
-</tr>
-</tbody>
-</table>
+authorization (auth) configuration) for both clients and servers.
 
-
-
-
-
-Configuring your Spring Boot, {pivotal-gemfire-name} `ClientCache`
+Configuring your Spring Boot, VMware GemFire `ClientCache`
 application to properly authenticate with a cluster of secure
-{pivotal-gemfire-name} servers is as simple as setting a username and a
+VMware GemFire servers is as simple as setting a username and a
 password in Spring Boot `application.properties`:
 
-
-
-
-
-
-
 Example 20. Supplying Authentication Credentials
-
-
-
-
-
-
-
-
 
 ``` highlight
 # Spring Boot application.properties
@@ -1715,193 +685,59 @@ spring.data.gemfire.security.username=Batman
 spring.data.gemfire.security.password=r0b!n5ucks
 ```
 
-
-
-
-
-
-
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">Authentication is even easier to configure in a
+<p class="note"><strong>Note:</strong>
+Authentication is even easier to configure in a
 managed environment, such as PCF when using PCC. You need not do
-anything.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+anything.
+</p>
 
 Authorization is configured on the server-side and is made simple with
 SBDG and the help of [Apache Shiro](https://shiro.apache.org/). Of
 course, this assumes you use SBDG to configure and bootstrap your
-{pivotal-gemfire-name} cluster in the first place, which is even easier
-with SBDG. See
-[\[geode-cluster-configuration-bootstrapping\]](#geode-cluster-configuration-bootstrapping).
+VMware GemFire cluster in the first place, which is even easier
+with SBDG. See [Running a VMware GemFire cluster with Spring Boot from your IDE](appendix.html#geode-cluster-configuration-bootstrapping).
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a href="#geode-security">[geode-security]</a>
-for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Security](security.html) for more details.
 
 #### `@EnableSsl`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/SslAutoConfiguration.html[<code>SslAutoConfiguration</code>]
+The SBDG
+[<code>SslAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/SslAutoConfiguration.html)
 class corresponds to the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableSsl.html[<code>@EnableSsl</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
+[<code>@EnableSsl</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableSsl.html)
+annotation.
 
 Configuring SSL for secure transport (TLS) between your Spring Boot,
-{pivotal-gemfire-name} `ClientCache` application and an
-{pivotal-gemfire-name} cluster can be a real problem, especially to get
+VMware GemFire `ClientCache` application and an
+VMware GemFire cluster can be a real problem, especially to get
 right from the start. So, it is something that SBDG makes as simple as
 possible.
-
-
-
-
 
 You can supply a `trusted.keystore` file containing the certificates in
 a well-known location (such as the root of your application classpath),
 and SBDG’s auto-configuration steps in to handle the rest.
-
-
-
-
 
 This is useful during development, but we highly recommend using a more
 secure procedure (such as integrating with a secure credential store
 like LDAP, CredHub or Vault) when deploying your Spring Boot application
 to production.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a
-href="#geode-security-ssl">[geode-security-ssl]</a> for more
-details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Transport Layer Security using SSL](security.html#geode-security-ssl) for more
+details.
 
 #### `@EnableGemFireHttpSession`
 
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/SpringSessionAutoConfiguration.html[<code>SpringSessionAutoConfiguration</code>]
+The SBDG
+[<code>SpringSessionAutoConfiguration</code>](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/SpringSessionAutoConfiguration.html)
 class corresponds to the SSDG
-{spring-session-data-gemfire-javadoc}/org/springframework/session/data/gemfire/config/annotation/EnableGemFireHttpSession.html[<code>@EnableGemFireHttpSession</code>]
-annotation.</td>
-</tr>
-</tbody>
-</table>
+[<code>@EnableGemFireHttpSession</code>](https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.7.1/api/org/springframework/session/data/gemfire/config/annotation/EnableGemFireHttpSession.html)
+annotation.
 
-
-
-
-
-Configuring {pivotal-gemfire-name} to serve as the (HTTP) session state
+Configuring VMware GemFire to serve as the (HTTP) session state
 caching provider by using Spring Session requires that you only include
 the correct starter, that is `spring-geode-starter-session`:
 
-
-
-
-
-
-
 Example 21. Using Spring Session
-
-
-
-
-
-
-
-
 
     <dependency>
         <groupId>org.springframework.geode</groupId>
@@ -1909,81 +745,27 @@ Example 21. Using Spring Session
         <version>{revnumber}</version>
     </dependency>
 
-
-
-
-
-
-
-
-
-
-
 With Spring Session — and specifically Spring Session for
-{pivotal-gemfire-name} (SSDG) — on the classpath of your Spring Boot,
-{pivotal-gemfire-name} `ClientCache` Web application, you can manage
-your (HTTP) session state with {pivotal-gemfire-name}. No further
+VMware GemFire (SSDG) — on the classpath of your Spring Boot,
+VMware GemFire `ClientCache` Web application, you can manage
+your (HTTP) session state with VMware GemFire. No further
 configuration is needed. SBDG auto-configuration detects Spring Session
 on the application classpath and does the rest.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a href="#geode-session">[geode-session]</a> for
-more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
+See [Spring Session](session.html) for more details.
 
 #### RegionTemplateAutoConfiguration
 
-
-
 The SBDG
-{spring-boot-data-geode-javadoc}/org/springframework/geode/boot/autoconfigure/RegionTemplateAutoConfiguration.html\[`RegionTemplateAutoConfiguration`\]
+[`RegionTemplateAutoConfiguration`](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/RegionTemplateAutoConfiguration.html)
 class has no corresponding SDG annotation. However, the
 auto-configuration of a `GemfireTemplate` for every
-{pivotal-gemfire-name} `Region` defined and declared in your Spring Boot
+VMware GemFire `Region` defined and declared in your Spring Boot
 application is still supplied by SBDG.
-
-
-
-
 
 For example, you can define a Region by using:
 
-
-
-
-
-
-
 Example 22. Region definition using JavaConfig
-
-
-
-
-
-
-
-
 
 ``` highlight
 @Configuration
@@ -2003,34 +785,10 @@ class GeodeConfiguration {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Alternatively, you can define the `Customers` Region by using
 `@EnableEntityDefinedRegions`:
 
-
-
-
-
-
-
 Example 23. Region definition using `@EnableEntityDefinedRegions`
-
-
-
-
-
-
-
-
 
 ``` highlight
 @Configuration
@@ -2040,35 +798,11 @@ class GeodeConfiguration {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 Then SBDG supplies a `GemfireTemplate` instance that you can use to
 perform low-level data-access operations (indirectly) on the `Customers`
 Region:
 
-
-
-
-
-
-
 Example 24. Use the `GemfireTemplate` to access the "Customers" Region
-
-
-
-
-
-
-
-
 
 ``` highlight
 @Repository
@@ -2084,67 +818,12 @@ class CustomersDao {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 You need not explicitly configure `GemfireTemplates` for each Region to
 which you need low-level data access (such as when you are not using the
 Spring Data Repository abstraction).
-
-
-
-
 
 Be careful to qualify the `GemfireTemplate` for the Region to which you
 need data access, especially given that you probably have more than one
 Region defined in your Spring Boot application.
 
-
-
-
-
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See <a
-href="#geode-data-access-region-templates">[geode-data-access-region-templates]</a>
-for more details.</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="footer">
-
-<div id="footer-text">
-
-Last updated 2022-10-10 12:11:44 -0700
-
-
-
-
+See [Data Access with GemfireTemplate](templates.html) for more details.

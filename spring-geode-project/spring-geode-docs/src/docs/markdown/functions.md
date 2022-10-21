@@ -20,7 +20,7 @@ Title: Function Implementations & Executions
 
 
 
-This chapter is about using {pivotal-gemfire-name} in a Spring context
+This chapter is about using VMware GemFire in a Spring context
 for distributed computing use cases.
 
 
@@ -62,21 +62,21 @@ the data set across the cluster.
 
 
 
-{pivotal-gemfire-name} addresses this very important application concern
+VMware GemFire addresses this very important application concern
 in its
-{apache-geode-docs}/developing/function_exec/chapter_overview.html\[Function
+https://geode.apache.org/docs/guide/115/developing/function_exec/chapter_overview.html\[Function
 execution\] framework.
 
 
 
 
 
-Spring Data for {pivotal-gemfire-name}
-{spring-data-geode-docs-html}/#function-annotations\[builds\] on this
+Spring Data for VMware GemFire
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-annotations\[builds\] on this
 Function execution framework by letting developers
-{spring-data-geode-docs-html}/#function-implementation\[implement\] and
-{spring-data-geode-docs-html}/#function-execution\[execute\]
-{pivotal-gemfire-name} functions with a simple POJO-based annotation
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-implementation\[implement\] and
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#function-execution\[execute\]
+VMware GemFire functions with a simple POJO-based annotation
 configuration model.
 
 
@@ -94,7 +94,7 @@ configuration model.
 Tip
 </td>
 <td class="content">See
-{spring-data-geode-docs-html}/#_implementation_vs_execution[the section
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#_implementation_vs_execution[the section
 about implementation versus execution] for the difference between
 Function implementation and execution.</td>
 </tr>
@@ -105,7 +105,7 @@ Function implementation and execution.</td>
 
 
 
-Taking this a step further, Spring Boot for {pivotal-gemfire-name}
+Taking this a step further, Spring Boot for VMware GemFire
 auto-configures and enables both Function implementation and execution
 out-of-the-box. Therefore, you can immediately begin writing Functions
 and invoking them without having to worry about all the necessary
@@ -198,10 +198,10 @@ class EligibilityDeterminationFunction {
 
 
 By using the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/function/annotation/GemfireFunction.html\[`@GemfireFunction`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/function/annotation/GemfireFunction.html\[`@GemfireFunction`\]
 annotation, we can implement our Function as a POJO method. SDG
 appropriately handles registering this POJO method as a proper Function
-with {pivotal-gemfire-name}.
+with VMware GemFire.
 
 
 
@@ -297,7 +297,7 @@ class FinancialLoanApplicationService {
 
 As with caching, no additional configuration is required to enable and
 find your application Function implementations and executions. You can
-simply build and run. Spring Boot for {pivotal-gemfire-name} handles the
+simply build and run. Spring Boot for VMware GemFire handles the
 rest.
 
 

@@ -20,8 +20,8 @@ Title: Using Geode Properties
 
 
 
-As of Spring Boot for {pivotal-gemfire-name} (SBDG) 1.3, you can declare
-{pivotal-gemfire-name} properties from `gemfire.properties` in Spring
+As of Spring Boot for VMware GemFire (SBDG) 1.3, you can declare
+VMware GemFire properties from `gemfire.properties` in Spring
 Boot `application.properties`.
 
 
@@ -39,8 +39,8 @@ Boot `application.properties`.
 Tip
 </td>
 <td class="content">See the
-{apache-geode-docs}/reference/topics/gemfire_properties.html[User Guide]
-for a complete list of valid {pivotal-gemfire-name} properties.</td>
+https://geode.apache.org/docs/guide/115/reference/topics/gemfire_properties.html[User Guide]
+for a complete list of valid VMware GemFire properties.</td>
 </tr>
 </tbody>
 </table>
@@ -99,7 +99,7 @@ All of the properties declared in the preceding example correspond to
 valid Geode properties. It is illegal to declare properties in
 `gemfire.properties` that are not valid Geode properties, even if those
 properties are prefixed with a different qualifier (such as `spring.*`).
-{pivotal-gemfire-name} throws an `IllegalArgumentException` for invalid
+VMware GemFire throws an `IllegalArgumentException` for invalid
 properties.
 
 
@@ -142,7 +142,7 @@ invalid-property=TEST
 
 
 
-{pivotal-gemfire-name} throws an `IllegalArgumentException`:
+VMware GemFire throws an `IllegalArgumentException`:
 
 
 
@@ -150,7 +150,7 @@ invalid-property=TEST
 
 
 
-Example 3. `IllegalArgumentException` thrown by {pivotal-gemfire-name}
+Example 3. `IllegalArgumentException` thrown by VMware GemFire
 for Invalid Property (Full Text Omitted)
 
 
@@ -192,9 +192,9 @@ Valid attribute names are: ack-severe-alert-threshold ack-wait-threshold archive
 
 
 
-It is inconvenient to have to separate {pivotal-gemfire-name} properties
+It is inconvenient to have to separate VMware GemFire properties
 from other application properties, or to have to declare only
-{pivotal-gemfire-name} properties in a `gemfire.properties` file and
+VMware GemFire properties in a `gemfire.properties` file and
 application properties in a separate properties file, such as Spring
 Boot `application.properties`.
 
@@ -202,7 +202,7 @@ Boot `application.properties`.
 
 
 
-Additionally, because of {pivotal-gemfire-name}'s constraint on
+Additionally, because of VMware GemFire's constraint on
 properties, you cannot use the full power of Spring Boot when you
 compose `application.properties`.
 
@@ -218,8 +218,8 @@ environment- or context-specific.
 
 
 
-Spring Data for {pivotal-gemfire-name} already provides a wide range of
-properties mapping to {pivotal-gemfire-name} properties.
+Spring Data for VMware GemFire already provides a wide range of
+properties mapping to VMware GemFire properties.
 
 
 
@@ -227,8 +227,8 @@ properties mapping to {pivotal-gemfire-name} properties.
 
 For example, the SDG `spring.data.gemfire.locators` property maps to the
 `gemfire.locators` property (`locators` in `gemfire.properties`) from
-{pivotal-gemfire-name}. Likewise, there are a full set of SDG properties
-that map to the corresponding {pivotal-gemfire-name} properties in the
+VMware GemFire. Likewise, there are a full set of SDG properties
+that map to the corresponding VMware GemFire properties in the
 [Appendix](#geode-configuration-metadata-springdata).
 
 
@@ -255,7 +255,7 @@ Example 4. Configuring Geode Properties using SDG Properties
 
 
 ``` highlight
-# Spring Data for {geode-name} properties in application.properties
+# Spring Data for VMware GemFire properties in application.properties
 
 spring.data.gemfire.name=ExampleCacheName
 spring.data.gemfire.cache.log-level=TRACE
@@ -274,9 +274,9 @@ spring.data.gemfire.stats.enable-time-statistics=true
 
 
 
-However, some {pivotal-gemfire-name} properties have no equivalent SDG
+However, some VMware GemFire properties have no equivalent SDG
 property, such as `gemfire.groups` (`groups` in `gemfire.properties`).
-This is partly due to the fact that many {pivotal-gemfire-name}
+This is partly due to the fact that many VMware GemFire
 properties are applicable only when configured on the server (such as
 `groups` or `enforce-unique-host`).
 
@@ -296,8 +296,8 @@ Tip
 </td>
 <td class="content">See the <code>@EnableGemFireProperties</code>
 annotation
-({spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableGemFireProperties.html[attributes])
-from SDG for a complete list of {pivotal-gemfire-name} properties with
+(https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableGemFireProperties.html[attributes])
+from SDG for a complete list of VMware GemFire properties with
 no corresponding SDG property.</td>
 </tr>
 </tbody>
@@ -314,9 +314,9 @@ Furthermore, many of the SDG properties also correspond to API calls.
 
 
 For example,
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#keepAlive\[`spring.data.gemfire.cache.client.keep-alive`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#keepAlive\[`spring.data.gemfire.cache.client.keep-alive`\]
 translates to the
-{apache-geode-javadoc}/org/apache/geode/cache/client/ClientCache.html#close-boolean\[`ClientCache.close(boolean keepAlive)`\]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/client/ClientCache.html#close-boolean\[`ClientCache.close(boolean keepAlive)`\]
 API call.
 
 
@@ -324,7 +324,7 @@ API call.
 
 
 Still, it would be convenient to be able to declare application and
-{pivotal-gemfire-name} properties together, in a single properties file,
+VMware GemFire properties together, in a single properties file,
 such as Spring Boot `application.properties`. After all, it is not
 uncommon to declare JDBC Connection properties in a Spring Boot
 `application.properties` file.
@@ -333,7 +333,7 @@ uncommon to declare JDBC Connection properties in a Spring Boot
 
 
 
-Therefore, as of SBDG 1.3, you can now declare {pivotal-gemfire-name}
+Therefore, as of SBDG 1.3, you can now declare VMware GemFire
 properties in Spring Boot `application.properties` directly, as follows:
 
 
@@ -378,7 +378,7 @@ This is convenient and ideal for several reasons:
 
 
 
-- If you already have a large number of {pivotal-gemfire-name}
+- If you already have a large number of VMware GemFire
   properties declared as `gemfire.` properties (either in
   `gemfire.properties` or `gfsecurity.properties`) or declared on the
   Java command-line as JVM System properties (such as
@@ -408,7 +408,7 @@ This is convenient and ideal for several reasons:
 Tip
 </td>
 <td class="content">We encourage you to use the SDG properties, which
-cover more than {pivotal-gemfire-name} properties.</td>
+cover more than VMware GemFire properties.</td>
 </tr>
 </tbody>
 </table>
@@ -419,16 +419,16 @@ cover more than {pivotal-gemfire-name} properties.</td>
 
 However, SBDG requires that the Geode property must have the `gemfire.`
 prefix in Spring Boot `application.properties`. This indicates that the
-property belongs to {pivotal-gemfire-name}. Without the `gemfire.`
+property belongs to VMware GemFire. Without the `gemfire.`
 prefix, the property is not appropriately applied to the
-{pivotal-gemfire-name} cache instance.
+VMware GemFire cache instance.
 
 
 
 
 
 It would be ambiguous if your Spring Boot applications integrated with
-several technologies, including {pivotal-gemfire-name}, and they too had
+several technologies, including VMware GemFire, and they too had
 matching properties, such as `bind-address` or `log-file`.
 
 
@@ -445,7 +445,7 @@ result in logging a warning:
 
 
 
-Example 6. Invalid {pivotal-gemfire-name} Property
+Example 6. Invalid VMware GemFire Property
 
 
 
@@ -665,7 +665,7 @@ more than one profile at a time with
 
 
 If both `spring.data.gemfire.*` properties and the matching
-{pivotal-gemfire-name} properties are declared in Spring Boot
+VMware GemFire properties are declared in Spring Boot
 `application.properties`, the SDG properties take precedence.
 
 
@@ -719,9 +719,9 @@ spring.data.gemfire.cache.client.durable-client-id=987
 
 
 The `durable-client-id` is `987`. It does not matter which order the SDG
-or {pivotal-gemfire-name} properties are declared in Spring Boot
+or VMware GemFire properties are declared in Spring Boot
 `application.properties`. The matching SDG property overrides the
-{pivotal-gemfire-name} property when duplicates are found.
+VMware GemFire property when duplicates are found.
 
 
 

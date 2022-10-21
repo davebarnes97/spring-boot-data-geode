@@ -30,15 +30,15 @@ with which to work.
 
 
 For those of you already familiar with Spring Boot’s support for
-{spring-boot-docs-html}/howto.html#howto-initialize-a-database-using-spring-jdbc\[SQL
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-initialize-a-database-using-spring-jdbc\[SQL
 database initialization\], the approach when using
-{pivotal-gemfire-name} should be easy to understand.
+VMware GemFire should be easy to understand.
 
 
 
 
 
-{pivotal-gemfire-name} provides built-in support, similar in function to
+VMware GemFire provides built-in support, similar in function to
 Spring Boot’s SQL database initialization, by using:
 
 
@@ -46,15 +46,15 @@ Spring Boot’s SQL database initialization, by using:
 
 
 - Gfsh’s
-  {apache-geode-docs}/tools_modules/gfsh/quick_ref_commands_by_area.html#topic_C7DB8A800D6244AE8FF3ADDCF139DCE4\[import/export\]
+  https://geode.apache.org/docs/guide/115/tools_modules/gfsh/quick_ref_commands_by_area.html#topic_C7DB8A800D6244AE8FF3ADDCF139DCE4\[import/export\]
   data commands.
 
-- {apache-geode-docs}/managing/cache_snapshots/chapter_overview.html\[Snapshot
+- https://geode.apache.org/docs/guide/115/managing/cache_snapshots/chapter_overview.html\[Snapshot
   service\]
 
-- {apache-geode-docs}/developing/storing_data_on_disk/chapter_overview.html\[Persistence\]
+- https://geode.apache.org/docs/guide/115/developing/storing_data_on_disk/chapter_overview.html\[Persistence\]
   with
-  {apache-geode-docs}/managing/disk_storage/chapter_overview.html\[disk
+  https://geode.apache.org/docs/guide/115/managing/disk_storage/chapter_overview.html\[disk
   storage\]
 
 
@@ -62,14 +62,14 @@ Spring Boot’s SQL database initialization, by using:
 
 
 For example, by enabling persistence with disk storage, you could
-{apache-geode-docs}/managing/disk_storage/backup_restore_disk_store.html\[backup
+https://geode.apache.org/docs/guide/115/managing/disk_storage/backup_restore_disk_store.html\[backup
 and restore\] persistent `DiskStore` files from one cluster to another.
 
 
 
 
 
-Alternatively, using {pivotal-gemfire-name}'s Snapshot Service, you can
+Alternatively, using VMware GemFire's Snapshot Service, you can
 export data contained in targeted `Regions` from one cluster during
 shutdown and import the data into another cluster on startup. The
 Snapshot Service lets you filter data while it is being imported and
@@ -79,10 +79,10 @@ exported.
 
 
 
-Finally, you can use {pivotal-gemfire-name} shell (Gfsh) commands to
-{spring-data-geode-docs-html}/tools_modules/gfsh/command-pages/export.html#topic_263B70069BFC4A7185F86B3272011734\[export
+Finally, you can use VMware GemFire shell (Gfsh) commands to
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/tools_modules/gfsh/command-pages/export.html#topic_263B70069BFC4A7185F86B3272011734\[export
 data\] and
-{apache-geode-docs}/tools_modules/gfsh/command-pages/import.html#topic_jw2_2ld_2l\[import
+https://geode.apache.org/docs/guide/115/tools_modules/gfsh/command-pages/import.html#topic_jw2_2ld_2l\[import
 data\].
 
 
@@ -99,10 +99,10 @@ data\].
 <td class="icon">
 Tip
 </td>
-<td class="content">Spring Data for {pivotal-gemfire-name} (SDG)
+<td class="content">Spring Data for VMware GemFire (SDG)
 contains dedicated support for
-{spring-data-geode-docs-html}/#bootstrap:region:persistence[persistence]
-and the {spring-data-geode-docs-html}/#bootstrap:snapshot[Snapshot
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap:region:persistence[persistence]
+and the https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap:snapshot[Snapshot
 Service].</td>
 </tr>
 </tbody>
@@ -121,8 +121,8 @@ and Gfsh’s `export` command are in a proprietary binary format.
 
 Furthermore, none of these approaches are as convenient as Spring Boot’s
 database initialization automation. Therefore, Spring Boot for
-{pivotal-gemfire-name} (SBDG) offers support to import data from JSON
-into {pivotal-gemfire-name} as PDX.
+VMware GemFire (SBDG) offers support to import data from JSON
+into VMware GemFire as PDX.
 
 
 
@@ -150,9 +150,9 @@ Note
 (the <code>Region</code> instances) that manage your data is with SDG’s
 annotation-based configuration support for defining cache
 <code>Region</code> instances from your application’s
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-regions[entity
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-regions[entity
 classes] or indirectly from Spring and JSR-107 or JCache
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-caching[caching
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-caching[caching
 annotations].</td>
 </tr>
 </tbody>
@@ -240,7 +240,7 @@ Note
 </td>
 <td class="content"><code>&lt;regionName&gt;</code> refers to the
 lowercase "name" of the <code>Region</code>, as defined by
-{apache-geode-javadoc}/org/apache/geode/cache/Region.html#getName--[<code>Region.getName()</code>].</td>
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Region.html#getName--[<code>Region.getName()</code>].</td>
 </tr>
 </tbody>
 </table>
@@ -422,7 +422,7 @@ object model and JSON shown [earlier](#geode-data-using-import).
 First, we declared a `@type` JSON metadata field. This field does not
 map to any specific field or property of the application domain model
 class (such as `PurchaseOrder`). Rather, it tells the framework and
-{pivotal-gemfire-name}'s JSON/PDX converter the type of object the JSON
+VMware GemFire's JSON/PDX converter the type of object the JSON
 data would map to if you were to request an object (by calling
 `PdxInstance.getObject()`).
 
@@ -485,7 +485,7 @@ would silently return a `PdxInstance`.
 
 
 
-It is possible for {pivotal-gemfire-name}'s PDX serialization framework
+It is possible for VMware GemFire's PDX serialization framework
 to return a `PurchaseOrder` from `Region.get(key)` as well, but it
 depends on the value of PDX’s `read-serialized`, cache-level
 configuration setting, among other factors.
@@ -506,9 +506,9 @@ Note
 </td>
 <td class="content">When JSON is imported into a <code>Region</code> as
 PDX, the
-{apache-geode-javadoc}/org/apache/geode/pdx/PdxInstance.html#getClassName--[<code>PdxInstance.getClassName()</code>]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/PdxInstance.html#getClassName--[<code>PdxInstance.getClassName()</code>]
 does not refer to a valid Java class. It is
-{apache-geode-javadoc}/org/apache/geode/pdx/JSONFormatter.html#JSON_CLASSNAME[<code>JSONFormatter.JSON_CLASSNAME</code>].
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/pdx/JSONFormatter.html#JSON_CLASSNAME[<code>JSONFormatter.JSON_CLASSNAME</code>].
 As a result, <code>Region</code> data access operations, such as
 <code>Region.get(key)</code>, return a <code>PdxInstance</code> and not
 a Java object.</td>
@@ -600,7 +600,7 @@ Example 4. PurchaseOrder identifier ("id")
 This follows the same convention used in Spring Data. Typically, Spring
 Data mapping infrastructure looks for a POJO field or property annotated
 with
-{spring-data-commons-javadoc}/org/springframework/data/annotation/Id.html\[`@Id`\].
+https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/annotation/Id.html\[`@Id`\].
 If no field or property is annotated with `@Id`, the framework falls
 back to searching for a field or property named `id`.
 
@@ -608,7 +608,7 @@ back to searching for a field or property named `id`.
 
 
 
-In Spring Data for {pivotal-gemfire-name}, this `@Id`-annotated or
+In Spring Data for VMware GemFire, this `@Id`-annotated or
 `id`-named field or property is used as the identifier and as the key
 for the object when storing it into a `Region`.
 
@@ -682,7 +682,7 @@ we would know the class type and could load the class definition to
 learn about the identifier. That is all fine until the class is not
 actually on the application classpath in the first place. This is one of
 the reasons why SBDG’s JSON support serializes JSON to
-{pivotal-gemfire-name}'s PDX format. There might not be a class
+VMware GemFire's PDX format. There might not be a class
 definition, which would lead to a `NoClassDefFoundError` or
 `ClassNotFoundException`.
 
@@ -763,7 +763,7 @@ The `@identifier` JSON metadata field informs the framework that the
 
 While the Spring team recommends that users should only use this feature
 when developing and testing their Spring Boot applications with
-{pivotal-gemfire-name}, you may still occasionally use this feature in
+VMware GemFire, you may still occasionally use this feature in
 production.
 
 
@@ -926,7 +926,7 @@ spring.boot.data.gemfire.cache.data.export.enabled=true
 
 
 SBDG is careful to export data to JSON in a format that
-{pivotal-gemfire-name} expects on import and includes things such as
+VMware GemFire expects on import and includes things such as
 `@type` metadata fields.
 
 
@@ -981,14 +981,14 @@ Warning
 <code>-Dgemfire.disableShutdownHook</code> JVM System property to
 <code>true</code> before your Spring Boot application starts up when
 using export. Unfortunately, this Java runtime shutdown hook is
-registered and enabled in {pivotal-gemfire-name} by default, which
+registered and enabled in VMware GemFire by default, which
 results in the cache and the Regions being closed before the SBDG Export
 functionality can export the data, thereby resulting in a
 <code>CacheClosedException</code>. SBDG
 {github-url}/spring-geode-autoconfigure/src/main/java/org/springframework/geode/boot/autoconfigure/DataImportExportAutoConfiguration.java#L173-L183[makes
-a best effort] to disable the {pivotal-gemfire-name} JVM shutdown hook
+a best effort] to disable the VMware GemFire JVM shutdown hook
 when export is enabled, but it is at the mercy of the JVM
-<code>ClassLoader</code>, since {pivotal-gemfire-name}'s JVM shutdown
+<code>ClassLoader</code>, since VMware GemFire's JVM shutdown
 hook
 {apache-geode-src}/geode-core/src/main/java/org/apache/geode/distributed/internal/InternalDistributedSystem.java#L2185-L2223[registration]
 is declared in a <code>static</code> initializer.</td>
@@ -1061,7 +1061,7 @@ The primary interface to import data into a `Region` is
 
 
 `CacheDataImporter` is a `@FunctionalInterface` that extends Spring’s
-{spring-framework-javadoc}/org/springframework/beans/factory/config/BeanPostProcessor.html\[`BeanPostProcessor`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html\[`BeanPostProcessor`\]
 interface to trigger the import of data after the `Region` has been
 initialized.
 
@@ -1122,7 +1122,7 @@ is the `CacheDataExporter`.
 
 
 `CacheDataExporter` is a `@FunctionalInterface` that extends Spring’s
-{spring-framework-javadoc}/org/springframework/beans/factory/config/DestructionAwareBeanPostProcessor.html\[`DestructionAwareBeanPostProcessor`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/config/DestructionAwareBeanPostProcessor.html\[`DestructionAwareBeanPostProcessor`\]
 interface to trigger the export of data before the `Region` is
 destroyed.
 
@@ -1253,7 +1253,7 @@ In all cases, SBDG provides the
 `LifecycleAwareCacheDataImporterExporter` class to wrap your
 `CacheDataImporterExporter` implementation. This class implements
 Spring’s
-{spring-framework-javadoc}/https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/SmartLifecycle.html\[`SmartLifecycle`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/SmartLifecycle.html\[`SmartLifecycle`\]
 interface.
 
 
@@ -1351,7 +1351,7 @@ class MyApplicationConfiguration {
 
 Resolving resources used for import and export results in the creation
 of a Spring
-{spring-framework-javadoc}/https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/io/Resource.html\[`Resource`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/io/Resource.html\[`Resource`\]
 handle.
 
 
@@ -1548,7 +1548,7 @@ spring.boot.data.gemfire.cache.data.export.resource.location=...
 
 The properties accept any valid resource string, as specified in the
 Spring
-{spring-framework-docs}/core.html#resources-resourceloader\[documentation\]
+https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#resources-resourceloader\[documentation\]
 (see **Table 10. Resource strings**).
 
 
@@ -1727,7 +1727,7 @@ initialized.</td>
 
 SBDG also sets the `#regionName` variable in the `EvaluationContext` to
 the name of the `Region`, as determined by
-{apache-geode-javadoc}/https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Region.html#getName--\[`Region.getName()`\],
+https://geode.apache.org/releases/latest/javadoc/https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Region.html#getName--\[`Region.getName()`\],
 targeted for import and export.
 
 
@@ -1808,7 +1808,7 @@ Spring Boot application process.</td>
 Tip
 </td>
 <td class="content">See the Spring Framework
-{spring-framework-docs}/core.html#expressions[documentation] for more
+https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#expressions[documentation] for more
 information on SpEL.</td>
 </tr>
 </tbody>
@@ -1827,10 +1827,10 @@ information on SpEL.</td>
 
 
 The Spring
-{spring-framework-javadoc}/org/springframework/core/io/Resource.html\[`Resource`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/io/Resource.html\[`Resource`\]
 handle specifies tion of a resource, not how the resource is read or
 written. Even the Spring
-{spring-framework-javadoc}/org/springframework/core/io/ResourceLoader.html\[`ResourceLoader`\],
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/io/ResourceLoader.html\[`ResourceLoader`\],
 which is an interface for loading `Resources`, does not specifically
 read or write any content to the `Resource`.
 

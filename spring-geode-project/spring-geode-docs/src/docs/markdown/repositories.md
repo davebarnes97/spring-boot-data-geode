@@ -20,15 +20,15 @@ Title: Spring Data Repositories
 
 
 
-Using Spring Data Repositories with {pivotal-gemfire-name} makes short
-work of data access operations when you use {pivotal-gemfire-name} as
+Using Spring Data Repositories with VMware GemFire makes short
+work of data access operations when you use VMware GemFire as
 your System of Record (SoR) to persist your application’s state.
 
 
 
 
 
-{spring-data-commons-docs-html}/#repositories\[Spring Data
+https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories\[Spring Data
 Repositories\] provide a convenient and powerful way to define basic
 CRUD and simple query data access operations by specifying the contract
 of those data access operations in a Java interface.
@@ -37,9 +37,9 @@ of those data access operations in a Java interface.
 
 
 
-Spring Boot for {pivotal-gemfire-name} auto-configures the Spring Data
-for {pivotal-gemfire-name}
-{spring-data-geode-docs-html}/#gemfire-repositories\[Repository
+Spring Boot for VMware GemFire auto-configures the Spring Data
+for VMware GemFire
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#gemfire-repositories\[Repository
 extension\] when either is declared on your application’s classpath. You
 need not do anything special to enable it. You can start coding your
 application-specific Repository interfaces.
@@ -49,8 +49,8 @@ application-specific Repository interfaces.
 
 
 The following example defines a `Customer` class to model customers and
-map it to the {pivotal-gemfire-name} `Customers` Region by using the SDG
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/mapping/annotation/Region.html\[`@Region`\]
+map it to the VMware GemFire `Customers` Region by using the SDG
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/mapping/annotation/Region.html\[`@Region`\]
 mapping annotation:
 
 
@@ -186,9 +186,9 @@ class SpringBootApacheGeodeClientCacheApplication {
 
 
 See Spring Data Commons'
-{spring-data-commons-docs-html}/#repositories\[Repositories
-abstraction\] and Spring Data for {pivotal-gemfire-name}'s
-{spring-data-geode-docs-html}/#gemfire-repositories\[Repositories
+https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories\[Repositories
+abstraction\] and Spring Data for VMware GemFire's
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#gemfire-repositories\[Repositories
 extension\] for more detail.
 
 

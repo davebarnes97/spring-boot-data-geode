@@ -20,16 +20,16 @@ Title: Data Access with GemfireTemplate
 
 
 
-There are several ways to access data stored in {pivotal-gemfire-name}.
+There are several ways to access data stored in VMware GemFire.
 
 
 
 
 
 For instance, you can use the
-{apache-geode-javadoc}/org/apache/geode/cache/Region.html\[Region API\]
+https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Region.html\[Region API\]
 directly. If you are driven by the application’s domain context, you can
-use the power of {spring-data-commons-docs-html}/#repositories\[Spring
+use the power of https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories\[Spring
 Data Repositories\] instead.
 
 
@@ -37,7 +37,7 @@ Data Repositories\] instead.
 
 
 While the Region API offers flexibility, it couples your application to
-{pivotal-gemfire-name}, which is usually undesirable and unnecessary.
+VMware GemFire, which is usually undesirable and unnecessary.
 While using Spring Data Repositories provides a very powerful and
 convenient abstraction, you give up the flexibility provided by a
 lower-level Region API.
@@ -56,9 +56,9 @@ portfolio.
 
 
 For example, the Spring Framework provides
-{spring-framework-javadoc}/org/springframework/jdbc/core/JdbcTemplate.html\[`JdbcTemplate`\]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/JdbcTemplate.html\[`JdbcTemplate`\]
 and
-{spring-framework-javadoc}/org/springframework/jms/core/JmsTemplate.html\[`JmsTemplate`\].
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jms/core/JmsTemplate.html\[`JmsTemplate`\].
 
 
 
@@ -66,7 +66,7 @@ and
 
 Other Spring Data modules, such as Spring Data Redis, offer the
 [`RedisTemplate`](https://docs.spring.io/spring-data/redis/docs/current/api/org/springframework/data/redis/core/RedisTemplate.html),
-and Spring Data for {pivotal-gemfire-name} (SDG) itself offers the
+and Spring Data for VMware GemFire (SDG) itself offers the
 {spring-data-gemfire-javadoc}/org/springframework/data/gemfire/GemfireTemplate.html\[`GemfireTemplate`\].
 
 
@@ -74,7 +74,7 @@ and Spring Data for {pivotal-gemfire-name} (SDG) itself offers the
 
 
 The `GemfireTemplate` provides a highly consistent and familiar API to
-perform data access operations on {pivotal-gemfire-name} cache
+perform data access operations on VMware GemFire cache
 `Regions`.
 
 
@@ -91,22 +91,22 @@ perform data access operations on {pivotal-gemfire-name} cache
   simple query operations on cache Regions.
 
 - Use of Spring Framework’s consistent data access
-  {spring-framework-docs}/data-access.html#dao-exceptions\[Exception
+  https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#dao-exceptions\[Exception
   hierarchy\].
 
 - Automatic enlistment in the presence of local cache transactions.
 
 - Consistency and protection from
-  {apache-geode-javadoc}/org/apache/geode/cache/Region.html\[Region
+  https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Region.html\[Region
   API\] breaking changes.
 
 
 
 
 
-Given these advantages, Spring Boot for {pivotal-gemfire-name} (SBDG)
+Given these advantages, Spring Boot for VMware GemFire (SBDG)
 auto-configures `GemfireTemplate` beans for each Region present in the
-{pivotal-gemfire-name} cache.
+VMware GemFire cache.
 
 
 
@@ -360,10 +360,10 @@ Regions.
 
 
 When you use Spring Framework’s
-{spring-framework-docs}/integration.html#cache\[Cache Abstraction\]
-backed by {pivotal-gemfire-name}, one requirement is to configure
+https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#cache\[Cache Abstraction\]
+backed by VMware GemFire, one requirement is to configure
 Regions for each of the caches specified in the
-{spring-framework-docs}integration.html#cache-annotations\[caching
+https://docs.spring.io/spring/docs/current/spring-framework-referenceintegration.html#cache-annotations\[caching
 annotations\] of your application service components.
 
 
@@ -511,14 +511,14 @@ This is not ideal, but it works when autowiring does not.</td>
 
 
 SBDG even auto-configures `GemfireTemplate` beans for Regions that have
-been defined with {pivotal-gemfire-name} native configuration metadata,
+been defined with VMware GemFire native configuration metadata,
 such as `cache.xml`.
 
 
 
 
 
-Consider the following {pivotal-gemfire-name} native `cache.xml`:
+Consider the following VMware GemFire native `cache.xml`:
 
 
 

@@ -2,7 +2,6 @@
 title: Appendix
 ---
 
-
 <!-- 
  Copyright (c) VMware, Inc. 2022. All rights reserved.
  Licensed to the Apache Software Foundation (ASF) under one or more contributor license
@@ -41,7 +40,7 @@ Boot applications backed by VMware GemFire:
 
 8.  [References](#references)
 
-### Auto-configuration vs. Annotation-based configuration
+### <a id='geode-auto-configuration-annotations'></a>Auto-configuration vs. Annotation-based configuration
 
 The question most often asked is, “What Spring Data for
 VMware GemFire (SDG) annotations can I use, or must I use, when
@@ -147,7 +146,7 @@ these annotations when you want to “override” Spring Boot’s conventions,
 as expressed in auto-configuration, and “customize” the behavior of the
 feature.
 
-#### Overriding
+#### <a id='geode-auto-configuration-annotations-overriding'></a>Overriding
 
 In this section, we cover a few examples to make the behavior when
 overriding more apparent.
@@ -545,7 +544,7 @@ to shield you from as many details as possible, it is not feasible or
 practical to address all matters, such as cache creation and security.
 
 
-### Configuration Metadata Reference
+### <a id='geode-configuration-metadata'></a>Configuration Metadata Reference
 
 The following reference sections cover documented and well-known
 properties recognized and processed by Spring Data for
@@ -2476,27 +2475,16 @@ in your Spring applications, SBDG does not prevent you from doing so.
 See the
 [complete reference to the VMware GemFire specific properties](https://geode.apache.org/docs/guide/115/reference/topics/gemfire_properties.html).
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Warning
-</td>
-<td class="content">VMware GemFire is very strict about the
+<p class="warning"><strong>Warning:</strong>
+VMware GemFire is very strict about the
 properties that may be specified in a <code>gemfire.properties</code>
 file. You cannot mix Spring properties with <code>gemfire.*</code>
 properties in a VMware GemFire <code>gemfire.properties</code>
-file.</td>
-</tr>
-</tbody>
-</table>
+file.
+</p>
 
 
-### Disabling Auto-configuration
+### <a id='geode-auto-configuration-disable'></a>Disabling Auto-configuration
 
 If you would like to disable the auto-configuration of any feature
 provided by Spring Boot for VMware GemFire, you can specify the
@@ -2532,7 +2520,7 @@ public class MySpringBootApplication {
 }
 ```
 
-#### Complete Set of Auto-configuration Classes
+#### <a id='geode-auto-configuration-disable-classes'></a>Complete Set of Auto-configuration Classes
 
 The current set of auto-configuration classes in Spring Boot for
 VMware GemFire includes:
@@ -2568,12 +2556,12 @@ VMware GemFire includes:
 - `SslAutoConfiguration`
 
 
-### Switching from VMware GemFire to VMware GemFire or VMware GemFire for TAS
+### <a id='geode-gemfire-switch'></a>Switching from Apache Geode to VMware GemFire or VMware GemFire for TAS
 
-Spring Boot for VMware GemFire (SBDG) stopped providing support for
+Spring Boot for Apache Geode (SBDG) stopped providing support for
 VMware GemFire after SBDG 1.3. SBDG 1.3 was the last version to
-support both VMware GemFire and VMware GemFire. If you need
-support for VMware GemFire in Spring Boot, then you will need to
+support both Apache Geode and VMware GemFire. If you need
+support for Apache Geode in Spring Boot, then you will need to
 downgrade to SBDG 1.3.
 
 <table>
@@ -2587,13 +2575,13 @@ downgrade to SBDG 1.3.
 Warning
 </td>
 <td class="content">This section is now deprecated. Spring Boot for
-VMware GemFire (SBDG) no longer provides the
+Apache Geode (SBDG) no longer provides the
 <code>spring-gemfire-starter</code> or related starter modules. As of
-SBDG 1.4, SBDG is based on VMware GemFire 1.13. Standalone GemFire
+SBDG 1.4, SBDG is based on VMware GemFire 9.10. Standalone GemFire
 bits based on VMware GemFire are no longer being released by
 VMware, Inc. after GemFire 9.10. GemFire 9.10 was based on
-VMware GemFire 1.12, and SBDG can no longer properly support
-standalone GemFire bits (version ⇐ 9.10).</td>
+Apache Geode 1.12, and SBDG can no longer properly support
+standalone GemFire bits (version <= 9.10).</td>
 </tr>
 </tbody>
 </table>
@@ -2618,7 +2606,7 @@ respectively.</td>
 </tbody>
 </table>
 
-### Running a VMware GemFire cluster with Spring Boot from your IDE
+### <a id='geode-cluster-configuration-bootstrapping'></a>Running a VMware GemFire cluster with Spring Boot from your IDE
 
 As described in
 [geode-clientcache-applications](#geode-clientcache-applications),
@@ -3052,7 +3040,7 @@ Now you can build and run a Spring Boot, VMware GemFire
 `ClientCache` application that connects to this cluster. To do so,
 include and use Spring Boot for VMware GemFire.
 
-### Testing
+### <a id='geode-testing-support'></a>Testing
 
 [Spring Test for
 VMware GemFire](https://github.com/spring-projects/spring-test-data-geode)
@@ -3072,7 +3060,7 @@ In future versions, this reference guide will include an entire chapter
 on testing along with samples. In the meantime, look to the STDG
 [README](https://github.com/spring-projects/spring-test-data-geode#stdg-in-a-nutshell).
 
-### Examples
+### <a id='geode-examples'></a>Examples
 
 The definitive source of truth on how to best use Spring Boot for
 VMware GemFire is to refer to the [samples](#geode-samples).
@@ -3092,7 +3080,7 @@ example](https://github.com/jxblum/contacts-application/tree/master/boot-example
 from the contact application reference implementation (RI) for Spring
 Data for VMware GemFire (SDG) as yet another example.
 
-### References
+### <a id='references'></a>References
 
 1.  Spring Framework [Reference Guide](https://docs.spring.io/spring/docs/current/spring-framework-reference) |
     [Javadoc](https://docs.spring.io/spring/docs/current/javadoc-api\)

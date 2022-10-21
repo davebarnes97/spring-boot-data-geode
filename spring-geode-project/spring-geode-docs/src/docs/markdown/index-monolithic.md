@@ -256,7 +256,7 @@ Finally, we arrive at Spring Boot for Apache Geode (SBDG).
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding Sample <a
 href="guides/getting-started.html">Guide</a> and
-{github-samples-url}/intro/getting-started[Code] to see Spring Boot for
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/intro/getting-started[Code] to see Spring Boot for
 Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -282,7 +282,7 @@ Example 1. Maven
     <dependency>
         <groupId>org.springframework.geode</groupId>
         <artifactId>spring-geode-starter</artifactId>
-        <version>{spring-boot-data-geode-version}</version>
+        <version>1.27</version>
     </dependency>
 </dependencies>
 ```
@@ -294,7 +294,7 @@ Gradle
 
 ``` prettyprint
 dependencies {
-    compile 'org.springframework.geode:spring-geode-starter:{spring-boot-data-geode-version}'
+    compile 'org.springframework.geode:spring-geode-starter:1.27'
 }
 ```
 
@@ -354,13 +354,13 @@ Example 2. Spring Boot application Maven POM
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>{spring-boot-version}</version>
+        <version>2.7.4</version>
     </parent>
 
     <artifactId>my-spring-boot-application</artifactId>
 
     <properties>
-        <spring-geode.version>{spring-boot-data-geode-version}</spring-geode.version>
+        <spring-geode.version>1.27</spring-geode.version>
     </properties>
 
     <dependencyManagement>
@@ -460,7 +460,7 @@ Example 3. Spring Boot application Gradle build file
 
 ``` prettyprint
 plugins {
-  id 'org.springframework.boot' version '{spring-boot-version}'
+  id 'org.springframework.boot' version '2.7.4'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
   id 'java'
 }
@@ -468,7 +468,7 @@ plugins {
 // ...
 
 ext {
-  set('springGeodeVersion', "{spring-boot-data-geode-version}")
+  set('springGeodeVersion', "1.27")
 }
 
 dependencies {
@@ -571,36 +571,36 @@ following versions of the base projects listed below:
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>Apache Geode</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{apache-geode-artifact-version}</p></td>
+class="tableblock halign-left valign-top"><p>1.14.4</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring
 Framework</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-version}</p></td>
+class="tableblock halign-left valign-top"><p>5.3.23</p></td>
 </tr>
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>Spring Boot</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-boot-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.4</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring Data for Apache
 Geode</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.3</p></td>
 </tr>
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>Spring Session for
 Apache Geode</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-session-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.1</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring Test for Apache
 Geode</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-test-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>0.3.1-RAJ</p></td>
 </tr>
 </tbody>
 </table>
@@ -633,7 +633,7 @@ Example 4. Spring Boot application Maven POM parent
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>{spring-boot-version}</version>
+    <version>2.7.4</version>
 </parent>
 ```
 
@@ -650,7 +650,7 @@ required for dependency management
 
 ``` prettyprint
 plugins {
-  id 'org.springframework.boot' version '{spring-boot-version}'
+  id 'org.springframework.boot' version '2.7.4'
   id 'io.spring.dependency-management' version '1.0.10.RELEASE'
   id 'java'
 }
@@ -670,7 +670,7 @@ Geode, `spring-geode-bom` BOM in Maven
 
 ``` prettyprint
 <properties>
-    <spring-geode.version>{spring-boot-data-geode-version}</spring-geode.version>
+    <spring-geode.version>1.27</spring-geode.version>
 </properties>
 
 <dependencyManagement>
@@ -706,7 +706,7 @@ Geode, `spring-geode-bom` BOM in Gradle
 
 ``` prettyprint
 ext {
-    set('springGeodeVersion', "{spring-boot-data-geode-version}")
+    set('springGeodeVersion', "1.27")
 }
 
 dependencies {
@@ -723,7 +723,7 @@ dependencyManagement {
 
 All of this is made simple by going to
 [start.spring.io](https://start.spring.io) and creating a Spring Boot
-`{spring-boot-version}` project using Apache Geode.
+`2.7.4` project using Apache Geode.
 
 
 ### 4.1. Overriding Dependency Versions
@@ -966,7 +966,7 @@ Gradle dependency version override
 
 ``` prettyprint
 plugins {
-    id 'org.springframework.boot' version '{spring-boot-version}'
+    id 'org.springframework.boot' version '2.7.4'
 }
 
 apply plugin:  'io.spring.dependency-management'
@@ -2414,7 +2414,7 @@ quickstart</a>.</td>
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/boot-configuration.html">guide</a> and
-{github-samples-url}/boot/configuration[code] to see Spring Boot
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/configuration[code] to see Spring Boot
 auto-configuration for Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -4835,7 +4835,7 @@ properties for Apache Geode
 
 
 ``` prettyprint
-# Spring Boot application.properties used to configure {geode-name}
+# Spring Boot application.properties used to configure VMware GemFire
 
 spring.data.gemfire.name=MySpringBootApacheGeodeApplication
 
@@ -4957,7 +4957,7 @@ using Apache Geode as the (HTTP) session state caching provider
 
 
 ``` prettyprint
-# Spring Boot application.properties used to configure {geode-name} as a (HTTP) session state caching provider
+# Spring Boot application.properties used to configure VMware GemFire as a (HTTP) session state caching provider
 # in Spring Session
 
 spring.session.data.gemfire.session.expiration.max-inactive-interval-seconds=300
@@ -5136,7 +5136,7 @@ Example 78. Configuring Geode Properties using SDG Properties
 
 
 ``` prettyprint
-# Spring Data for {geode-name} properties in application.properties
+# Spring Data for VMware GemFire properties in application.properties
 
 spring.data.gemfire.name=ExampleCacheName
 spring.data.gemfire.cache.log-level=TRACE
@@ -5759,7 +5759,7 @@ later release.
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-look-aside.html">guide</a> and
-{github-samples-url}/caching/look-aside[code] to see Look-aside caching
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/look-aside[code] to see Look-aside caching
 with Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -5846,7 +5846,7 @@ on — hence the need for caching.</td>
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-near.html">guide</a> and
-{github-samples-url}/caching/near[code] to see Near caching with Apache
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/near[code] to see Near caching with Apache
 Geode in action.</td>
 </tr>
 </tbody>
@@ -5965,7 +5965,7 @@ becomes available in the external data source.</td>
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-inline.html">guide</a> and
-{github-samples-url}/caching/inline[code] to see Inline caching with
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/inline[code] to see Inline caching with
 Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -6371,7 +6371,7 @@ in a future release.</td>
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-inline-async.html">guide</a> and
-{github-samples-url}/caching/inline-async[code] to see asynchronous
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/inline-async[code] to see asynchronous
 Inline caching with Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -6981,7 +6981,7 @@ demographic: active-active and active-passive.
 Multi-site caching, along with active-active and active-passive
 configuration arrangements, are described in more detail in the sample
 [guide](guides/caching-multi-site.html). Also, be sure to review the
-sample {github-samples-url}/caching/multi-site\[code\].
+sample  https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/multi-site\[code\].
 
 
 ### 10.2. Advanced Caching Configuration
@@ -9516,7 +9516,7 @@ Example 147. Externalized configuration using Apache Geode
 
 
 ``` prettyprint
-# {geode-name} only/specific properties
+# VMware GemFire only/specific properties
 log-level=INFO
 ```
 
@@ -10280,7 +10280,7 @@ Geode.</td>
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/boot-security.html">guide</a> and
-{github-samples-url}/boot/security[code] to see Spring Boot Security for
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/security[code] to see Spring Boot Security for
 Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -11685,7 +11685,7 @@ Boot `HealthIndicators` provided for Apache Geode.
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/boot-actuator.html">guide</a> and
-{github-samples-url}/boot/actuator[code] to see Spring Boot Actuator for
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/actuator[code] to see Spring Boot Actuator for
 Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -13376,7 +13376,7 @@ href="https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/%7Bsp
 <td class="icon"><em></em></td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-http-session.html.html">guide</a> and
-{github-samples-url}/caching/http-session[code] to see Spring Session
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/http-session[code] to see Spring Session
 for Apache Geode in action.</td>
 </tr>
 </tbody>
@@ -13405,7 +13405,7 @@ Example 183. Maven dependency declaration
   <dependency>
     <groupId>org.springframework.session</groupId>
     <artifactId>spring-session-data-geode</artifactId>
-    <version>{spring-session-data-geode-version}</version>
+    <version>2.7.1</version>
   </dependency>
 ```
 
@@ -15717,7 +15717,7 @@ Apache Geode</a></p></td>
 started quickly, easily, and reliably building Apache Geode powered
 applications with Spring Boot.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/intro/getting-started[Getting
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/intro/getting-started[Getting
 Started]</p></td>
 </tr>
 <tr class="even">
@@ -15728,7 +15728,7 @@ Apache Geode</a></p></td>
 auto-configuration is provided by SBDG and what the auto-configuration
 does.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/boot/configuration[Spring
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/configuration[Spring
 Boot Auto-Configuration]</p></td>
 </tr>
 <tr class="odd">
@@ -15738,7 +15738,7 @@ Geode</a></p></td>
 <td class="tableblock halign-left valign-top"><p>Explains how to use
 Spring Boot Actuator for Apache Geode and how it works.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/boot/actuator[Spring
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/actuator[Spring
 Boot Actuator]</p></td>
 </tr>
 <tr class="even">
@@ -15749,7 +15749,7 @@ Geode</a></p></td>
 configure auth and TLS with SSL when you use Apache Geode in your Spring
 Boot applications.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/boot/security[Spring
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/security[Spring
 Boot Security]</p></td>
 </tr>
 <tr class="odd">
@@ -15760,7 +15760,7 @@ Cache Abstraction and Apache Geode</a></p></td>
 and use Spring’s Cache Abstraction with Apache Geode as the caching
 provider for look-aside caching.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/look-aside[Look-Aside
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/look-aside[Look-Aside
 Caching]</p></td>
 </tr>
 <tr class="even">
@@ -15772,7 +15772,7 @@ and use Spring’s Cache Abstraction with Apache Geode as the caching
 provider for inline caching. This sample builds on the look-aside
 caching sample.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/inline[Inline
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/inline[Inline
 Caching]</p></td>
 </tr>
 <tr class="odd">
@@ -15784,7 +15784,7 @@ and use Spring’s Cache Abstraction with Apache Geode as the caching
 provider for asynchronous inline caching. This sample builds on the
 look-aside and inline caching samples.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/inline-async[Asynchronous
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/inline-async[Asynchronous
 Inline Caching]</p></td>
 </tr>
 <tr class="even">
@@ -15796,7 +15796,7 @@ and use Spring’s Cache Abstraction with Apache Geode as the caching
 provider for near caching. This sample builds on the look-aside caching
 sample.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/near[Near
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/near[Near
 Caching]</p></td>
 </tr>
 <tr class="odd">
@@ -15808,7 +15808,7 @@ and use Spring’s Cache Abstraction with Apache Geode as the caching
 provider for multi-site caching. This sample builds on the look-aside
 caching sample.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/multi-site[Multi-Site
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/multi-site[Multi-Site
 Caching]</p></td>
 </tr>
 <tr class="even">
@@ -15819,7 +15819,7 @@ Session and Apache Geode</a></p></td>
 and use Spring Session with Apache Geode to manage HTTP session
 state.</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{github-samples-url}/caching/http-session[HTTP
+class="tableblock halign-left valign-top"><p> https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/http-session[HTTP
 Session Caching]</p></td>
 </tr>
 </tbody>

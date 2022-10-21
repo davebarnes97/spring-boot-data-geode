@@ -21,7 +21,7 @@ Title: Spring Session
 
 
 This chapter covers auto-configuration of Spring Session for
-{pivotal-gemfire-name} to manage (HTTP) session state in a reliable
+VMware GemFire to manage (HTTP) session state in a reliable
 (consistent), highly available (replicated), and clustered manner.
 
 
@@ -55,10 +55,10 @@ document. You can learn more by reading the
 
 
 
-Spring Boot for {pivotal-gemfire-name} provides auto-configuration
-support to configure {pivotal-gemfire-name} as the session management
+Spring Boot for VMware GemFire provides auto-configuration
+support to configure VMware GemFire as the session management
 provider and store when {spring-session-data-gemfire-website}\[Spring
-Session for {pivotal-gemfire-name}\] is on your Spring Boot
+Session for VMware GemFire\] is on your Spring Boot
 application’s classpath.
 
 
@@ -76,8 +76,8 @@ application’s classpath.
 Tip
 </td>
 <td class="content">You can learn more about Spring Session for
-{pivotal-gemfire-name} in the
-{spring-session-data-gemfire-docs}[docs].</td>
+VMware GemFire in the
+https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.7.1/reference/html5[docs].</td>
 </tr>
 </tbody>
 </table>
@@ -98,8 +98,8 @@ Tip
 </td>
 <td class="content">See the corresponding sample <a
 href="guides/caching-http-session.html">guide</a> and
-{github-samples-url}/caching/http-session[code] to see Spring Session
-for {pivotal-gemfire-name} in action.</td>
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/caching/http-session[code] to see Spring Session
+for VMware GemFire in action.</td>
 </tr>
 </tbody>
 </table>
@@ -112,7 +112,7 @@ for {pivotal-gemfire-name} in action.</td>
 
 
 
-You need do nothing special to use {pivotal-gemfire-name} as a Spring
+You need do nothing special to use VMware GemFire as a Spring
 Session provider implementation, managing the (HTTP) session state of
 your Spring Boot application.
 
@@ -143,7 +143,7 @@ Example 1. Maven dependency declaration
   <dependency>
     <groupId>org.springframework.session</groupId>
     <artifactId>spring-session-data-geode</artifactId>
-    <version>{spring-session-data-geode-version}</version>
+    <version>2.7.1</version>
   </dependency>
 ```
 
@@ -277,7 +277,7 @@ class MyApplicationController {
 
 
 The `HttpSession` is replaced by a Spring managed `Session` that is
-stored in {pivotal-gemfire-name}.
+stored in VMware GemFire.
 
 
 
@@ -289,8 +289,8 @@ stored in {pivotal-gemfire-name}.
 
 
 
-By default, Spring Boot for {pivotal-gemfire-name} (SBDG) applies
-reasonable and sensible defaults when configuring {pivotal-gemfire-name}
+By default, Spring Boot for VMware GemFire (SBDG) applies
+reasonable and sensible defaults when configuring VMware GemFire
 as the provider in Spring Session.
 
 
@@ -299,7 +299,7 @@ as the provider in Spring Session.
 
 For instance, by default, SBDG sets the session expiration timeout to 30
 minutes. It also uses a `ClientRegionShortcut.PROXY` as the data
-management policy for the {pivotal-gemfire-name} client Region that
+management policy for the VMware GemFire client Region that
 managing the (HTTP) session state when the Spring Boot application is
 using a `ClientCache`, which it does by
 [default](#geode-clientcache-applications).
@@ -325,10 +325,10 @@ In that case, see the next section.
 
 
 
-Spring Session for {pivotal-gemfire-name} publishes
-{spring-session-data-gemfire-docs}/#httpsession-gemfire-configuration-properties\[well-known
+Spring Session for VMware GemFire publishes
+https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.7.1/reference/html5/#httpsession-gemfire-configuration-properties\[well-known
 configuration properties\] for each of the various Spring Session
-configuration options when you use {pivotal-gemfire-name} as the (HTTP)
+configuration options when you use VMware GemFire as the (HTTP)
 session state management provider.
 
 
@@ -337,17 +337,17 @@ session state management provider.
 
 You can specify any of these properties in Spring Boot
 `application.properties` to adjust Spring Session’s configuration when
-using {pivotal-gemfire-name}.
+using VMware GemFire.
 
 
 
 
 
 In addition to the properties provided in and by Spring Session for
-{pivotal-gemfire-name}, Spring Boot for {pivotal-gemfire-name} also
+VMware GemFire, Spring Boot for VMware GemFire also
 recognizes and respects the `spring.session.timeout` property and the
 `server.servlet.session.timeout` property, as discussed
-{spring-boot-docs-html}/boot-features-session.html\[the Spring Boot
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-session.html\[the Spring Boot
 documentation\].
 
 
@@ -384,11 +384,11 @@ the Spring <code>Environment</code> of your application.</td>
 
 
 
-Spring Session for {pivotal-gemfire-name} also provides the
-{spring-session-data-gemfire-javadoc}/org/springframework/session/data/gemfire/config/annotation/web/http/support/SpringSessionGemFireConfigurer.html\[`SpringSessionGemFireConfigurer`\]
+Spring Session for VMware GemFire also provides the
+https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.7.1/api/org/springframework/session/data/gemfire/config/annotation/web/http/support/SpringSessionGemFireConfigurer.html\[`SpringSessionGemFireConfigurer`\]
 callback interface, which you can declare in your Spring
 `ApplicationContext` to programmatically control the configuration of
-Spring Session when you use {pivotal-gemfire-name}.
+Spring Session when you use VMware GemFire.
 
 
 
@@ -396,7 +396,7 @@ Spring Session when you use {pivotal-gemfire-name}.
 
 The `SpringSessionGemFireConfigurer`, when declared in the Spring
 `ApplicationContext`, takes precedence over any of the Spring Session
-(for {pivotal-gemfire-name}) configuration properties and effectively
+(for VMware GemFire) configuration properties and effectively
 overrides them when both are present.
 
 
@@ -405,7 +405,7 @@ overrides them when both are present.
 
 More information on using the `SpringSessionGemFireConfigurer` can be
 found in the
-{spring-session-data-gemfire-docs}/#httpsession-gemfire-configuration-configurer\[docs\].
+https://docs.spring.io/autorepo/docs/spring-session-data-geode-build/2.7.1/reference/html5/#httpsession-gemfire-configuration-configurer\[docs\].
 
 
 
@@ -420,7 +420,7 @@ found in the
 
 
 There may be cases where you do not want your Spring Boot application to
-manage (HTTP) session state by using {pivotal-gemfire-name}.
+manage (HTTP) session state by using VMware GemFire.
 
 
 
@@ -511,7 +511,7 @@ spring.session.store-type=none
 
 
 Again, see the Spring Boot
-{spring-boot-docs-html}/boot-features-session.html\[documentation\] for
+https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-session.html\[documentation\] for
 more detail.
 
 
@@ -531,7 +531,7 @@ Tip
 <td class="content">You can include multiple provider implementations on
 the classpath of your Spring Boot application. For instance, you might
 use Redis to cache your application’s (HTTP) session state while using
-{pivotal-gemfire-name} as your application’s transactional persistent
+VMware GemFire as your application’s transactional persistent
 store (System of Record).</td>
 </tr>
 </tbody>
@@ -553,7 +553,7 @@ Note
 </td>
 <td class="content">Spring Boot does not properly recognize
 <code>spring.session.store-type=[gemfire|geode]</code> even though
-Spring Boot for {pivotal-gemfire-name} is set up to handle either of
+Spring Boot for VMware GemFire is set up to handle either of
 these property values (that is, either <code>gemfire</code> or
 <code>geode</code>).</td>
 </tr>
@@ -570,18 +570,18 @@ these property values (that is, either <code>gemfire</code> or
 
 
 
-Whether you use Spring Session in a Spring Boot, {pivotal-gemfire-name}
+Whether you use Spring Session in a Spring Boot, VMware GemFire
 `ClientCache` application to connect to an standalone, externally
-managed cluster of {pivotal-gemfire-name} servers or to connect to a
+managed cluster of VMware GemFire servers or to connect to a
 cluster of servers in a {pivotal-cloudcache-name} service instance
-managed by a {pivotal-cloudfoundry-name} environment, the setup is the
+managed by a Tanzu Application Service environment, the setup is the
 same.
 
 
 
 
 
-Spring Session for {pivotal-gemfire-name} expects there to be a cache
+Spring Session for VMware GemFire expects there to be a cache
 Region in the cluster that can store and manage (HTTP) session state
 when your Spring Boot application is a `ClientCache` application in the
 client/server topology.
@@ -758,7 +758,7 @@ Policy set on the cache Region that is used to store session state. The
 Servlet container’s (HTTP) session expiration configuration is not used,
 since Spring Session replaces the Servlet container’s session management
 capabilities with its own, and Spring Session delegates this behavior to
-the individual providers, such as {pivotal-gemfire-name}.</td>
+the individual providers, such as VMware GemFire.</td>
 </tr>
 </tbody>
 </table>
@@ -819,9 +819,9 @@ class MySpringBootSpringSessionApacheGeodeApplication {
 Tip
 </td>
 <td class="content">See the
-{spring-data-geode-javadoc}/org/springframework/data/gemfire/config/annotation/EnableClusterConfiguration.html[Javadoc]
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableClusterConfiguration.html[Javadoc]
 on the <code>@EnableClusterConfiguration</code> annotation and the
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-cluster[documentation]
+https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-cluster[documentation]
 for more detail.</td>
 </tr>
 </tbody>
@@ -869,8 +869,8 @@ gfsh> alter region --name=MySessions --entry-idle-time-expiration=1800
 Now your Spring Boot `ClientCache` application that uses Spring Session
 in a client/server topology is configured to store and manage user
 (HTTP) session state in the cluster. This works for either standalone,
-externally managed {pivotal-gemfire-name} clusters or when you use PCC
-running in a {pivotal-cloudfoundry-name} environment.
+externally managed VMware GemFire clusters or when you use PCC
+running in a Tanzu Application Service environment.
 
 
 

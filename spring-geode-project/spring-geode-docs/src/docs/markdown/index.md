@@ -174,7 +174,7 @@ SBDG’s promise is to deliver on these principles as
 much as is technically possible and as is technically allowed by VMware
 GemFire.
 
-## Getting Started
+## <a id='getting-started'></a>Getting Started
 
 To be immediately productive and as effective as possible when you use
 Spring Boot for VMware GemFire, it helps to understand the foundation on
@@ -528,19 +528,19 @@ class="tableblock halign-left valign-top"><p>2.7.4</p></td>
 <td class="tableblock halign-left valign-top"><p>Spring Data for VMware
 GemFire</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.3</p></td>
 </tr>
 <tr class="even">
 <td class="tableblock halign-left valign-top"><p>Spring Session for
 VMware GemFire</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-session-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>2.7.1</p></td>
 </tr>
 <tr class="odd">
 <td class="tableblock halign-left valign-top"><p>Spring Test for VMware
 GemFire</p></td>
 <td
-class="tableblock halign-left valign-top"><p>{spring-test-data-geode-version}</p></td>
+class="tableblock halign-left valign-top"><p>0.3.1-RAJ</p></td>
 </tr>
 </tbody>
 </table>

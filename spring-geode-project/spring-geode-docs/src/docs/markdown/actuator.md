@@ -18,29 +18,29 @@ title: Spring Boot Actuator
  the License.
 -->
 
-Spring Boot for {pivotal-gemfire-name} (SBDG) adds
-{spring-boot-docs-html}/production-ready.html\[Spring Boot Actuator\]
-support and dedicated `HealthIndicators` for {pivotal-gemfire-name}.
+Spring Boot for VMware GemFire (SBDG) adds
+[Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready.html)
+support and dedicated `HealthIndicators` for VMware GemFire.
 Equally, the provided `HealthIndicators` even work with Tanzu Cache
-(which is backed by {pivotal-gemfire-name}) when you push your Spring
-Boot applications using {pivotal-gemfire-name} to {VMware Tanzu
-Application Service (TAS)} platform.
+(which is backed by VMware GemFire) when you push your Spring
+Boot applications using VMware GemFire to VMware Tanzu
+Application Service (TAS) platform.
 
 Spring Boot `HealthIndicators` provide details about the runtime
-operation and behavior of your {pivotal-gemfire-name}-based Spring Boot
+operation and behavior of your VMware GemFire-based Spring Boot
 applications. For instance, by querying the right `HealthIndicator`
 endpoint, you can get the current hit/miss count for your
 `Region.get(key)` data access operations.
 
 In addition to vital health information, SBDG provides basic,
-pre-runtime configuration metadata about the {pivotal-gemfire-name}
+pre-runtime configuration metadata about the VMware GemFire
 components that are monitored by Spring Boot Actuator. This makes it
 easier to see how the application was configured all in one place,
 rather than in properties files, Spring configuration, XML, and so on.
 
 The provided Spring Boot `HealthIndicators` fall into three categories:
 
-- Base `HealthIndicators` that apply to all {pivotal-gemfire-name},
+- Base `HealthIndicators` that apply to all VMware GemFire,
   Spring Boot applications, regardless of cache type, such as `Regions`,
   `Indexes`, and `DiskStores`.
 
@@ -53,36 +53,24 @@ The provided Spring Boot `HealthIndicators` fall into three categories:
   `Pools`.
 
 The following sections give a brief overview of all the available Spring
-Boot `HealthIndicators` provided for {pivotal-gemfire-name}.
+Boot `HealthIndicators` provided for VMware GemFire.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">See the corresponding sample <a
+See the corresponding sample <a
 href="guides/boot-actuator.html">guide</a> and
-{github-samples-url}/boot/actuator[code] to see Spring Boot Actuator for
-{pivotal-gemfire-name} in action.</td>
-</tr>
-</tbody>
-</table>
+ https://github.com/spring-projects/spring-boot-data-geode/tree/1.7.4/spring-geode-samples/intro/getting-started/boot/actuator[code] to see Spring Boot Actuator for
+VMware GemFire in action.
+
 
 ### Base HealthIndicators
 
 This section covers Spring Boot `HealthIndicators` that apply to both
-{pivotal-gemfire-name} peer `Cache` and `ClientCache`, Spring Boot
+VMware GemFire peer `Cache` and `ClientCache`, Spring Boot
 applications. That is, these `HealthIndicators` are not specific to the
 cache type.
 
-In {pivotal-gemfire-name}, the cache instance is either a peer `Cache`
+In VMware GemFire, the cache instance is either a peer `Cache`
 instance (which makes your Spring Boot application part of a
-{pivotal-gemfire-name} cluster) or, more commonly, a `ClientCache`
+VMware GemFire cluster) or, more commonly, a `ClientCache`
 instance (which talks to an existing cluster). Your Spring Boot
 application can only be one cache type or the other and can only have a
 single instance of that cache type.
@@ -95,13 +83,13 @@ single instance of that cache type.
 of the `ResourceManager`.
 
 When your Spring Boot application creates an instance of a peer
-{apache-geode-javadoc}/org/apache/geode/cache/Cache.html\[`Cache`\], the
-{apache-geode-javadoc}/org/apache/geode/distributed/DistributedMember.html\[`DistributedMember`\]
+[`Cache`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/Cache.html), the
+[`DistributedMember`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/distributed/DistributedMember.html)
 object represents your application as a peer member or node of the
-{apache-geode-javadoc}/org/apache/geode/distributed/DistributedSystem.html\[`DistributedSystem`\].
+[`DistributedSystem`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/distributed/DistributedSystem.html).
 The distributed system (that is, the cluster) is formed from a
 collection of connected peers, to which your application also has
-{apache-geode-javadoc}/org/apache/geode/cache/GemFireCache.html#getDistributedSystem--\[access\] — indirectly,
+[access](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/GemFireCache.html#getDistributedSystem) — indirectly,
 through the cache instance.
 
 This is no different for a `ClientCache` even though the client is
@@ -233,14 +221,14 @@ cluster.</p></td>
 <td
 class="tableblock halign-center valign-top"><p>geode.distributed-system.properties-location</p></td>
 <td class="tableblock halign-left valign-top"><p>Location of the
-{apache-geode-docs}/topics/gemfire_properties.html[standard
+https://geode.apache.org/docs/guide/115/topics/gemfire_properties.html[standard
 configuration properties].</p></td>
 </tr>
 <tr class="odd">
 <td
 class="tableblock halign-center valign-top"><p>geode.distributed-system.security-properties-location</p></td>
 <td class="tableblock halign-left valign-top"><p>Location of the
-{apache-geode-docs}/topics/gemfire_properties.html[security
+https://geode.apache.org/docs/guide/115/topics/gemfire_properties.html[security
 configuration properties].</p></td>
 </tr>
 </tbody>
@@ -440,8 +428,8 @@ class="tableblock halign-center valign-top"><p>geode.cache.regions.&lt;name&gt;.
 Table 6. Partition Region Details
 
 Finally, when statistics are enabled (for example, when you use
-`@EnableStatistics` — (see
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-statistics\[doc\]
+`@EnableStatistics` — (see
+[doc](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-statistics)
 for more details), the following metadata is available:
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
@@ -546,9 +534,9 @@ Index is applied.</p></td>
 Table 8. Index Details
 
 Additionally, when statistics are enabled (for example, when you use
-`@EnableStatistics` — see
-{spring-data-geode-docs-html}/#bootstrap-annotation-config-statistics\[Configuring
-Statistics\] for more details), the following metadata is available:
+`@EnableStatistics` — see
+[Configuring Statistics](https://docs.spring.io/spring-data/geode/docs/current/reference/html/#bootstrap-annotation-config-statistics)
+for more details), the following metadata is available:
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 9. Index Statistic Details</caption>
@@ -866,7 +854,7 @@ qualified by this CQ.</p></td>
 
 Table 13. Continuous Query(CQ), Statistic Details
 
-The {pivotal-gemfire-name} Continuous Query system is also tracked with
+The VMware GemFire Continuous Query system is also tracked with
 the following additional details on the client:
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
@@ -1108,45 +1096,22 @@ specifically for Spring Boot peer cache member applications. These
 `HealthIndicators` are available only when the Spring Boot application
 creates a peer `Cache` instance.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Note
-</td>
-<td class="content">The default cache instance created by Spring Boot
-for {pivotal-gemfire-name} is a <code>ClientCache</code> instance.</td>
-</tr>
-</tbody>
-</table>
+<p class="note><strong>Note:</strong>
+The default cache instance created by Spring Boot
+for VMware GemFire is a <code>ClientCache</code> instance.
+</p>
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Tip
-</td>
-<td class="content">To control what type of cache instance is created,
+To control what type of cache instance is created,
 such as a “peer”, you can explicitly declare either the
 <code>@PeerCacheApplication</code> or, alternatively, the
 <code>@CacheServerApplication</code> annotation on your
-<code>@SpringBootApplication</code>-annotated class.</td>
-</tr>
-</tbody>
-</table>
+<code>@SpringBootApplication</code>-annotated class.
+
 
 #### GeodeCacheServersHealthIndicator
 
 The `GeodeCacheServersHealthIndicator` provides details about the
-configured {pivotal-gemfire-name} `CacheServer` instances. `CacheServer`
+configured VMware GemFire `CacheServer` instances. `CacheServer`
 instances are required to enable clients to connect to the servers in
 the cluster.
 
@@ -1443,9 +1408,8 @@ Table 18. AsyncEventQueue Details
 
 `GeodeGatewayReceiversHealthIndicator` provides details about the
 configured (WAN) `GatewayReceivers`, which are capable of receiving
-events from remote clusters when using {pivotal-gemfire-name}'s
-{apache-geode-docs}/topologies_and_comm/multi_site_configuration/chapter_overview.html\[multi-site,
-WAN topology\].
+events from remote clusters when using VMware GemFire's
+[multi-site, WAN topology](https://geode.apache.org/docs/guide/115/topologies_and_comm/multi_site_configuration/chapter_overview.html).
 
 This `HealthIndicator` captures configuration metadata along with the
 running state for each `GatewayReceiver`:
@@ -1534,9 +1498,8 @@ Table 19. GatewayReceiver Details
 The `GeodeGatewaySendersHealthIndicator` provides details about the
 configured `GatewaySenders`. `GatewaySender` instances are attached to
 Regions in order to send Region events to remote clusters in
-{pivotal-gemfire-name}'s
-{apache-geode-docs}/topologies_and_comm/multi_site_configuration/chapter_overview.html\[multi-site,
-WAN topology\].
+VMware GemFire's
+[multi-site, WAN topology](https://geode.apache.org/docs/guide/115/topologies_and_comm/multi_site_configuration/chapter_overview.html).
 
 This `HealthIndicator` captures essential configuration metadata and
 runtime characteristics for each `GatewaySender`:
