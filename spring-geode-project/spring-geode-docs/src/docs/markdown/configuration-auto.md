@@ -185,7 +185,7 @@ disable auto-configuration.
 
 ### Overriding Auto-configuration
 
-[Overriding](./appendix#geode-auto-configuration-annotations-overriding)
+[Overriding](./appendix.html#geode-auto-configuration-annotations-overriding)
 explains how to override SBDG auto-configuration.
 
 In a nutshell, if you want to override the default auto-configuration
@@ -754,7 +754,7 @@ on the application classpath and does the rest.
 
 See [Spring Session](session.html) for more details.
 
-#### RegionTemplateAutoConfiguration
+#### <a id=regiontemplateautoconfiguration></a>RegionTemplateAutoConfiguration
 
 The SBDG
 [`RegionTemplateAutoConfiguration`](https://docs.spring.io/spring-boot-data-geode-build/current/api/org/springframework/geode/boot/autoconfigure/RegionTemplateAutoConfiguration.html)
