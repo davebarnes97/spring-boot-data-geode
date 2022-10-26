@@ -2,7 +2,6 @@
 Title: Configuration Metadata Reference
 ---
 
-
 <!-- 
  Copyright (c) VMware, Inc. 2022. All rights reserved.
  Licensed to the Apache Software Foundation (ASF) under one or more contributor license
@@ -19,36 +18,23 @@ Title: Configuration Metadata Reference
  the License.
 -->
 
-
 The following reference sections cover documented and well-known
 properties recognized and processed by Spring Data for
-{apache-geode-name} (SDG) and Spring Session for {apache-geode-name}
+VMware GemFire (SDG) and Spring Session for VMware GemFire
 (SSDG).
-
-
-
-
 
 These properties may be used in Spring Boot `application.properties` or
 as JVM System properties, to configure different aspects of or enable
-individual features of {apache-geode-name} in a Spring application. When
+individual features of VMware GemFire in a Spring application. When
 combined with the power of Spring Boot, they give you the ability to
-quickly create an application that uses {apache-geode-name}.
-
-
-
-
+quickly create an application that uses VMware GemFire.
 
 ### Spring Data Based Properties
-
-
 
 The following properties all have a `spring.data.gemfire.*` prefix. For
 example, to set the cache `copy-on-read` property, use
 `spring.data.gemfire.cache.copy-on-read` in Spring Boot
 `application.properties`.
-
-
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 1. <code>spring.data.gemfire.*</code>
@@ -72,29 +58,29 @@ properties</caption>
 <td
 class="tableblock halign-left valign-top"><p><code>name</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Name of the
-{apache-geode-name}.</p></td>
+VMware GemFire server.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>SpringBasedCacheClientApplication</code></p></td>
 <td
-class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--[<code>ClientCacheApplication.name</code>]</p></td>
+class="tableblock halign-left valign-top"><p>[<code>ClientCacheApplication.name</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--)</p></td>
 </tr>
 <tr class="even">
 <td
 class="tableblock halign-left valign-top"><p><code>locators</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Comma-delimited list of
 Locator endpoints formatted as:
-<code>locator1[port1],…​,locatorN[portN]</code>.</p></td>
+<code>locator1[port1],...​,locatorN[portN]</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p>[]</p></td>
 <td
-class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--[<code>PeerCacheApplication.locators</code>]</p></td>
+class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--">[<code>PeerCacheApplication.locators</code>]</a></p></td>
 </tr>
 <tr class="odd">
 <td
 class="tableblock halign-left valign-top"><p><code>use-bean-factory-locator</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Enable the SDG
 <code>BeanFactoryLocator</code> when mixing Spring config with
-{apache-geode-name} native config (such as <code>cache.xml</code>) and
-you wish to configure {apache-geode-name} objects declared in
+VMware GemFire native config (such as <code>cache.xml</code>) and
+you wish to configure VMware GemFire objects declared in
 <code>cache.xml</code> with Spring.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
@@ -159,7 +145,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>cache.enable-auto-region-lookup</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Whether to lookup
-Regions configured in {apache-geode-name} native configuration and
+Regions configured in VMware GemFire native configuration and
 declare them as Spring beans.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
@@ -190,7 +176,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>cache.log-level</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Configure the log-level
-of an {apache-geode-name} cache.</p></td>
+of a VMware GemFire cache.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>config</code></p></td>
 <td
@@ -230,7 +216,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p>cache.off-heap.memory-size</p></td>
 <td class="tableblock halign-left valign-top"><p>Determines the size of
-off-heap memory used by {apache-geode-name} in megabytes (m) or
+off-heap memory used by VMware GemFire in megabytes (m) or
 gigabytes (g) — for example, <code>120g</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
@@ -569,34 +555,14 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 
 Table 5. `spring.data.gemfire.*` *CacheServer* properties
 
-
-
 `CacheServer` properties can be further targeted at specific
 `CacheServer` instances by using an optional bean name of the
 `CacheServer` bean defined in the Spring `ApplicationContext`. Consider
 the following example:
 
-
-
-
-
-
-
-
-
-
-
 ``` highlight
 spring.data.gemfire.cache.server.[<cacheServerBeanName>].bind-address=...
 ```
-
-
-
-
-
-
-
-
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 6. <code>spring.data.gemfire.*</code> Cluster
@@ -766,56 +732,20 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 
 Table 7. `spring.data.gemfire.*` *DiskStore* properties
 
-
-
 `DiskStore` properties can be further targeted at specific `DiskStore`
 instances by setting the
 https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/DiskStore.html#getName--\[`DiskStore.name`\]
 property.
 
-
-
-
-
 For example, you can specify directory location of the files for a
 specific, named `DiskStore` by using:
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 spring.data.gemfire.disk.store.Example.directory.location=/path/to/geode/disk-stores/Example/
 ```
 
-
-
-
-
-
-
-
-
-
-
 The directory location and size of the `DiskStore` files can be further
 divided into multiple locations and size using array syntax:
-
-
-
-
-
-
-
-
-
-
 
 ``` highlight
 spring.data.gemfire.disk.store.Example.directory[0].location=/path/to/geode/disk-stores/Example/one
@@ -824,23 +754,11 @@ spring.data.gemfire.disk.store.Example.directory[1].location=/path/to/geode/disk
 spring.data.gemfire.disk.store.Example.directory[1].size=8192000
 ```
 
-
-
-
-
-
-
-
-
-
-
 Both the name and array index are optional, and you can use any
 combination of name and array index. Without a name, the properties
 apply to all `DiskStore` instances. Without array indexes, all named
 `DiskStore` files are stored in the specified location and limited to
 the defined size.
-
-
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 8. <code>spring.data.gemfire.*</code> Entity
@@ -938,7 +856,7 @@ properties</caption>
 <td
 class="tableblock halign-left valign-top"><p><code>logging.level</code></p></td>
 <td class="tableblock halign-left valign-top"><p>The log level of an
-{apache-geode-name} cache. Alias for
+VMware GemFire cache. Alias for
 'spring.data.gemfire.cache.log-level'.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>config</code></p></td>
@@ -999,7 +917,7 @@ properties</caption>
 <td
 class="tableblock halign-left valign-top"><p><code>management.use-http</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Whether to use the HTTP
-protocol to communicate with an {apache-geode-name} Manager.</p></td>
+protocol to communicate with a VMware GemFire Manager.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
 <td
@@ -1009,7 +927,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>management.http.host</code></p></td>
 <td class="tableblock halign-left valign-top"><p>The IP address or
-hostname of the {apache-geode-name} Manager that runs the HTTP
+hostname of the VMware GemFire Manager that runs the HTTP
 service.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
@@ -1019,7 +937,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>management.http.port</code></p></td>
 <td class="tableblock halign-left valign-top"><p>The port used by the
-{apache-geode-name} Manager’s HTTP service to listen for
+VMware GemFire Manager’s HTTP service to listen for
 connections.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>7070</code></p></td>
@@ -1255,7 +1173,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 class="tableblock halign-left valign-top"><p><code>pool.locators</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Comma-delimited list of
 locator endpoints in the format of
-<code>locator1[port1],…​,locatorN[portN]</code></p></td>
+<code>locator1[port1],...​,locatorN[portN]</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
 class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnablePool.html#locators--[<code>EnablePool.locators</code>]</p></td>
@@ -1355,7 +1273,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 class="tableblock halign-left valign-top"><p><code>pool.servers</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Comma-delimited list of
 <code>CacheServer</code> endpoints in the format of
-<code>server1[port1],…​,serverN[portN]</code></p></td>
+<code>server1[port1],...​,serverN[portN]</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
 class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnablePool.html#servers--[<code>EnablePool.servers</code>]</p></td>
@@ -1607,10 +1525,10 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <tr class="even">
 <td
 class="tableblock halign-left valign-top"><p><code>security.shiro.ini-resource-path</code></p></td>
-<td class="tableblock halign-left valign-top"><p>The {apache-geode-name}
+<td class="tableblock halign-left valign-top"><p>The VMware GemFire
 System property that refers to the location of an Apache Shiro INI file
 that configures the Apache Shiro Security Framework in order to secure
-{apache-geode-name}.</p></td>
+VMware GemFire.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
 class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableSecurity.html#shiroIniResourcePath--[<code>EnableSecurity.shiroIniResourcePath</code>]</p></td>
@@ -1652,7 +1570,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 class="tableblock halign-left valign-top"><p><code>security.ssl.certificate.alias.default-alias</code></p></td>
 <td class="tableblock halign-left valign-top"><p>The default alias to
 the stored SSL certificate used to secure communications across the
-entire {apache-geode-name} system.</p></td>
+entire VMware GemFire system.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
 class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/EnableSsl.html#defaultCertificateAlias--[<code>EnableSsl.defaultCertificateAlias</code>]</p></td>
@@ -1719,7 +1637,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 <td
 class="tableblock halign-left valign-top"><p><code>security.ssl.components</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Comma-delimited list of
-{apache-geode-name} components (for example, WAN) to be configured for
+VMware GemFire components (for example, WAN) to be configured for
 SSL communication.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td
@@ -1866,7 +1784,7 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 class="tableblock halign-left valign-top"><p><code>service.http.dev-rest-api-start</code></p></td>
 <td class="tableblock halign-left valign-top"><p>Whether to start the
 Developer REST API web service. A full installation of
-{apache-geode-name} is required, and you must set the
+VMware GemFire is required, and you must set the
 <code>$GEODE</code> environment variable.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
@@ -1918,20 +1836,12 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/
 
 Table 17. `spring.data.gemfire.*` Service properties
 
-
-
-
-
 ### Spring Session Based Properties
-
-
 
 The following properties all have a `spring.session.data.gemfire.*`
 prefix. For example, to set the session Region name, set
 `spring.session.data.gemfire.session.region.name` in Spring Boot
 `application.properties`.
-
-
 
 <table class="tableblock frame-all grid-all" style="width: 90%;">
 <caption>Table 18. <code>spring.session.data.gemfire.*</code>
@@ -2029,23 +1939,13 @@ class="tableblock halign-left valign-top"><p>https://docs.spring.io/autorepo/doc
 
 Table 18. `spring.session.data.gemfire.*` properties
 
+### VMware GemFire Properties
 
-
-
-
-### {apache-geode-name} Properties
-
-
-
-While we do not recommend using {apache-geode-name} properties directly
+While we do not recommend using VMware GemFire properties directly
 in your Spring applications, SBDG does not prevent you from doing so.
 See the
 https://geode.apache.org/docs/guide/115/reference/topics/gemfire_properties.html\[complete
-reference to the {apache-geode-name} specific properties\].
-
-
-
-
+reference to the VMware GemFire specific properties\].
 
 <table>
 <colgroup>
@@ -2057,31 +1957,11 @@ reference to the {apache-geode-name} specific properties\].
 <td class="icon">
 Warning
 </td>
-<td class="content">{apache-geode-name} is very strict about the
+<td class="content">VMware GemFire is very strict about the
 properties that may be specified in a <code>gemfire.properties</code>
 file. You cannot mix Spring properties with <code>gemfire.*</code>
-properties in an {apache-geode-name} <code>gemfire.properties</code>
+properties in a VMware GemFire <code>gemfire.properties</code>
 file.</td>
 </tr>
 </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-<div id="footer">
-
-<div id="footer-text">
-
-Last updated 2022-10-06 11:36:31 -0700
-
-
-
-

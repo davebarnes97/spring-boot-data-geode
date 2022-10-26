@@ -590,7 +590,7 @@ VMware GemFire.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>SpringBasedCacheClientApplication</code></p></td>
 <td
-class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--[<code>ClientCacheApplication.name</code>]</p></td>
+class="tableblock halign-left valign-top"><p>[<code>ClientCacheApplication.name</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--)</p></td>
 </tr>
 <tr class="even">
 <td
@@ -600,7 +600,7 @@ Locator endpoints formatted as:
 <code>locator1[port1],...,locatorN[portN]</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p>[]</p></td>
 <td
-class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--[<code>PeerCacheApplication.locators</code>]</p></td>
+class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--">[<code>PeerCacheApplication.locators</code>]</a></p></td>
 </tr>
 <tr class="odd">
 <td
