@@ -82,7 +82,7 @@ VMware GemFire (this project).
 
 The list of SDG annotations covered by SBDG’s
 auto-configuration is discussed in detail in the [Appendix: Auto-configuration vs.
-Annotation-based configuration](./appendix.html#geode-auto-configuration-annotations).
+Annotation-based configuration](./configuration-annotations.html).
 
 To be absolutely clear about which SDG annotations we are referring to,
 we mean the SDG annotations in the

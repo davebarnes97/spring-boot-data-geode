@@ -20,7 +20,7 @@ Title: Auto-configuration vs. Annotation-based configuration
 
 The question most often asked is, “What Spring Data for
 GemFire (SDG) annotations can I use, or must I use, when
-developing {apache-geode-name} applications with Spring Boot?”
+developing VMware GemFire applications with Spring Boot?”
 
 This section answers this question and more.
 
@@ -122,7 +122,7 @@ these annotations when you want to “override” Spring Boot’s conventions,
 as expressed in auto-configuration, and “customize” the behavior of the
 feature.
 
-### Overriding
+### <a id='auto-configuration-annotations-overriding'></a>Overriding
 
 In this section, we cover a few examples to make the behavior when
 overriding more apparent.

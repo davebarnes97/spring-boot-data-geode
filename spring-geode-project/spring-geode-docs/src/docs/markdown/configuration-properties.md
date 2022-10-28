@@ -62,8 +62,7 @@ VMware GemFire server.</p></td>
 <td
 class="tableblock halign-left valign-top"><p><code>SpringBasedCacheClientApplication</code></p></td>
 <td
-class="tableblock halign-left valign-top"><p>[<code>ClientCacheApplication.name</code>](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--)</p></td>
-</tr>
+class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#name--"><code>ClientCacheApplication.name</code></a></td></tr>
 <tr class="even">
 <td
 class="tableblock halign-left valign-top"><p><code>locators</code></p></td>
@@ -72,7 +71,7 @@ Locator endpoints formatted as:
 <code>locator1[port1],...​,locatorN[portN]</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p>[]</p></td>
 <td
-class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--">[<code>PeerCacheApplication.locators</code>]</a></p></td>
+class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/PeerCacheApplication.html#locators--"><code>PeerCacheApplication.locators</code></a></p></td>
 </tr>
 <tr class="odd">
 <td
@@ -85,7 +84,8 @@ you wish to configure VMware GemFire objects declared in
 <td
 class="tableblock halign-left valign-top"><p><code>false</code></p></td>
 <td
-class="tableblock halign-left valign-top"><p>https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#useBeanFactoryLocator--[<code>ClientCacheApplication.useBeanFactoryLocator</code>]</p></td>
+<td
+class="tableblock halign-left valign-top"><p><a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/data/gemfire/config/annotation/ClientCacheApplication.html#useBeanFactoryLocator--"><code>ClientCacheApplication.useBeanFactoryLocator</code></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -734,7 +734,7 @@ Table 7. `spring.data.gemfire.*` *DiskStore* properties
 
 `DiskStore` properties can be further targeted at specific `DiskStore`
 instances by setting the
-https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/DiskStore.html#getName--\[`DiskStore.name`\]
+[`DiskStore.name`](https://geode.apache.org/releases/latest/javadoc/org/apache/geode/cache/DiskStore.html#getName)
 property.
 
 For example, you can specify directory location of the files for a
@@ -1944,24 +1944,12 @@ Table 18. `spring.session.data.gemfire.*` properties
 While we do not recommend using VMware GemFire properties directly
 in your Spring applications, SBDG does not prevent you from doing so.
 See the
-https://geode.apache.org/docs/guide/115/reference/topics/gemfire_properties.html\[complete
-reference to the VMware GemFire specific properties\].
+[complete reference to the VMware GemFire specific properties](https://geode.apache.org/docs/guide/115/reference/topics/gemfire_properties.html).
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td class="icon">
-Warning
-</td>
-<td class="content">VMware GemFire is very strict about the
+<p class="warning"><strong>Warning:</strong>
+VMware GemFire is very strict about the
 properties that may be specified in a <code>gemfire.properties</code>
 file. You cannot mix Spring properties with <code>gemfire.*</code>
 properties in a VMware GemFire <code>gemfire.properties</code>
-file.</td>
-</tr>
-</tbody>
-</table>
+file.
+</p>

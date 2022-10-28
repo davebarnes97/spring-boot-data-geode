@@ -153,19 +153,19 @@ For the complete list of documented properties, see
 [Configuration Metadata Reference](https://docs.spring.io/spring-boot-data-geode-build/current/reference/html5/#geode-configuration-metadata).
 
 
-### Disabling Auto-configuration
+### Deactivating Auto-configuration
 
 Spring Boot’s reference documentation explains how to
-[disable Spring Boot auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/#using-boot-disabling-specific-auto-configuration).
+[deactivate Spring Boot auto-configuration](./configuration-deactivate.html).
 
-[Disabling Auto-configuration](./appendix.html#geode-auto-configuration-disable)
-also explains how to disable SBDG auto-configuration.
+[Deactivating Auto-configuration](./configuration-deactivate.html)
+also explains how to deactivate SBDG auto-configuration.
 
-In a nutshell, if you want to disable any auto-configuration provided by
+In a nutshell, if you want to deactivate any auto-configuration provided by
 either Spring Boot or SBDG, declare your intent in the
 `@SpringBootApplication` annotation:
 
-Example 4. Disabling Specific Auto-configuration Classes
+Example 4. Deactivating Specific Auto-configuration Classes
 
 
 
@@ -180,12 +180,12 @@ class SpringBootApacheGeodeClientCacheApplication {
 
 <p class="caution"><strong>Caution:</strong>
 Make sure you understand what you are doing when you
-disable auto-configuration.
+deactivate auto-configuration.
 </p>
 
 ### Overriding Auto-configuration
 
-[Overriding](./appendix.html#geode-auto-configuration-annotations-overriding)
+[Overriding](./configuration-annotations.html#auto-configuration-annotations-overriding)
 explains how to override SBDG auto-configuration.
 
 In a nutshell, if you want to override the default auto-configuration
@@ -249,7 +249,7 @@ This section covers the SBDG provided auto-configuration classes that
 correspond to the SDG annotations in more detail.
 
 To review the complete list of SBDG auto-configuration classes, see
-[Complete Set of Auto-configuration Classes](./appendix.html#geode-auto-configuration-disable-classes).
+[Complete Set of Auto-configuration Classes](./configuration-deactivate.html#auto-configuration-deactivate-classes).
 
 #### `@ClientCacheApplication`
 
@@ -695,7 +695,7 @@ Authorization is configured on the server-side and is made simple with
 SBDG and the help of [Apache Shiro](https://shiro.apache.org/). Of
 course, this assumes you use SBDG to configure and bootstrap your
 VMware GemFire cluster in the first place, which is even easier
-with SBDG. See [Running a VMware GemFire cluster with Spring Boot from your IDE](appendix.html#geode-cluster-configuration-bootstrapping).
+with SBDG. See [Running a VMware GemFire cluster with Spring Boot from your IDE](./configuration-bootstrapping.html).
 
 See [Security](security.html) for more details.
 
